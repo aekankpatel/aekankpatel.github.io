@@ -1,0 +1,1852 @@
+/* -----------------------------
+   Theme tokens
+------------------------------ */
+:root {
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial;
+
+  --bg: #0b0f17;
+  --text: #e7e9ee;
+  --muted: rgba(231, 233, 238, 0.75);
+
+  --border: rgba(231, 233, 238, 0.12);
+  --card: rgba(231, 233, 238, 0.04);
+  --cardHover: rgba(231, 233, 238, 0.06);
+
+  --btnBorder: rgba(231, 233, 238, 0.2);
+  --btnFill: rgba(231, 233, 238, 0.12);
+}
+
+html[data-theme="light"] {
+  --bg: #f7f8fb;
+  --text: #0b1220;
+  --muted: rgba(11, 18, 32, 0.72);
+
+  --border: rgba(11, 18, 32, 0.12);
+  --card: rgba(11, 18, 32, 0.04);
+  --cardHover: rgba(11, 18, 32, 0.06);
+
+  --btnBorder: rgba(11, 18, 32, 0.18);
+  --btnFill: rgba(11, 18, 32, 0.08);
+}
+
+html,
+body {
+  width: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+
+  /* true center for the app */
+  display: flex;
+  justify-content: center;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* Smooth theme transition */
+html,
+body,
+.btn,
+.modal,
+.themeBtn,
+.projectCard,
+.certCard {
+  transition: background-color 180ms ease, color 180ms ease, border-color 180ms ease;
+}
+
+/* -----------------------------
+   Base
+------------------------------ */
+* {
+  box-sizing: border-box;
+}
+
+html {
+  overflow-y: scroll;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* -----------------------------
+   Layout
+------------------------------ */
+.page {
+  width: min(1440px, 94vw);
+  padding: 20px;
+}
+
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 0;
+}
+
+.brand {
+  font-weight: 700;
+  letter-spacing: 0.2px;
+}
+
+.links a {
+  margin-left: 18px;
+  opacity: 0.85;
+}
+
+.links a:hover {
+  opacity: 1;
+}
+
+.navRight {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+/* --- Theme Switch --- */
+.themeSwitch {
+  position: relative;
+  width: 56px;
+  height: 34px;
+  border-radius: 999px;
+  border: 1px solid var(--btnBorder);
+  background: var(--card);
+  cursor: pointer;
+  padding: 0;
+  display: inline-flex;
+  align-items: center;
+}
+
+.themeSwitch.isLight {
+  background: rgba(11, 18, 32, 0.08);
+}
+
+.themeSwitch.isDark {
+  background: rgba(139, 92, 246, 0.55);   /* purple */
+  border-color: rgba(139, 92, 246, 0.45);
+}
+
+.themeSwitch.isDark:hover {
+  background: rgba(109, 40, 217, 0.55);   /* dark purple */
+  border-color: rgba(109, 40, 217, 0.55);
+}
+
+.switchThumb {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 26px;
+  height: 26px;
+  border-radius: 999px;
+  background: #ffffff;
+  display: grid;
+  place-items: center;
+  transition: left 180ms ease;
+  left: 4px;
+}
+
+.themeSwitch.isDark .switchThumb {
+  left: calc(100% - 26px - 4px);
+}
+
+.switchIcon {
+  font-size: 16px;
+  line-height: 1;
+}
+
+/* -----------------------------
+   Hero
+------------------------------ */
+.hero {
+  min-height: calc(100vh - 72px);
+  padding: 28px 0;
+  display: flex;
+  align-items: center;
+}
+
+.heroGrid {
+  display: grid;
+  grid-template-columns: 1.3fr 1fr;
+  gap: 38px;
+  align-items: center;
+}
+
+.heroRight {
+  display: flex;
+  justify-content: flex-end;
+  transform: translateY(-10px);
+}
+
+.title {
+  font-size: 44px;
+  line-height: 1.1;
+  margin: 0 0 14px;
+  max-width: 1000px;
+}
+
+.subtitle {
+  max-width: 900px;
+  opacity: 0.95;
+  font-size: 18px;
+  line-height: 1.6;
+  color: var(--muted);
+}
+
+.cta {
+  display: flex;
+  gap: 12px;
+  margin-top: 18px;
+}
+
+.socialRow {
+  display: flex;
+  gap: 10px;
+  margin-top: 18px;
+}
+
+.socialDot {
+  width: 42px;
+  height: 42px;
+  border-radius: 12px;
+  border: 1px solid var(--btnBorder);
+  background: var(--card);
+  display: grid;
+  place-items: center;
+  opacity: 0.9;
+  transition: all 180ms ease;
+}
+
+.socialDot:hover {
+  background: var(--cardHover);
+  transform: translateY(-2px);
+}
+
+.visualCard {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.visualGif {
+  width: min(600px, 100%);
+  height: auto;
+  object-fit: contain;
+}
+
+/* -----------------------------
+   Buttons
+------------------------------ */
+.btn {
+  border: 1px solid var(--btnBorder);
+  padding: 10px 14px;
+  border-radius: 12px;
+  display: inline-block;
+}
+
+
+
+/* -----------------------------
+   Sections
+------------------------------ */
+.section {
+  padding: 38px 0;
+  border-top: 1px solid var(--border);
+}
+
+.section h2 {
+  font-size: 32px;
+  font-weight: 700;
+  margin: 0 0 18px;
+  line-height: 1.15;
+}
+
+.footer {
+  padding: 28px 0 10px;
+  opacity: 0.9;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+/* -----------------------------
+   What I do
+------------------------------ */
+.whatIDo {
+  padding-top: 10px;
+}
+
+.whatGrid {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: 32px;
+  align-items: center;
+}
+
+.whatVisual {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.whatGif {
+  width: 65%;
+  height: auto;
+  object-fit: cover;
+  border-radius: 0;
+}
+
+.whatTitle {
+  font-size: 54px;
+  line-height: 1.05;
+  margin: 0 0 12px;
+}
+
+.whatIntro {
+  font-size: 18px;
+  line-height: 1.7;
+  color: var(--muted);
+  margin: 0 0 18px;
+  max-width: 720px;
+}
+
+.whatBullets {
+  display: grid;
+  gap: 14px;
+  margin-top: 12px;
+}
+
+.whatBullet {
+  font-size: 18px;
+  line-height: 1.65;
+  margin: 0;
+}
+
+/* -----------------------------
+   Projects (final 5-per-row behavior preserved)
+------------------------------ */
+.projects {
+  display: grid;
+  gap: 18px;
+  margin-top: 18px;
+  grid-template-columns: repeat(5, minmax(0, 260px));
+  justify-content: center;
+}
+
+.cardButton {
+  width: 100%;
+  text-align: left;
+  cursor: pointer;
+  border: none;
+  background: transparent;
+  color: inherit;
+}
+
+.projectCard {
+  padding: 22px;
+  border-radius: 18px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  transition: background 180ms ease, border-color 180ms ease, transform 180ms ease;
+}
+
+.projectCard:hover {
+  background: var(--cardHover);
+  border-color: var(--btnBorder);
+  transform: translateY(-2px);
+}
+
+.projectCard h3 {
+  margin: 0 0 8px;
+}
+
+.projectCard p {
+  font-size: 15px;
+  line-height: 1.5;
+  opacity: 0.95;
+}
+
+.tech {
+  display: inline-block;
+  margin-top: 10px;
+  font-size: 13px;
+  opacity: 0.75;
+}
+
+.hint {
+  display: inline-block;
+  margin-top: 10px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #8b5cf6; /* purple */
+  transition: color 180ms ease, transform 180ms ease;
+}
+
+.projectCard:hover .hint {
+  color: #6d28d9; /* darker purple */
+  transform: translateX(2px);
+}
+
+/* -----------------------------
+   Modal
+------------------------------ */
+.modalOverlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.65);
+  display: grid;
+  place-items: center;
+  padding: 18px;
+  z-index: 50;
+}
+
+.modal {
+  width: min(820px, 100%);
+  border-radius: 18px;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.35);
+  overflow: hidden;
+}
+
+.modalHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 16px 12px;
+  border-bottom: 1px solid var(--border);
+}
+
+.modalTitle {
+  margin: 0;
+}
+
+.modalClose {
+  border: 1px solid var(--btnBorder);
+  background: transparent;
+  color: inherit;
+  border-radius: 12px;
+  padding: 6px 10px;
+  cursor: pointer;
+}
+
+.modalClose:hover {
+  background: var(--cardHover);
+}
+
+.modalBody {
+  padding: 16px;
+}
+
+.modalTech {
+  margin: 0 0 12px;
+  opacity: 0.85;
+  font-size: 14px;
+  color: var(--muted);
+}
+
+.modalText {
+  margin: 0;
+  line-height: 1.6;
+  opacity: 0.98;
+}
+
+.modalActions {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  margin-top: 16px;
+  flex-wrap: wrap;
+}
+
+/* -----------------------------
+   Education / Experience cards
+------------------------------ */
+.eduCard,
+.expCard {
+  margin-top: 16px;
+  padding: 16px;
+  border-radius: 16px;
+  border: 1px solid var(--border);
+  background: var(--card);
+}
+
+.logoCircle {
+  width: 70px;
+  height: 70px;
+  border-radius: 999px;
+  object-fit: cover;
+  background: rgb(255, 255, 255);
+  border: 1px solid var(--border);
+}
+
+.eduRow {
+  display: grid;
+  grid-template-columns: 96px 1fr;
+  gap: 22px;
+  align-items: start;
+  padding: 26px;
+  border-radius: 22px;
+}
+
+.eduLogoWrap {
+  display: flex;
+  justify-content: center;
+  padding-top: 0px;
+}
+
+.eduMain {
+  min-width: 0;
+}
+
+.eduTopRow {
+  display: flex;
+  justify-content: space-between;
+  gap: 18px;
+  align-items: baseline;
+}
+
+.eduSchool {
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--text);
+  line-height: 1.15;
+}
+
+.eduRight {
+  text-align: right;
+  display: grid;
+  gap: 6px;
+  white-space: nowrap;
+}
+
+.eduRightLine {
+  font-size: 18px;
+  color: var(--muted);
+}
+
+.eduMetaRow {
+  margin-top: 10px;
+  display: flex;
+  justify-content: space-between;
+  gap: 18px;
+  align-items: baseline;
+}
+
+.eduDegreeLine {
+  font-size: 18px;
+  color: var(--muted);
+  font-weight: 500;
+  min-width: 0;
+}
+
+.eduGpaInline {
+  font-size: 18px;
+  color: var(--muted);
+  font-weight: 500;
+  white-space: nowrap;
+  text-align: right;
+  flex: 0 0 auto;
+}
+
+.eduBullets {
+  margin: 12px 0 0;
+  padding-left: 18px;
+}
+
+.eduBullets li {
+  margin-bottom: 6px;
+  font-size: 15px;
+  line-height: 1.6;
+  color: rgba(231, 233, 238, 0.72);
+}
+
+html[data-theme="light"] .eduBullets li {
+  color: rgba(11, 18, 32, 0.68);
+}
+
+/* Courses marquee */
+.courseBlock {
+  margin-top: 18px;
+}
+
+.courseLabel {
+  font-size: 26px;
+  font-weight: 500;
+  margin: 18px 0 12px;
+  color: var(--text);
+}
+
+.courseMarquee {
+  width: 100%;
+  overflow: hidden;
+  border: none;
+  padding: 10px 0;
+  position: relative;
+}
+
+.courseTrack {
+  display: inline-flex;
+  gap: 28px;
+  white-space: nowrap;
+  width: max-content;
+  will-change: transform;
+  animation: courseScroll 32s linear infinite;
+}
+
+.courseChip {
+  font-size: 16px;
+  color: rgba(231, 233, 238, 0.72);
+  white-space: nowrap;
+}
+
+html[data-theme="light"] .courseChip {
+  color: rgba(11, 18, 32, 0.68);
+}
+
+.courseMarquee:hover .courseTrack {
+  animation-play-state: paused;
+}
+
+@keyframes courseScroll {
+  0% { transform: translate3d(0, 0, 0); }
+  100% { transform: translate3d(-50%, 0, 0); }
+}
+
+/* Experience (centered + split background) */
+.expNew {
+  position: relative;
+  overflow: hidden;
+  padding: 28px;
+  border-radius: 22px;
+  border: 1px solid var(--border);
+  background: var(--card);
+
+  --exp-logo-size: 96px;
+  --exp-logo-gap-top: 14px;
+  --exp-split-y: calc(10px + 22px + var(--exp-logo-gap-top) + (var(--exp-logo-size) * 0.95));
+}
+
+.expNew::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0.03) 0,
+    rgba(255, 255, 255, 0.03) var(--exp-split-y),
+    transparent var(--exp-split-y),
+    transparent 100%
+  );
+  pointer-events: none;
+}
+
+html[data-theme="light"] .expNew::before {
+  background: linear-gradient(
+    to bottom,
+    rgba(11, 18, 32, 0.06) 0,
+    rgba(11, 18, 32, 0.06) var(--exp-split-y),
+    transparent var(--exp-split-y),
+    transparent 100%
+  );
+}
+
+.expCenter {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding-top: 10px;
+}
+
+.expCompanyName {
+  font-size: 22px;
+  font-style: italic;
+  color: var(--text);
+  opacity: 0.95;
+  margin-bottom: 14px;
+}
+
+.expLogoWrap {
+  display: grid;
+  place-items: center;
+  margin-bottom: 16px;
+}
+
+.expLogo {
+  width: 96px;
+  height: 96px;
+  border-radius: 999px;
+  object-fit: contain;
+  background: #ffffff;
+  padding: 0px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25);
+}
+
+.expRoleBig {
+  font-size: 34px;
+  font-weight: 700;
+  margin-bottom: 10px;
+  color: var(--text);
+}
+
+.expTimeCenter {
+  font-size: 18px;
+  color: var(--muted);
+  margin-top: 2px;
+}
+
+.expLocationCenter {
+  font-size: 20px;
+  color: var(--text);
+  opacity: 0.9;
+  margin-top: 10px;
+}
+
+.expBullets {
+  position: relative;
+  margin: 22px 0 0;
+  padding-left: 22px;
+}
+
+.expBullets li {
+  margin-bottom: 10px;
+  font-size: 18px;
+  line-height: 1.65;
+  color: rgba(231, 233, 238, 0.75);
+}
+
+html[data-theme="light"] .expBullets li {
+  color: rgba(11, 18, 32, 0.7);
+}
+
+/* -----------------------------
+   Scroll reveal animations
+------------------------------ */
+.revealSection,
+.revealFromLeft,
+.revealFromTop {
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity 800ms cubic-bezier(0.22, 1, 0.36, 1),
+    transform 800ms cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: opacity, transform;
+}
+
+.revealFromLeft {
+  transform: translateX(-30px);
+}
+
+.revealFromTop {
+  transform: translateY(-26px);
+}
+
+.revealSection.isVisible,
+.revealFromLeft.isVisible,
+.revealFromTop.isVisible {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+}
+
+.revealLeft,
+.revealRight {
+  opacity: 0;
+  transition: opacity 900ms cubic-bezier(0.22, 1, 0.36, 1),
+    transform 900ms cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: opacity, transform;
+}
+
+.revealLeft {
+  transform: translate3d(-44px, 0, 0);
+}
+
+.revealRight {
+  transform: translate3d(44px, 0, 0);
+}
+
+.revealSection.isVisible .revealLeft,
+.revealSection.isVisible .revealRight {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+}
+
+.revealSection.isVisible .revealRight {
+  transition-delay: 120ms;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .revealSection,
+  .revealFromLeft,
+  .revealFromTop,
+  .revealLeft,
+  .revealRight {
+    transition: none !important;
+    transform: none !important;
+    opacity: 1 !important;
+  }
+}
+
+/* -----------------------------
+   Certifications — keep your BIG badge look + 5-per-row
+------------------------------ */
+.certGridBig {
+  display: grid;
+  gap: 18px;
+  margin-top: 18px;
+  grid-template-columns: repeat(5, minmax(0, 260px));
+  justify-content: center;
+}
+
+.certCardBig {
+  padding: 28px;
+  border-radius: 22px;
+  background: var(--card);
+  border: 1px solid rgba(231, 233, 238, 0.18);
+  box-shadow: 0 22px 60px rgba(0, 0, 0, 0.32);
+  transition: transform 180ms ease, border-color 180ms ease, background 180ms ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.certCardBig:hover {
+  background: var(--cardHover);
+  border-color: var(--btnBorder);
+  transform: translateY(-2px);
+}
+
+.certBadgeWrap {
+  width: 100%;
+  display: grid;
+  place-items: center;
+  padding: 10px 0 22px;
+}
+
+.certBadge {
+  width: 260px;
+  max-width: 85%;
+  height: auto;
+  object-fit: contain;
+  display: block;
+  filter: drop-shadow(0 18px 44px rgba(0,0,0,0.45));
+}
+
+.certBigTitle {
+  margin: 10px 0 10px;
+  font-size: 34px;
+  line-height: 1.15;
+}
+
+.certBigIssuer {
+  font-size: 18px;
+  color: var(--muted);
+  margin-bottom: 18px;
+}
+
+.certBtnRow {
+  margin-top: auto;
+  padding-top: 22px;
+}
+
+/* =========================
+   Certificate Button (match Email style)
+========================= */
+
+/* ===== Certificate button (match Email style) ===== */
+
+.certBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 12px 22px;
+  border-radius: 14px;
+
+  border: 1px solid #8b5cf6;
+  background: transparent;
+
+  color: #8b5cf6;
+  font-weight: 700;
+
+  transition: all 180ms ease;
+}
+
+/* ✅ Prevent link states from changing cert button text */
+.certBtn,
+.certBtn:visited,
+.certBtn:active {
+  color: #8b5cf6 !important;
+  text-decoration: none !important;
+}
+
+html[data-theme="light"] .certBtn,
+html[data-theme="light"] .certBtn:visited,
+html[data-theme="light"] .certBtn:active {
+  color: #7c3aed !important;
+}
+
+/* Dark mode: when card is hovered, darken button */
+
+html[data-theme="light"] .certCardBig {
+  box-shadow: 0 10px 28px rgba(11, 18, 32, 0.08);
+  border-color: rgba(11, 18, 32, 0.12);
+  background: rgba(11, 18, 32, 0.03);
+}
+
+html[data-theme="light"] .certCardBig:hover {
+  box-shadow: 0 14px 34px rgba(11, 18, 32, 0.10);
+  background: rgba(11, 18, 32, 0.05);
+}
+
+html[data-theme="light"] .certBadge {
+  filter: none;
+}
+
+/* Keep certificate title white always */
+.certBigTitle,
+.certBigTitle a {
+  color: var(--text) !important;
+  text-decoration: none;
+}
+
+/* Even when hovering the card */
+.certCardBig:hover .certBigTitle,
+.certCardBig:hover .certBigTitle a {
+  color: var(--text) !important;
+}
+
+
+/* -----------------------------
+   Skills — Accordion
+------------------------------ */
+.skillsAccordion {
+  margin-top: 18px;
+  display: grid;
+  gap: 14px;
+}
+
+.skillAccordionItem {
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  background: var(--card);
+  overflow: hidden;
+}
+
+/* ✅ make header a true button */
+.skillHeader {
+  width: 100%;
+  border: 0;
+  background: transparent;
+  color: var(--text);
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 16px 18px;
+  cursor: pointer;
+  user-select: none;
+
+  font-size: 18px;
+  font-weight: 700;
+
+  transition: background 180ms ease;
+}
+
+.skillHeader:hover {
+  background: var(--cardHover);
+}
+
+/* ✅ perfectly centered icon */
+.plusIcon {
+  width: 32px;
+  height: 32px;
+
+  display: grid;
+  place-items: center;
+
+  border-radius: 10px;
+  border: 1px solid rgba(139, 92, 246, 0.35);
+  background: rgba(139, 92, 246, 0.10);
+
+  transition: background 180ms ease, transform 180ms ease, border-color 180ms ease;
+  position: relative;
+}
+
+/* horizontal line (always visible) */
+.plusIcon::before {
+  content: "";
+  position: absolute;
+  width: 14px;
+  height: 2px;
+  border-radius: 999px;
+  background: #8b5cf6; /* ✅ visible purple */
+}
+
+/* vertical line (only when CLOSED = plus) */
+.plusIcon::after {
+  content: "";
+  position: absolute;
+  width: 2px;
+  height: 14px;
+  border-radius: 999px;
+  background: #8b5cf6; /* ✅ visible purple */
+  transition: transform 180ms ease, opacity 180ms ease;
+}
+
+/* when OPEN -> show minus (hide vertical line) */
+.skillAccordionItem.open .plusIcon::after {
+  opacity: 0;
+  transform: scaleY(0);
+}
+
+/* hover: make it darker + pop */
+.skillHeader:hover .plusIcon {
+  transform: scale(1.12);
+  background: rgba(139, 92, 246, 0.18);
+  border-color: rgba(139, 92, 246, 0.55);
+}
+
+/* hover: darker purple lines */
+.skillHeader:hover .plusIcon::before,
+.skillHeader:hover .plusIcon::after {
+  background: #6d28d9;
+}
+
+/* when OPEN -> show minus (hide vertical line) */
+.skillAccordionItem.open .plusIcon::after {
+  opacity: 0;
+  transform: scaleY(0);
+}
+
+/* hover: make it darker + pop */
+.skillHeader:hover .plusIcon {
+  transform: scale(1.12);
+  background: rgba(139, 92, 246, 0.18);
+  border-color: rgba(139, 92, 246, 0.55);
+}
+
+/* hover: darker purple */
+.skillHeader:hover .plusIcon::before,
+.skillHeader:hover .plusIcon::after {
+  color: #6d28d9;
+}
+
+/* ✅ hover: darker + pop */
+.skillHeader:hover .plusIcon {
+  color: #5b21b6;                 /* darker purple */
+  background: rgba(139, 92, 246, 0.22); /* darker bg */
+  transform: scale(1.12);
+}
+
+/* ✅ open: slightly stronger bg */
+.skillAccordionItem.open .plusIcon {
+  background: rgba(139, 92, 246, 0.18);
+}
+
+.skillContent {
+  padding: 0 18px 16px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.skillChip {
+  padding: 8px 12px;
+  border-radius: 999px;
+  font-size: 14px;
+  color: var(--text);
+  background: rgba(139, 92, 246, 0.12);
+  border: 1px solid rgba(139, 92, 246, 0.25);
+}
+
+/* ✅ keyboard focus (looks premium, doesn’t break design) */
+.skillHeader:focus-visible {
+  outline: 2px solid rgba(139, 92, 246, 0.55);
+  outline-offset: 2px;
+}
+
+/* ===== Skills accordion: highlight the FULL item (not just header) ===== */
+
+/* remove the header-only hover fill (optional but recommended) */
+.skillHeader:hover {
+  background: transparent;
+}
+
+/* full-card highlight on hover / when any child is focused / when open */
+.skillAccordionItem:hover,
+.skillAccordionItem:focus-within,
+.skillAccordionItem.open {
+  background: var(--cardHover);
+  border-color: var(--btnBorder);
+}
+
+/* keep the header looking consistent */
+.skillAccordionItem:hover .skillHeader,
+.skillAccordionItem:focus-within .skillHeader,
+.skillAccordionItem.open .skillHeader {
+  background: transparent;
+}
+
+/* optional: a clean focus ring around the whole card when tabbed into */
+.skillAccordionItem:focus-within {
+  box-shadow: 0 0 0 2px rgba(139, 92, 246, 0.35);
+}
+
+/* -----------------------------
+   Contact
+------------------------------ */
+
+/* remove horizontal overflow globally (safe) */
+html, body {
+  overflow-x: hidden;
+}
+
+.contactWrap {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 28px;
+  width: 100%;
+}
+
+.contactLeft {
+  flex: 1;
+  min-width: 0;
+  max-width: 880px;
+}
+
+.contactLine {
+  margin: 0 0 14px;
+  color: var(--muted);
+  font-size: 18px;
+  line-height: 1.65;
+}
+
+.contactIcons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.contactIconBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  border-radius: 14px;
+  border: 1px solid var(--btnBorder);
+  background: var(--card);
+  color: var(--text);
+  opacity: 0.95;
+  transition: transform 180ms ease, background 180ms ease, opacity 180ms ease;
+}
+
+.contactIconBtn:hover {
+  background: var(--cardHover);
+  opacity: 1;
+  transform: translateY(-1px);
+}
+
+.contactIconText {
+  font-weight: 600;
+  font-size: 14px;
+}
+
+/* ✅ Lottie wrapper: controls size + clips overflow */
+.contactAnimWrap {
+  flex: 0 0 auto;
+  width: 190px;     /* ✅ smaller */
+  height: 160px;    /* ✅ smaller */
+  display: grid;
+  place-items: center;
+
+  overflow: hidden;       /* ✅ removes the stray line */
+  border-radius: 28px;    /* optional, looks clean */
+
+  margin-right: 100px;     /* pull away from far right */
+  transform: translateY(-50px); /* slightly up */
+}
+
+/* ✅ force lottie to obey wrapper size */
+.contactAnimWrap .contactAnim {
+  width: 100% !important;
+  height: 100% !important;
+}
+
+@media (max-width: 900px) {
+  .contactWrap {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .contactAnimWrap {
+    margin-right: 0;
+    transform: none;
+    width: 190px;
+    height: 160px;
+  }
+}
+/* -----------------------------
+   Responsive breakpoints
+------------------------------ */
+@media (max-width: 1500px) {
+  .projects,
+  .certGridBig {
+    grid-template-columns: repeat(4, minmax(0, 260px));
+  }
+}
+
+@media (max-width: 1120px) {
+  .projects,
+  .certGridBig {
+    grid-template-columns: repeat(3, minmax(0, 260px));
+  }
+}
+
+@media (max-width: 900px) {
+  .heroGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .heroRight {
+    justify-content: flex-start;
+    transform: none;
+  }
+
+  .whatGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .whatTitle {
+    font-size: 42px;
+  }
+
+  .eduRow {
+    grid-template-columns: 84px 1fr;
+    padding: 20px;
+  }
+
+  .logoCircle {
+    width: 66px;
+    height: 66px;
+  }
+
+  .eduSchool {
+    font-size: 22px;
+  }
+
+  .eduRightLine,
+  .eduDegreeLine,
+  .eduGpaInline {
+    font-size: 16px;
+  }
+
+  .courseLabel {
+    font-size: 22px;
+  }
+
+  .courseChip {
+    font-size: 14px;
+  }
+
+  .expNew {
+    padding: 20px;
+  }
+
+  .expRoleBig {
+    font-size: 28px;
+  }
+
+  .expLogo {
+    width: 84px;
+    height: 84px;
+  }
+
+  .expBullets li {
+    font-size: 16px;
+  }
+
+  .contactWrap {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+}
+
+@media (max-width: 860px) {
+  .projects,
+  .certGridBig {
+    grid-template-columns: repeat(2, minmax(0, 260px));
+  }
+}
+
+@media (max-width: 580px) {
+  .projects,
+  .certGridBig {
+    grid-template-columns: repeat(1, minmax(0, 260px));
+  }
+}
+
+.scrollTopBtn {
+  position: fixed;
+  right: 22px;
+  bottom: 22px;
+  z-index: 9999;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 52px;
+  height: 52px;
+  border-radius: 999px;
+
+  border: none;
+  cursor: pointer;
+
+  background: #7c3aed; /* purple */
+  color: white;
+
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.scrollTopBtn:hover {
+  background: #6d28d9;
+  transform: translateY(-2px);
+}
+
+
+
+/* Hero highlight */
+.title .purpleText {
+  color: #8b5cf6 !important;
+  font-weight: 800;
+}
+
+.title .purpleUnderline {
+  position: relative;
+  display: inline-block; /* IMPORTANT for underline sizing */
+  font-weight: 800;
+}
+
+.title .purpleUnderline::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -6px;
+  height: 3px;
+  background: #8b5cf6 !important;
+  border-radius: 999px;
+}
+
+/* Hero emphasis (force apply) */
+h1.title span.purpleText {
+  color: #8b5cf6 !important;
+  font-weight: 800 !important;
+}
+
+h1.title span.purpleUnderline {
+  position: relative !important;
+  display: inline-block !important;
+  font-weight: 800 !important;
+}
+
+h1.title span.purpleUnderline::after {
+  content: "" !important;
+  position: absolute !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: -6px !important;
+  height: 3px !important;
+  background: #8b5cf6 !important;
+  border-radius: 999px !important;
+}
+
+/* HERO highlight */
+.purpleText {
+  color: #8b5cf6 !important;
+  font-weight: 800;
+}
+
+.purpleUnderline {
+  color: inherit;
+  font-weight: 800;
+  display: inline;
+  border-bottom: 3px solid #8b5cf6;  /* ✅ purple line */
+  padding-bottom: 2px;               /* ✅ spacing from text */
+}
+
+/* ===== Contact: remove gap between heading and text ===== */
+#contact.section {
+  padding-top: 40px !important;   /* optional: keeps section tight */
+}
+
+#contact.section > h2 {
+  margin: 0 0 -4px !important;     /* ✅ reduces gap after Contact Me */
+}
+
+#contact.section .contactWrap {
+  margin-top: 0 !important;       /* ✅ ensures no extra gap */
+}
+
+#contact.section .contactLine {
+  margin-top: 0 !important;       /* ✅ removes default p top margin */
+}
+
+/* ===== Nav / icons hover styling to purple ===== */
+.links a:hover {
+  color: #8b5cf6;
+  opacity: 1;
+}
+
+/* if your resume button uses .btn */
+.btn:hover {
+  border-color: rgba(139, 92, 246, 0.55);
+  transform: translateY(-1px);
+}
+
+/* social dots (icons) hover purple */
+.socialDot:hover {
+  border-color: rgba(139, 92, 246, 0.55);
+  background: rgba(139, 92, 246, 0.12);
+}
+
+/* ===== Global purple focus ring (removes default blue) ===== */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible,
+[role="button"]:focus-visible {
+  outline: 2px solid rgba(139, 92, 246, 0.55) !important;
+  outline-offset: 3px;
+}
+
+/* ===== Global Purple Accent (override) ===== */
+:root {
+  --accent: #8b5cf6;
+  --accentDark: #6d28d9;
+  --accentBorder: rgba(139, 92, 246, 0.45);
+  --accentFill: rgba(139, 92, 246, 0.14);
+}
+
+/* Kill browser blue focus / tap highlight */
+a, button {
+  -webkit-tap-highlight-color: transparent;
+}
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid rgba(139, 92, 246, 0.55);
+  outline-offset: 3px;
+}
+
+/* ===== Theme switch: remove BLUE, use PURPLE ===== */
+.themeSwitch.isDark {
+  background: rgba(139, 92, 246, 0.35) !important;
+  border-color: rgba(139, 92, 246, 0.55) !important;
+}
+
+/* ===== Resume button (match icon background exactly) ===== */
+
+.btn.primary {
+  color: var(--accent) !important;
+  border-color: var(--accentBorder) !important;
+  background: var(--accentFill) !important;
+}
+.btn.primary:hover {
+  color: var(--accentDark) !important;
+  border-color: rgba(139, 92, 246, 0.65) !important;
+  background: rgba(139, 92, 246, 0.20) !important;
+}
+/* ===== Social icon buttons (LinkedIn/GitHub/etc): force purple icon/text ===== */
+.socialDot,
+.contactIconBtn {
+  color: var(--accent) !important;
+  border-color: var(--accentBorder) !important;
+}
+.socialDot:hover,
+.contactIconBtn:hover {
+  color: var(--accentDark) !important;
+  border-color: rgba(139, 92, 246, 0.65) !important;
+}
+
+/* IMPORTANT: make SVG icons inherit color instead of default blue */
+.socialDot svg,
+.contactIconBtn svg,
+.btn svg {
+  color: currentColor !important;
+  fill: currentColor !important;
+  stroke: currentColor !important;
+}
+
+/* =========================================================
+   HARD OVERRIDE: make "View Certificate" behave like Email
+   (paste at VERY END of CSS)
+========================================================= */
+
+/* base */
+.certBtn,
+.certBtn:link,
+.certBtn:visited,
+.certBtn:active {
+  background: transparent !important;
+  color: #8b5cf6 !important;
+  border: 1px solid #8b5cf6 !important;
+  text-decoration: none !important;
+  box-shadow: none !important;
+}
+
+/* light mode base */
+html[data-theme="light"] .certBtn,
+html[data-theme="light"] .certBtn:link,
+html[data-theme="light"] .certBtn:visited,
+html[data-theme="light"] .certBtn:active {
+  background: transparent !important;
+  color: #7c3aed !important;
+  border-color: #7c3aed !important;
+}
+
+
+/* if the button contains an icon */
+.certBtn svg,
+.certBtn i {
+  color: currentColor !important;
+  fill: currentColor !important;
+  stroke: currentColor !important;
+}
+
+/* =========================================
+   Download Resume — neutral background
+========================================= */
+
+/* DARK MODE */
+.btn.primary {
+  background: var(--card) !important;     /* black-ish */
+  color: #8b5cf6 !important;              /* purple text */
+  border: 1px solid #8b5cf6 !important;
+}
+
+.btn.primary:hover {
+  background: var(--cardHover) !important;
+  color: #6d28d9 !important;
+  border-color: #6d28d9 !important;
+}
+
+/* LIGHT MODE */
+html[data-theme="light"] .btn.primary {
+  background: #ffffff !important;        /* white */
+  color: #7c3aed !important;
+  border-color: #7c3aed !important;
+}
+
+html[data-theme="light"] .btn.primary:hover {
+  background: rgba(124, 58, 237, 0.10) !important;
+  color: #5b21b6 !important;
+  border-color: #5b21b6 !important;
+}
+
+/* Make icon follow text color */
+.btn.primary svg,
+.btn.primary i {
+  color: currentColor !important;
+  fill: currentColor !important;
+  stroke: currentColor !important;
+}
+/* ===== FINAL: Resume button background EXACTLY like social icons ===== */
+
+/* normal */
+a.btn.primary,
+button.btn.primary,
+.btn.primary {
+  background-color: var(--card) !important;     /* same as .socialDot */
+  background-image: none !important;
+  border-color: var(--accentBorder) !important;
+  color: var(--accent) !important;
+}
+
+/* hover */
+a.btn.primary:hover,
+button.btn.primary:hover,
+.btn.primary:hover {
+  background-color: var(--cardHover) !important; /* same as .socialDot:hover */
+  background-image: none !important;
+  border-color: rgba(139, 92, 246, 0.65) !important;
+  color: var(--accentDark) !important;
+}
+
+/* if any icon wrapper inside resume button was getting a purple fill */
+.btn.primary svg,
+.btn.primary i,
+.btn.primary .icon {
+  color: currentColor !important;
+  fill: currentColor !important;
+  stroke: currentColor !important;
+  background: transparent !important;
+}
+
+/* ===== FINAL: Resume button - FIX light mode background to match icons ===== */
+html[data-theme="light"] a.btn.primary,
+html[data-theme="light"] button.btn.primary,
+html[data-theme="light"] .btn.primary {
+  background-color: rgba(11, 18, 32, 0.04) !important;   /* same as --card in light */
+  border-color: rgba(124, 58, 237, 0.45) !important;
+  color: #7c3aed !important;
+  background-image: none !important;
+}
+
+html[data-theme="light"] a.btn.primary:hover,
+html[data-theme="light"] button.btn.primary:hover,
+html[data-theme="light"] .btn.primary:hover {
+  background-color: rgba(11, 18, 32, 0.06) !important;   /* same as --cardHover in light */
+  border-color: rgba(91, 33, 182, 0.55) !important;
+  color: #5b21b6 !important;
+  background-image: none !important;
+}
+
+/* =========================================================
+   FINAL: Cert button hover MUST match .btn.primary (Resume)
+   Paste at VERY END of app.css
+========================================================= */
+
+/* Base state (same as resume button base) */
+.certBtn,
+.certBtn:link,
+.certBtn:visited,
+.certBtn:active {
+  background: var(--card) !important;
+  border: 1px solid var(--accentBorder) !important;
+  color: var(--accent) !important;
+  text-decoration: none !important;
+  box-shadow: none !important;
+  background-image: none !important;
+}
+
+/* Hover state (same as resume button hover) */
+.certBtn:hover,
+.certBtn:focus-visible {
+  background: var(--cardHover) !important;
+  border-color: rgba(139, 92, 246, 0.65) !important;
+  color: var(--accentDark) !important;
+  box-shadow: none !important;
+  background-image: none !important;
+}
+
+/* Light mode: ensure it uses light tokens (same as resume does) */
+html[data-theme="light"] .certBtn,
+html[data-theme="light"] .certBtn:link,
+html[data-theme="light"] .certBtn:visited,
+html[data-theme="light"] .certBtn:active {
+  background: var(--card) !important;      /* rgba(11,18,32,0.04) */
+  border-color: rgba(124, 58, 237, 0.45) !important;
+  color: #7c3aed !important;
+}
+
+html[data-theme="light"] .certBtn:hover,
+html[data-theme="light"] .certBtn:focus-visible {
+  background: var(--cardHover) !important; /* rgba(11,18,32,0.06) */
+  border-color: rgba(91, 33, 182, 0.55) !important;
+  color: #5b21b6 !important;
+}
+
+/* icons inside button follow text */
+.certBtn svg,
+.certBtn i {
+  color: currentColor !important;
+  fill: currentColor !important;
+  stroke: currentColor !important;
+  background: transparent !important;
+}
+
+/* ===== FINAL: Cert button must match icons/resume background exactly ===== */
+
+.certBtn,
+.certBtn:link,
+.certBtn:visited,
+.certBtn:active {
+  background: var(--card) !important;
+  background-image: none !important;
+
+  border: 1px solid var(--accentBorder) !important;
+  color: var(--accent) !important;
+
+  text-decoration: none !important;
+  box-shadow: none !important;
+  transform: none !important;
+}
+
+.certBtn:hover,
+.certBtn:focus-visible {
+  background: var(--cardHover) !important;   /* ✅ same as icons + resume */
+  background-image: none !important;
+
+  border-color: rgba(139, 92, 246, 0.65) !important;
+  color: var(--accentDark) !important;
+
+  box-shadow: none !important;
+  transform: translateY(-1px) !important;
+}
+
+/* Light mode uses same tokens automatically because --card/--cardHover change */
+html[data-theme="light"] .certBtn,
+html[data-theme="light"] .certBtn:link,
+html[data-theme="light"] .certBtn:visited,
+html[data-theme="light"] .certBtn:active {
+  border-color: rgba(124, 58, 237, 0.45) !important;
+  color: #7c3aed !important;
+}
+
+html[data-theme="light"] .certBtn:hover,
+html[data-theme="light"] .certBtn:focus-visible {
+  border-color: rgba(91, 33, 182, 0.55) !important;
+  color: #5b21b6 !important;
+}
+
+.certBtn svg,
+.certBtn i {
+  color: currentColor !important;
+  fill: currentColor !important;
+  stroke: currentColor !important;
+  background: transparent !important;
+}
+
+/* ===== Footer Split Layout ===== */
+
+.footerSplit {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  font-size: 14px;
+  color: var(--muted);
+}
+
+.footerLeft {
+  opacity: 0.9;
+}
+
+.footerRight {
+  white-space: nowrap;
+}
+
+/* Mobile stacking */
+@media (max-width: 700px) {
+  .footerSplit {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+  }
+}
+
+/* ===== FORCE footer split to work ===== */
+footer.footer.footerSplit{
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  gap: 20px !important;
+  flex-wrap: wrap !important;
+  width: 100% !important;
+}
+
+footer.footer.footerSplit .footerRight{
+  margin-right: 120px;   /* adjust 60–120px visually */
+}
+
+footer.footer.footerSplit .footerLeft{
+  flex: 1 1 auto !important;
+  min-width: 260px !important;
+}
+
+footer.footer.footerSplit .footerRight{
+  flex: 0 0 auto !important;
+  white-space: nowrap !important;
+  text-align: right !important;
+}
+
+/* =========================
+   NOW SECTION
+========================= */
+
+.nowGrid {
+  margin-top: 20px;
+  display: grid;
+  gap: 18px;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.nowCard {
+  border-radius: 18px;
+  border: 1px solid var(--border);
+  background: var(--card);
+  padding: 20px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  transition: background 180ms ease, border-color 180ms ease, transform 180ms ease;
+}
+
+.nowCard:hover {
+  background: var(--cardHover);
+  border-color: var(--btnBorder);
+  transform: translateY(-2px);
+}
+
+.nowCard h3 {
+  margin: 0 0 10px;
+  font-size: 20px;
+  color: var(--text);
+}
+
+.nowCard p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+.nowTag {
+  margin-top: 18px;
+  display: inline-block;
+  width: fit-content;
+
+  padding: 6px 10px;
+  border-radius: 12px;
+
+  font-size: 13px;
+  font-weight: 600;
+
+  color: var(--accent);
+  border: 1px solid var(--accentBorder);
+  background: rgba(139, 92, 246, 0.12);
+}
+
+.nowTag.solid {
+  background: var(--accent);
+  color: white;
+  border-color: var(--accent);
+}
+
+/* Responsive */
+@media (max-width: 1200px) {
+  .nowGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 600px) {
+  .nowGrid {
+    grid-template-columns: 1fr;
+  }
+}
