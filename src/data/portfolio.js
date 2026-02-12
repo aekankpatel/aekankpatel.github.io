@@ -3,6 +3,8 @@
 import stevensLogo from "../assets/logos/stevens.png";
 import mitLogo from "../assets/logos/mit.png";
 import matrixLogo from "../assets/logos/matrixcomsec.png";
+import nimitLogo from "../assets/logos/nimit.png";
+import vinroxLogo from "../assets/logos/vinrox.png";
 
 import resumePdf from "../assets/Aekank_Patel_Resume.pdf";
 
@@ -158,12 +160,12 @@ export const EXPERIENCE = [
       "MA 574 \u00B7 MA 544 \u00B7 MA 540",
     ],
     bullets: [
-      "Served as TA for three graduate math courses under Dr. Upendra Prasad: Foundational Math for Data Science (MA 574), Numerical Linear Algebra for Big Data (MA 544), and Intro to Probability Theory (MA 540).",
-      "Graded assignments, quizzes, and exams across multiple sections. Keeping grading consistent and fair is harder than it sounds with 89 students.",
-      "Gave written feedback on math and coding work. The goal was always to be specific enough that students could actually fix what went wrong.",
-      "Kept grade records up to date, tracked submission patterns, and flagged issues to the professor when something seemed off.",
-      "Used Canvas LMS for grading, submission review, feedback, and grade record management.",
-      "Noticed the same mistakes coming up repeatedly in linear algebra and numerical methods, so I started pointing those out proactively in my feedback.",
+      "Supported 3 graduate-level mathematics courses as Teaching Assistant for 89 students: Foundational Math for Data Science (MA 574), Numerical Linear Algebra for Big Data (MA 544), and Introduction to Probability Theory (MA 540).",
+      "Graded assignments, quizzes, and exams across multiple sections, applying consistent and objective evaluation standards at scale.",
+      "Provided detailed written feedback on mathematical and programming assignments to improve student comprehension and performance.",
+      "Maintained accurate grade records, monitored submission patterns, and escalated discrepancies to faculty for timely resolution.",
+      "Managed grading, submission review, and feedback workflows using Canvas LMS.",
+      "Analyzed recurring conceptual errors in linear algebra and numerical methods and proactively addressed them through targeted feedback.",
     ],
   },
   {
@@ -178,12 +180,50 @@ export const EXPERIENCE = [
       "YOLOv5 Multi-Person Detection",
     ],
     bullets: [
-      "Built a fall detection system using deep learning and computer vision. The goal was to detect when someone falls in a live video feed and flag it for safety monitoring.",
-      "Tried several approaches (CNN, RNN, BodyPix, R-CNN) before settling on a hybrid CNN + MediaPipe pipeline for pose estimation. It handled different body orientations better than the alternatives.",
-      "Added YOLOv5 for multi-person detection so the system could track several people at once in the same frame.",
-      "Annotated over 100,000 images myself. It was tedious, but it made a real difference in how well the model generalized.",
-      "Achieved 91.39% test accuracy and validated performance on actual video feeds, not just static test sets.",
-      "Used TensorFlow, PyTorch, OpenCV, NumPy, and Matplotlib. Spent a lot of time optimizing inference speed to keep things running in real time.",
+      "Developed a real-time fall detection system using deep learning and computer vision to identify falls in live video feeds for automated safety monitoring.",
+      "Conducted a comprehensive literature review of state-of-the-art fall detection and human pose estimation research to guide architecture selection and establish evaluation baselines.",
+      "Evaluated multiple architectures (CNN, RNN, BodyPix, R-CNN) and implemented a hybrid CNN and MediaPipe pipeline for pose estimation, improving robustness across varied body orientations.",
+      "Integrated YOLOv5 for multi-person detection, enabling simultaneous tracking of multiple individuals within a single frame.",
+      "Annotated 100,000+ images to build a high-quality training dataset, significantly improving model generalization.",
+      "Achieved 91.39% test accuracy and validated performance on real-world video feeds beyond static test sets.",
+      "Engineered and optimized the pipeline using TensorFlow, PyTorch, OpenCV, NumPy, and Matplotlib, tuning inference speed for real-time performance.",
+    ],
+  },
+  {
+    company: "Nimit Electronics & Equipments",
+    role: "Data Science Intern",
+    time: "May 2023 – Dec 2023",
+    location: "Vadodara, Gujarat, India",
+    logo: nimitLogo,
+    stats: [
+      "80,000+ Records Analyzed",
+      "10+ Heterogeneous Datasets",
+      "SQL · Python · Scikit-learn",
+    ],
+    bullets: [
+      "Queried and analyzed 80,000+ surveillance event records, access-control logs, and IoT sensor data using SQL to support operational reporting and identify recurring system trends.",
+      "Developed Python-based ETL scripts to extract, clean, transform, and validate data from 10+ heterogeneous datasets, preparing standardized datasets for downstream analytics.",
+      "Performed exploratory data analysis using Python, Pandas, and NumPy to examine incident frequency, device health, and access activity across locations and time periods.",
+      "Assisted in developing and evaluating machine learning models for incident classification and anomaly detection using Scikit-learn, comparing performance using accuracy, precision, recall, and F1-score.",
+      "Created analytical dashboards and visual reports to monitor operational KPIs, including incident trends, device uptime, and system utilization, supporting engineering and product review meetings.",
+    ],
+  },
+  {
+    company: "Vinrox Technologies LLP",
+    role: "Industrial Trainee",
+    time: "Dec 2022 – Jan 2023",
+    location: "Vadodara, Gujarat, India",
+    logo: vinroxLogo,
+    stats: [
+      "SMT & PCB Assembly",
+      "AOI & Quality Control",
+      "Soldering · Troubleshooting",
+    ],
+    bullets: [
+      "Operated Surface Mount Technology (SMT) production lines across loading, solder-paste printing, pick-and-place, reflow soldering, and unloading stages.",
+      "Performed PCB assembly and quality control, including automated optical inspection (AOI) and hand soldering using soldering iron and hot air rework tools.",
+      "Contributed to defect detection and functional testing of PCB assemblies to ensure compliance with industry standards and client requirements.",
+      "Troubleshot and programmed SMT machines and maintained technical documentation, improving operational efficiency.",
     ],
   },
 ];
@@ -221,7 +261,7 @@ I ran an evaluation on ten financial queries and got an 80% pass rate with 0.57 
     image: fraudgenImg,
     short: "Classifies transactions into four risk tiers using XGBoost, then explains why using LLaMA. Full stack with a Flask backend and React dashboard.",
     tech: "Python \u00B7 XGBoost \u00B7 Flask \u00B7 React \u00B7 SQLite \u00B7 Recharts \u00B7 LLaMA",
-    github: "https://github.com/aekankpatel/FraudGen",
+    github: "https://github.com/aekankpatel/Fraud_Gen",
     live: "https://fraud-gen.vercel.app",
     impact: "Multi-tier fraud classifier on 6.36M transactions with LLaMA explanations",
     long: `The idea was simple: do not just flag fraud, explain why it is suspicious. Most fraud systems give you a score. I wanted mine to say "this transaction is flagged because the amount is four times the user's average and it came from a new IP in a different country."
@@ -279,7 +319,7 @@ The part I care about most is the audit trail. Every decision is logged: what wa
     image: noshowImg,
     short: "Why do patients miss appointments? I analyzed 110K medical records, built a Random Forest model (AUC 0.966), and created dashboards in both HTML and Tableau.",
     tech: "Python \u00B7 SQL \u00B7 SQLite \u00B7 Random Forest \u00B7 Chart.js \u00B7 Tableau \u00B7 Pandas",
-    github: "https://github.com/aekankpatel/noshow-dashboard",
+    github: "https://github.com/aekankpatel/patient_no-show_risk_dashboard",
     tableau: "https://public.tableau.com/app/profile/aekank.patel/viz/noshow_dashboard/PatientNo-ShowRiskDashboard",
     impact: "AUC of 0.966 on predicting patient no-shows across 110,527 appointments",
     long: `One in five patients does not show up for their medical appointments. I wanted to figure out why, and whether it is predictable.
@@ -379,7 +419,6 @@ The honest takeaway is that RL in finance is hard. Model complexity does not gua
     image: ecommerceImg,
     short: "Built a full analytics pipeline on 541K retail transactions. SQL for cleaning and segmentation, Tableau for dashboards. Found that 43% of customers drive 88% of revenue.",
     tech: "SQL \u00B7 SQLite \u00B7 Tableau \u00B7 Excel \u00B7 Data Cleaning \u00B7 RFM Segmentation",
-    github: "https://github.com/aekankpatel/ecommerce-dashboard",
     tableau: "https://public.tableau.com/app/profile/aekank.patel/viz/E-commerceSalesDashboard_17744839619360/Dashboard1",
     impact: "RFM segmentation across 4,338 customers revealing that Champions drive 88% of \u00A38.9M revenue",
     long: `This started as a SQL practice project but turned into something more interesting once I started digging into the customer data.
