@@ -18,7 +18,7 @@ https://aekankpatel.github.io
 © 2026 Aekank Patel. All rights reserved.
 
 This repository and its contents are the intellectual property of Aekank Patel.
-No part of this codebase may be reproduced, distributed, or modified without prior written permission.
+No part of this codebase may be reproduced, distributed, or modified without prior permission.
 
-Certain animations are sourced from LottieFiles under the Lottie Simple License.
+All animations are sourced from LottieFiles under the Lottie Simple License.
 Logos and trademarks displayed on this site belong to their respective owners and are used for informational purposes only.
