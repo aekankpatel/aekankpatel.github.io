@@ -57,38 +57,7 @@ function useReveal({ threshold = 0.25, rootMargin = "0px 0px -12% 0px" } = {}) {
   return ref;
 }
 
-function SkillItem({ group }) {
-  const [open, setOpen] = useState(false);
 
-  const title = group?.title ?? "";
-  const items = Array.isArray(group?.items) ? group.items : [];
-
-  return (
-    <div className={`skillAccordionItem ${open ? "open" : ""}`}>
-      <button
-        className="skillHeader"
-        type="button"
-        onClick={() => setOpen((v) => !v)}
-        aria-expanded={open}
-      >
-        <span>{title}</span>
-
-        {/* ✅ centered + hoverable */}
-        <span className="plusIcon" aria-hidden="true" />
-      </button>
-
-      {open && (
-        <div className="skillContent">
-          {items.map((item, i) => (
-            <span key={`${title}-${i}`} className="skillChip">
-              {item}
-            </span>
-          ))}
-        </div>
-      )}
-    </div>
-  );
-}
 
 export default function App() {
   const [activeProject, setActiveProject] = useState(null);
@@ -366,9 +335,19 @@ export default function App() {
       <section id="skills" className="section revealFromTop" ref={skillsRef}>
         <h2>Skills</h2>
 
-        <div className="skillsAccordion">
+        <div className="skillsGrid">
           {(SKILLS ?? []).map((group) => (
-            <SkillItem key={group.title} group={group} />
+            <div key={group.title} className="skillCard">
+              <h3 className="skillCardTitle">{group.title}</h3>
+
+              <div className="skillChipWrap">
+                {(group.items ?? []).map((item, i) => (
+                  <span key={`${group.title}-${i}`} className="skillChip">
+                    {item}
+                  </span>
+                ))}
+              </div>
+            </div>
           ))}
         </div>
       </section>

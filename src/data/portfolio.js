@@ -340,7 +340,9 @@ export const SKILLS = [
       "Problem Solving",
       "Debugging",
       "Clean Code Practices",
-      "Git & Version Control"
+      "Git & Version Control",
+      "Modular Code Design",
+      "MATLAB"
     ]
   },
   {
@@ -356,7 +358,7 @@ export const SKILLS = [
       "Model Evaluation",
       "Cross Validation",
       "Hyperparameter Tuning",
-      "Explainable AI (SHAP, LIME)"
+      "Explainable AI (SHAP, LIME)",   
     ]
   },
   {
@@ -370,7 +372,8 @@ export const SKILLS = [
       "Computer Vision",
       "Time Series Forecasting",
       "Model Optimization",
-      "Backpropagation"
+      "Backpropagation",
+      "Ensemble Deep Learning"
     ]
   },
   {
@@ -383,7 +386,8 @@ export const SKILLS = [
       "Large Language Models (LLMs)",
       "Prompt Engineering",
       "Retrieval-Augmented Generation (RAG)",
-      "Semantic Search"
+      "Semantic Search",
+      "Text Classification"
     ]
   },
   {
@@ -395,7 +399,8 @@ export const SKILLS = [
       "Hypothesis Testing",
       "Time Series Analysis",
       "A/B Testing",
-      "Feature Importance Analysis"
+      "Feature Importance Analysis",
+      "Data Visualization"
     ]
   },
   {
@@ -410,7 +415,8 @@ export const SKILLS = [
       "Pandas",
       "Matplotlib",
       "Seaborn",
-      "OpenCV"
+      "OpenCV",
+      "Statsmodels"
     ]
   },
   {
@@ -422,7 +428,8 @@ export const SKILLS = [
       "Model Deployment",
       "JSON Handling",
       "Authentication",
-      "Microservices (Basic)"
+      "Microservices (Basic)",
+      "SQLite"
     ]
   },
   {
@@ -434,7 +441,8 @@ export const SKILLS = [
       "ETL Pipelines",
       "Data Pipelines",
       "Distributed Computing",
-      "Large-Scale Data Processing"
+      "Large-Scale Data Processing",
+      "Delta Lake (Conceptual)"
     ]
   },
   {
@@ -446,18 +454,46 @@ export const SKILLS = [
       "Render Deployment",
       "GitHub Workflows",
       "Cloud Storage",
-      "Compute & Deployment Concepts"
+      "Compute & Deployment Concepts",
+      "CI/CD Fundamentals"
     ]
   },
+  {
+    title: "Data Analysis & Business Intelligence",
+    items: [
+      "SQL",
+      "Excel",
+      "Tableau",
+      "Power BI",
+      "Dashboard Design",
+      "KPI Development",
+      "Data Reporting",
+      "Pivot Tables",
+      "Data Storytelling"
+    ]
+  },
+  {
+    title: "Model Deployment & ML Systems",
+    items: [
+      "End-to-End ML Pipelines",
+      "Model Serialization",
+      "Prediction APIs",
+      "Experiment Tracking (Conceptual)",
+      "Monitoring & Logging (Basic)",
+      "Production Readiness Considerations",
+      "Scalable Model Architecture"
+    ]
+  },
+
   {
     title: "Interpersonal Skills",
     items: [
       "Technical Communication",
       "Teaching & Mentoring",
+      "Leadership",
       "Analytical Thinking",
       "Problem Decomposition",
       "Team Collaboration",
-      "Leadership in Academic Projects",
       "Adaptability",
       "Continuous Learning"
     ]

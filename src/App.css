@@ -923,182 +923,6 @@ html[data-theme="light"] .certBadge {
 }
 
 
-/* -----------------------------
-   Skills — Accordion
------------------------------- */
-.skillsAccordion {
-  margin-top: 18px;
-  display: grid;
-  gap: 14px;
-}
-
-.skillAccordionItem {
-  border: 1px solid var(--border);
-  border-radius: 16px;
-  background: var(--card);
-  overflow: hidden;
-}
-
-/* ✅ make header a true button */
-.skillHeader {
-  width: 100%;
-  border: 0;
-  background: transparent;
-  color: var(--text);
-
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-
-  padding: 16px 18px;
-  cursor: pointer;
-  user-select: none;
-
-  font-size: 18px;
-  font-weight: 700;
-
-  transition: background 180ms ease;
-}
-
-.skillHeader:hover {
-  background: var(--cardHover);
-}
-
-/* ✅ perfectly centered icon */
-.plusIcon {
-  width: 32px;
-  height: 32px;
-
-  display: grid;
-  place-items: center;
-
-  border-radius: 10px;
-  border: 1px solid rgba(139, 92, 246, 0.35);
-  background: rgba(139, 92, 246, 0.10);
-
-  transition: background 180ms ease, transform 180ms ease, border-color 180ms ease;
-  position: relative;
-}
-
-/* horizontal line (always visible) */
-.plusIcon::before {
-  content: "";
-  position: absolute;
-  width: 14px;
-  height: 2px;
-  border-radius: 999px;
-  background: #8b5cf6; /* ✅ visible purple */
-}
-
-/* vertical line (only when CLOSED = plus) */
-.plusIcon::after {
-  content: "";
-  position: absolute;
-  width: 2px;
-  height: 14px;
-  border-radius: 999px;
-  background: #8b5cf6; /* ✅ visible purple */
-  transition: transform 180ms ease, opacity 180ms ease;
-}
-
-/* when OPEN -> show minus (hide vertical line) */
-.skillAccordionItem.open .plusIcon::after {
-  opacity: 0;
-  transform: scaleY(0);
-}
-
-/* hover: make it darker + pop */
-.skillHeader:hover .plusIcon {
-  transform: scale(1.12);
-  background: rgba(139, 92, 246, 0.18);
-  border-color: rgba(139, 92, 246, 0.55);
-}
-
-/* hover: darker purple lines */
-.skillHeader:hover .plusIcon::before,
-.skillHeader:hover .plusIcon::after {
-  background: #6d28d9;
-}
-
-/* when OPEN -> show minus (hide vertical line) */
-.skillAccordionItem.open .plusIcon::after {
-  opacity: 0;
-  transform: scaleY(0);
-}
-
-/* hover: make it darker + pop */
-.skillHeader:hover .plusIcon {
-  transform: scale(1.12);
-  background: rgba(139, 92, 246, 0.18);
-  border-color: rgba(139, 92, 246, 0.55);
-}
-
-/* hover: darker purple */
-.skillHeader:hover .plusIcon::before,
-.skillHeader:hover .plusIcon::after {
-  color: #6d28d9;
-}
-
-/* ✅ hover: darker + pop */
-.skillHeader:hover .plusIcon {
-  color: #5b21b6;                 /* darker purple */
-  background: rgba(139, 92, 246, 0.22); /* darker bg */
-  transform: scale(1.12);
-}
-
-/* ✅ open: slightly stronger bg */
-.skillAccordionItem.open .plusIcon {
-  background: rgba(139, 92, 246, 0.18);
-}
-
-.skillContent {
-  padding: 0 18px 16px;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-}
-
-.skillChip {
-  padding: 8px 12px;
-  border-radius: 999px;
-  font-size: 14px;
-  color: var(--text);
-  background: rgba(139, 92, 246, 0.12);
-  border: 1px solid rgba(139, 92, 246, 0.25);
-}
-
-/* ✅ keyboard focus (looks premium, doesn’t break design) */
-.skillHeader:focus-visible {
-  outline: 2px solid rgba(139, 92, 246, 0.55);
-  outline-offset: 2px;
-}
-
-/* ===== Skills accordion: highlight the FULL item (not just header) ===== */
-
-/* remove the header-only hover fill (optional but recommended) */
-.skillHeader:hover {
-  background: transparent;
-}
-
-/* full-card highlight on hover / when any child is focused / when open */
-.skillAccordionItem:hover,
-.skillAccordionItem:focus-within,
-.skillAccordionItem.open {
-  background: var(--cardHover);
-  border-color: var(--btnBorder);
-}
-
-/* keep the header looking consistent */
-.skillAccordionItem:hover .skillHeader,
-.skillAccordionItem:focus-within .skillHeader,
-.skillAccordionItem.open .skillHeader {
-  background: transparent;
-}
-
-/* optional: a clean focus ring around the whole card when tabbed into */
-.skillAccordionItem:focus-within {
-  box-shadow: 0 0 0 2px rgba(139, 92, 246, 0.35);
-}
 
 /* -----------------------------
    Contact
@@ -1324,7 +1148,29 @@ html, body {
   transform: translateY(-2px);
 }
 
+@media (max-width: 1500px) {
+  .skillsGrid {
+    grid-template-columns: repeat(4, minmax(0, 260px));
+  }
+}
 
+@media (max-width: 1120px) {
+  .skillsGrid {
+    grid-template-columns: repeat(3, minmax(0, 260px));
+  }
+}
+
+@media (max-width: 860px) {
+  .skillsGrid {
+    grid-template-columns: repeat(2, minmax(0, 260px));
+  }
+}
+
+@media (max-width: 580px) {
+  .skillsGrid {
+    grid-template-columns: repeat(1, minmax(0, 260px));
+  }
+}
 
 /* Hero highlight */
 .title .purpleText {
@@ -1850,3 +1696,151 @@ footer.footer.footerSplit .footerRight{
     grid-template-columns: 1fr;
   }
 }
+
+/* =========================
+   FORCE Skills Cards + Chips (FINAL OVERRIDE)
+========================= */
+
+.skillsGrid {
+  margin-top: 18px !important;
+  display: grid !important;
+  gap: 18px !important;
+  grid-template-columns: repeat(4, minmax(0, 375px)) !important;
+  justify-content: center !important;
+}
+
+.skillCard {
+  padding: 22px !important;
+  border-radius: 18px !important;
+  background: var(--card) !important;
+  border: 1px solid var(--border) !important;
+  transition: background 180ms ease, border-color 180ms ease, transform 180ms ease !important;
+
+  /* prevents weird nowrap inheritance */
+  white-space: normal !important;
+}
+
+.skillCard:hover {
+  background: var(--cardHover) !important;
+  border-color: var(--btnBorder) !important;
+  transform: translateY(-2px) !important;
+}
+
+.skillCardTitle {
+  margin: 0 0 12px !important;
+  font-size: 18px !important;
+  font-weight: 800 !important;
+  color: var(--text) !important;
+}
+
+.skillChipWrap {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  gap: 10px !important;
+}
+
+.skillChip {
+  display: inline-flex !important;
+  align-items: center !important;
+
+  padding: 8px 12px !important;
+  border-radius: 999px !important;
+
+  font-size: 14px !important;
+  color: var(--text) !important;
+
+  background: rgba(139, 92, 246, 0.12) !important;
+  border: 1px solid rgba(139, 92, 246, 0.25) !important;
+
+  /* keeps chips neat */
+  white-space: nowrap !important;
+}
+
+/* responsive like Projects */
+@media (max-width: 1500px) {
+  .skillsGrid { grid-template-columns: repeat(4, minmax(0, 260px)) !important; }
+}
+@media (max-width: 1120px) {
+  .skillsGrid { grid-template-columns: repeat(3, minmax(0, 260px)) !important; }
+}
+@media (max-width: 860px) {
+  .skillsGrid { grid-template-columns: repeat(2, minmax(0, 260px)) !important; }
+}
+@media (max-width: 580px) {
+  .skillsGrid { grid-template-columns: repeat(1, minmax(0, 260px)) !important; }
+}
+
+/* =========================
+   SKILLS — Projects-style cards
+   (PASTE AT VERY END)
+========================= */
+
+.skillsGrid{
+  margin-top: 18px;
+  display: grid;
+  gap: 18px;
+  grid-template-columns: repeat(5, minmax(0, 260px));
+  justify-content: center;
+}
+
+/* match Projects card feel */
+.skillCard{
+  padding: 22px;
+  border-radius: 18px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  transition: background 180ms ease, border-color 180ms ease, transform 180ms ease;
+
+  /* makes it look like a real “box”, not thin */
+  min-height: 220px;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.skillCard:hover{
+  background: var(--cardHover);
+  border-color: var(--btnBorder);
+  transform: translateY(-2px);
+}
+
+.skillCardTitle{
+  margin: 0 0 14px;
+  font-size: 18px;
+  font-weight: 800;
+  color: var(--text);
+}
+
+.skillChipWrap{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+/* purple chips (like your old ones) */
+.skillChip{
+  padding: 8px 12px;
+  border-radius: 999px;
+
+  font-size: 14px;
+  font-weight: 600;
+
+  color: var(--text);
+  border: 1px solid rgba(139, 92, 246, 0.35);
+  background: rgba(139, 92, 246, 0.12);
+}
+
+/* responsive: match your Projects grid behavior */
+@media (max-width: 1500px){
+  .skillsGrid{ grid-template-columns: repeat(4, minmax(0, 260px)); }
+}
+@media (max-width: 1120px){
+  .skillsGrid{ grid-template-columns: repeat(3, minmax(0, 260px)); }
+}
+@media (max-width: 860px){
+  .skillsGrid{ grid-template-columns: repeat(2, minmax(0, 260px)); }
+}
+@media (max-width: 580px){
+  .skillsGrid{ grid-template-columns: repeat(1, minmax(0, 260px)); }
+}
+
