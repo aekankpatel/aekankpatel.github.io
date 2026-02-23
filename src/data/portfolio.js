@@ -138,11 +138,12 @@ export const EXPERIENCE = [
     location: "Hoboken, NJ",
     logo: stevensLogo,
     bullets: [
-      "Graduate Teaching Assistant (Grader) for MA 574: Foundational Mathematics for Data Science under Dr. Upendra Prasad.",
-      "Graded mathematical/programming assignments, quizzes, and exams across two sections (13 and 22 students) with fairness and consistency.",
-      "Provided constructive feedback to help students understand mistakes and improve.",
-      "Maintained accurate grading records and coordinated with the instructor when needed.",
-      "Used Canvas LMS to manage submissions, record grades, and deliver feedback effectively.",
+      "Served as Graduate Teaching Assistant for MA 574: Foundational Mathematics for Data Science, MA 544: Numerical Algebra for Big Data and MA 540: Intro to Probability Theory under Dr. Upendra Prasad.",
+      "Evaluated mathematical and programming assignments, quizzes, and exams across multiple course sections, ensuring fair, consistent, and rubric-aligned grading.",
+      "Supported 89 students by delivering clear, constructive, and actionable feedback to improve mathematical reasoning and coding accuracy.",
+      "Maintained accurate grade records, monitored submission trends, and collaborated closely with the course instructor to ensure transparent and timely assessment.",
+      "Utilized Canvas LMS to streamline grading workflows, manage submissions, and provide structured digital feedback at scale.",
+      "Contributed to student learning outcomes by identifying common misconceptions and reinforcing best practices in linear algebra, numerical methods, and data science foundations.",
     ],
   },
   {
@@ -152,12 +153,13 @@ export const EXPERIENCE = [
     location: "Vadodara, Gujarat, India",
     logo: matrixLogo,
     bullets: [
-      "Developed a human fall detection system using deep learning and computer vision.",
-      "Integrated CNNs and MediaPipe for accurate human pose estimation and fall classification.",
-      "Tested multiple approaches (CNN, RNN, BodyPix, R-CNN) and built a CNN–MediaPipe hybrid model to improve accuracy and real-time efficiency.",
-      "Worked with TensorFlow, PyTorch, NumPy, Matplotlib, and OpenCV for model development and evaluation.",
-      "Achieved 91.39% test accuracy and validated performance on image datasets.",
-      "Deployed on live video feeds; used YOLOv5 for multi-person detection to improve real-time fall detection robustness.",
+      "Designed and implemented a real-time human fall detection system using deep learning and computer vision for safety monitoring applications.",
+      "Engineered a hybrid CNN–MediaPipe pipeline for pose estimation and fall classification, improving detection robustness across dynamic body orientations.",
+      "Evaluated multiple architectures (CNN, RNN, BodyPix, R-CNN) and optimized model selection based on accuracy–latency tradeoffs for deployment readiness.",
+      "Integrated YOLOv5 multi-person detection, enabling scalable monitoring across multi-subject live video streams.",
+      "Personally annotated 100,000+ images to enhance dataset quality and improve generalization performance.",
+      "Achieved 91.39% test accuracy and validated performance on real-world video feeds.",
+      "Built and evaluated models using TensorFlow, PyTorch, OpenCV, NumPy, and Matplotlib; optimized inference for real-time deployment.",
     ],
   },
 ];
@@ -173,16 +175,54 @@ export const PROJECTS = [
     live: "https://fraud-gen.vercel.app",
     long: `Built an end-to-end fraud detection system that classifies transactions into Legitimate, Needs Review, High Risk, and Confirmed Fraud.
 
-What I built:
-• Built FraudGen, a full-stack fraud analytics platform combining an XGBoost-based fraud classifier with rule-based refinement for multi-tiered risk labels (Legitimate, Needs Review, High Risk, Confirmed Fraud). 
-• Engineered rich transactional features such as sender/receiver balance differentials, time patterns, location mismatches, and cross-border indicators, with training and experimentation captured in a dedicated Jupyter model notebook.
-• Developed a Flask backend exposing RESTful endpoints for scoring transactions, storing results in a structured SQLite database, and serving explainable feedback generated via LLaMA-based natural language explanations. 
-• Built a React + Tailwind CSS client in the fraudgen-client directory, featuring dynamic dashboards visualizing fraud trends, severity distributions, and geolocation breakdowns using Recharts. 
-• Integrated IPInfo API for IP geolocation, VPN/proxy detection, and contextual enrichment, enabling advanced rule overrides and cross-border risk escalation logic.
-• Architected the project modularly with clean separation of modeling, backend services, and frontend UI, ensuring readiness for future enhancements such as explainable AI modules and cloud deployment.
+What I Built:
+• Architected FraudGen, a full-stack system combining an XGBoost model with rule-based refinement to assign multi-tier risk labels (Legitimate, Needs Review, High Risk, Confirmed Fraud).
+• Trained on PaySim dataset (6.36M transactions, 0.129% fraud) using 5-fold stratified temporal validation to handle extreme imbalance.
+• Engineered behavioral and transactional features including balance shifts, transaction velocity, cross-border mismatches, and IP anomaly signals.
 
-Why it matters:
-Designed as a practical, recruiter-friendly system showing ML + product thinking + full-stack implementation.`,
+System Design:
+• Developed Flask REST APIs for real-time scoring and structured transaction storage in SQLite.
+• Integrated LLaMA to generate contextual natural-language explanations for high-risk and cross-border transactions.
+• Enriched transactions via IPInfo API for geolocation, VPN/proxy detection, and automated risk escalation logic.
+
+Frontend & Analytics:
+• Built a React + Tailwind dashboard with Recharts visualizing fraud trends, severity distributions, and geolocation intelligence.
+• Designed modular architecture separating ML pipeline, backend services, and frontend UI for scalability and cloud readiness.
+
+Impact:
+• Demonstrates applied ML + explainable AI + product engineering in a production-style fraud monitoring system.`,
+  },
+
+  {
+    id: "finrag",
+    title: "FinRAG: Financial Document Intelligence System",
+    short:
+      "RAG pipeline over 25 SEC filings & earnings transcripts; HuggingFace embeddings + Groq LLaMA; deployed on Streamlit Cloud.",
+    tech: "Python · LlamaIndex · HuggingFace · Groq · LLaMA 3.1 · Streamlit · Google Drive",
+    github: "https://github.com/aekankpatel/finrag",
+    live: "https://fin-rag.streamlit.app",
+    long: `Built an end-to-end Retrieval-Augmented Generation system for querying 25 financial documents including SEC 10-K/10-Q filings, earnings call transcripts, and macroeconomic reports.,
+
+What I Built:
+• Architected a full RAG pipeline using LlamaIndex: PDF ingestion, text chunking (14,055 nodes), HuggingFace BGE embeddings, and vector similarity search with metadata filtering.
+• Replaced local Ollama inference with Groq-hosted LLaMA 3.1 for cloud deployment, bypassing LlamaIndex's LLM layer entirely to call Groq SDK directly.
+• Designed auto-company detection logic that maps query keywords to source documents for targeted retrieval.
+
+System Design:
+• Built Google Drive-based index distribution: 4 vector store files (~150MB) auto-downloaded at app startup via gdown, eliminating GitHub file size constraints.
+• Implemented source-level metadata filtering to restrict retrieval to specific filings per query.
+• Managed full MLOps lifecycle: local Ollama prototyping → HuggingFace embeddings → Groq inference → Streamlit Cloud deployment.
+
+Frontend & UX:
+• Shipped production Streamlit app with compare mode (side-by-side document Q&A), retrieval confidence scoring, chat history, and export functionality.
+• Designed dark-themed UI with custom CSS, color-coded confidence indicators, and suggested question shortcuts.
+
+Evaluation:
+• Ran custom evaluation framework across 10 domain-specific financial queries achieving 80% pass rate and 0.57 average keyword recall score.
+
+Impact:
+• Demonstrates end-to-end RAG engineering, cloud deployment, and applied NLP on real-world financial corpora.`,
+  
   },
 
   {
@@ -197,18 +237,21 @@ Designed as a practical, recruiter-friendly system showing ML + product thinking
     medium: "https://medium.com/@aekankpatel/oil-prices-vs-airline-stocks-the-relationship-everyone-gets-wrong-c493da0cf700",
     long: `Collected and analyzed 10+ years of Bloomberg Terminal data (2015–2025) to study how oil cost pressure impacts airline equity returns.
 
-Scope:
-• WTI crude oil (CL1), major U.S. airlines (DAL, AAL, UAL), and S&P 500 (SPX).
+Data Scope:
+• Collected 10+ years (2015–2025) of Bloomberg Terminal data: WTI crude (CL1), DAL, AAL, UAL, and SPX.
+• Leveraged Bloomberg analytics functions including CRP, CMT, HRA, and GP.
 
-Methods:
-• Bloomberg exploratory analysis using functions like CRP, CMT, HRA, and GP.
-• Built Python-based econometric pipelines: computed daily log returns and ran multi-factor regressions controlling for market movement.
+Methodology:
+• Computed daily log returns and constructed multi-factor regression models controlling for market exposure.
+• Evaluated statistical significance and beta shifts under market-adjusted frameworks.
 
-Key insight:
-• Oil alone explains almost none of the variation in airline returns, but after controlling for SPX, oil betas become negative and statistically significant.
+Key Findings:
+• Oil alone explains minimal airline return variation.
+• After controlling for SPX, oil betas become negative and statistically significant.
+• Market-adjusted models explain ~25–33% of airline return variability.
 
-Output:
-• Built market-adjusted return models explaining ~25–33% of airline return variability.`,
+Impact:
+• Delivered data-driven insights challenging simplistic oil–airline correlations and highlighting importance of market controls.`,
   },
 
   {
@@ -223,13 +266,20 @@ Output:
     live: "",
     long: `Analyzed two real-world datasets: Netflix adjusted close prices (2002–2022) and monthly hotel booking demand.
 
-Work done:
-• Full Box–Jenkins workflow: visualization, log transforms, stationarity testing (ADF), differencing.
-• Built and compared ARIMA/SARIMA models with selection via AIC/BIC and ACF/PACF.
-• Validated with Ljung–Box residual diagnostics.
+Workflow:
+• Implemented full Box–Jenkins methodology: visualization, log transformation, ADF stationarity testing, differencing.
+• Identified ARIMA/SARIMA structures using ACF/PACF diagnostics.
+• Selected optimal models via AIC/BIC.
 
-Outputs:
-• Produced forward forecasts: long-term trend projections for Netflix and seasonality-preserving 12-month forecasts for hotel bookings.`,
+Validation:
+• Conducted Ljung–Box residual diagnostics to ensure white-noise residuals.
+• Evaluated forecast stability and interpretability.
+
+Output:
+• Produced long-term Netflix trend projections and seasonality-preserving 12-month forecasts for hotel bookings.
+
+Impact:
+• Demonstrates statistical rigor in financial forecasting and seasonal demand modeling.`,
   },
 
   {
@@ -242,13 +292,17 @@ Outputs:
     live: "",
     long: `Built and fine-tuned deep learning models to detect pneumonia from chest X-rays.
 
-Key work:
-• Used data augmentation to improve reliability.
-• Trained a custom CNN (96.64% test accuracy) and MobileNet (95.00%).
-• Ensemble combined CNN + MobileNet outputs.
+Model Development:
+• Applied image augmentation to improve generalization on medical imaging data.
+• Trained custom CNN achieving 96.64% test accuracy.
+• Fine-tuned MobileNet achieving 95.00% accuracy.
 
-Result:
-• Ensemble achieved 97.23% test accuracy.`,
+Ensemble Strategy:
+• Combined CNN + MobileNet outputs via ensemble learning.
+• Achieved 97.23% test accuracy with improved robustness.
+
+Impact:
+• Demonstrates applied deep learning for medical image classification with production-level performance metrics.`,
   },
 
   {
@@ -261,14 +315,23 @@ Result:
     live: "",
     long: `Performed a comprehensive statistical analysis on WHO life expectancy data (193 countries, 2000–2015).
 
-Key work:
-• Preprocessing: median imputation, outlier handling (z-scores), encoding/standardization.
-• EDA using boxplots, heatmaps, histograms, and time trends.
-• Statistical testing: Z-test, Chi-Square, one-way ANOVA with Tukey HSD.
-• Modeling: Multiple Linear Regression (R²≈0.82) and Random Forest Regression (R²≈0.97).
+Data Preparation:
+• Cleaned and standardized multi-country health indicators using median imputation, z-score outlier filtering, encoding, and normalization.
+• Structured longitudinal panel data for consistent cross-country comparison.
+
+Exploratory & Statistical Analysis:
+• Conducted EDA using boxplots, heatmaps, distribution analysis, and temporal trend visualization.
+• Performed hypothesis testing including Z-tests, Chi-Square tests, one-way ANOVA, and Tukey HSD for post-hoc comparisons.
+
+Modeling:
+• Built Multiple Linear Regression model achieving R² ≈ 0.82.
+• Developed Random Forest Regression achieving R² ≈ 0.97 and RMSE ≈ 1.67.
 
 Insights:
-• Key predictors included HIV/AIDS prevalence, income composition index, and adult mortality.`,
+• Identified HIV/AIDS prevalence, income composition index, and adult mortality as dominant life-expectancy predictors.
+
+Impact:
+• Demonstrates end-to-end statistical reasoning, hypothesis validation, and high-performance predictive modeling on global health data.`,
   },
 
   {
@@ -281,11 +344,21 @@ Insights:
     live: "",
     long: `Analyzed factors impacting USD–INR exchange rate movements over 20 years (2002–2022).
 
-Approach:
-• Correlation analysis and regression modeling on macro variables.
+Data & Framework:
+• Aggregated macroeconomic indicators including inflation, interest rates, trade balance, and foreign reserves.
+• Structured time-aligned datasets for regression-based inference.
 
-Outcome:
-• Interpretable insights into key drivers of exchange-rate swings.`,
+Methodology:
+• Performed correlation analysis to identify significant macro relationships.
+• Built multivariate regression models using Statsmodels to quantify macro sensitivity.
+• Evaluated statistical significance, coefficient stability, and model assumptions.
+
+Findings:
+• Identified key macroeconomic variables contributing to exchange-rate volatility.
+• Produced interpretable econometric outputs explaining structural currency movement patterns.
+
+Impact:
+• Demonstrates applied macroeconometrics and long-horizon financial modeling.`,
   },
 
   {
@@ -298,12 +371,20 @@ Outcome:
     live: "",
     long: `Developed an image-processing-based vehicle speed detection system.
 
-How it works:
-• Detects and tracks vehicles in video.
-• Estimates speed via pixel displacement between frames.
+System Design:
+• Implemented vehicle detection and tracking pipeline using OpenCV.
+• Calculated speed via calibrated pixel displacement across sequential frames.
+• Applied frame differencing and bounding-box tracking for motion consistency.
+
+Optimization:
+• Improved detection stability under variable lighting and motion conditions.
+• Structured pipeline for near real-time processing.
 
 Applications:
-• Traffic monitoring and road-safety analytics.`,
+• Suitable for traffic monitoring, road-safety analytics, and smart surveillance systems.
+
+Impact:
+• Demonstrates applied computer vision for measurable real-world traffic analytics.`,
   },
 
   {
@@ -316,14 +397,26 @@ Applications:
     live: "",
     long: `Built an end-to-end claim likelihood prediction system using a real-world dataset (10,302 policyholders, 27 features).
 
-Key work:
-• Designed a robust preprocessing pipeline: missing-value handling, invalid-entry cleanup, skew treatment, encoding, and class-imbalance management (~27% claims).
-• Trained and compared multiple ML + DL models: Logistic Regression, Random Forest, XGBoost, LightGBM, MLP, and TabNet.
-• Built a soft-voting ensemble (MLP + TabNet) to balance recall and precision.
+Data Engineering:
+• Designed robust preprocessing pipeline including missing-value handling, invalid-entry correction, skew treatment, encoding, and class-imbalance management.
+• Structured training-validation splits for stable performance evaluation.
 
-Results:
-• ROC-AUC ≈ 0.97, PR-AUC ≈ 0.95, F1 ≈ 0.89, strong separation (KS ≈ 0.85).
-• Produced calibrated probability outputs, confusion-matrix + ROC/PR analysis, and KS curves for risk-aware decision-making (underwriting/pricing/fraud).`,
+Modeling:
+• Trained Logistic Regression, Random Forest, XGBoost, LightGBM, MLP, and TabNet models.
+• Built soft-voting ensemble (MLP + TabNet) optimizing precision–recall tradeoff.
+
+Performance:
+• ROC-AUC ≈ 0.97
+• PR-AUC ≈ 0.95
+• F1 ≈ 0.89
+• KS ≈ 0.85 (strong class separation)
+
+Evaluation & Calibration:
+• Generated confusion matrices, ROC/PR curves, and KS plots.
+• Produced calibrated probability outputs for risk-aware underwriting and pricing decisions.
+
+Impact:
+• Demonstrates advanced classification modeling, ensemble learning, and financial risk analytics.`,
   },
 ];
 
