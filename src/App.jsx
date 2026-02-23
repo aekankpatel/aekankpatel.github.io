@@ -121,7 +121,7 @@ export default function App() {
             <a href="#now">Now</a>
             <a href="#education">Education</a>
             <a href="#experience">Experience</a>
-            <a href="#skills">Skills</a>
+            <a href="#tech-stack">Tech Stack</a>
             <a href="#projects">Projects</a>
             <a href="#certifications">Certifications</a>
             <a href="#contact">Contact Me</a>
@@ -331,9 +331,9 @@ export default function App() {
         ))}
       </section>
 
-      {/* SKILLS */}
-      <section id="skills" className="section revealFromTop" ref={skillsRef}>
-        <h2>Skills</h2>
+      {/* Tech-Stack */}
+      <section id="tech-stack" className="section revealFromTop" ref={skillsRef}>
+        <h2>Tech Stack</h2>
 
         <div className="skillsGrid">
           {(SKILLS ?? []).map((group) => (
