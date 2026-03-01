@@ -254,8 +254,9 @@ useEffect(() => {
 
             {/* Tagline */}
             <p className="heroTagline">
-              I turn <span className="purpleText">messy data</span> into systems that actually{" "}
-              <span className="purpleUnderline">make sense</span> 📈
+              I turn <span className="purpleText">messy data</span> into systems{" "}
+              <br />
+              that actually <span className="purpleUnderline">make sense</span> 📈
             </p>
 
             {/* Summary */}

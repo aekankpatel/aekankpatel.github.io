@@ -14,7 +14,7 @@ export const HERO = {
   headline: "",
   subheadline: "",
   summary:
-    "I like building things where math, code, and curiosity come together, from predicting risk and finding patterns to making complex models easier to understand. Right now, I am learning, building, and improving every day.",
+    "I didn't plan on ending up in data science. But somewhere in my mechatronics degree, between the robots and sensors, I fell in love with the patterns hiding inside the data they generated. Then the math hit me. Every number and equation felt like it was describing something real. I couldn't stop pulling on that thread. The robots became a footnote, the math became everything, and data science stopped being a detour and became an exciting journey.",
   resumePath: resumePdf,
   socials: [
     { label: "LinkedIn", href: "https://www.linkedin.com/in/aekankpatel/" },
