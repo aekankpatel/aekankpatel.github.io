@@ -417,10 +417,10 @@ a {
   box-shadow: 0 30px 80px rgba(0, 0, 0, 0.35);
   overflow: hidden;
 
-  /* ✅ keep modal inside viewport */
+  /* keep modal inside viewport */
   max-height: 90vh;
 
-  /* ✅ allow header + body layout */
+  /* allow header + body layout */
   display: flex;
   flex-direction: column;
 }
@@ -433,7 +433,7 @@ a {
   padding: 16px 16px 12px;
   border-bottom: 1px solid var(--border);
 
-  /* ✅ keep header visible while scrolling */
+  /* keep header visible while scrolling */
   position: sticky;
   top: 0;
   background: var(--bg);
@@ -443,7 +443,7 @@ a {
 .modalBody {
   padding: 16px;
 
-  /* ✅ scrolling happens here */
+  /* scrolling happens here */
   overflow-y: auto;
 
   /* helps on iOS trackpad-ish scrolling */
@@ -902,7 +902,7 @@ html[data-theme="light"] .expBullets li {
   transition: all 180ms ease;
 }
 
-/* ✅ Prevent link states from changing cert button text */
+/* Prevent link states from changing cert button text */
 .certBtn,
 .certBtn:visited,
 .certBtn:active {
@@ -1008,22 +1008,22 @@ html, body {
   font-size: 14px;
 }
 
-/* ✅ Lottie wrapper: controls size + clips overflow */
+/* Lottie wrapper: controls size + clips overflow */
 .contactAnimWrap {
   flex: 0 0 auto;
-  width: 190px;     /* ✅ smaller */
-  height: 160px;    /* ✅ smaller */
+  width: 190px;     /* smaller */
+  height: 160px;    /* smaller */
   display: grid;
   place-items: center;
 
-  overflow: hidden;       /* ✅ removes the stray line */
+  overflow: hidden;       /* removes the stray line */
   border-radius: 28px;    /* optional, looks clean */
 
   margin-right: 100px;     /* pull away from far right */
   transform: translateY(-50px); /* slightly up */
 }
 
-/* ✅ force lottie to obey wrapper size */
+/* force lottie to obey wrapper size */
 .contactAnimWrap .contactAnim {
   width: 100% !important;
   height: 100% !important;
@@ -1252,8 +1252,8 @@ h1.title span.purpleUnderline::after {
   color: inherit;
   font-weight: 800;
   display: inline;
-  border-bottom: 3px solid #8b5cf6;  /* ✅ purple line */
-  padding-bottom: 2px;               /* ✅ spacing from text */
+  border-bottom: 3px solid #8b5cf6;  /* purple line */
+  padding-bottom: 2px;               /* spacing from text */
 }
 
 /* ===== Contact: remove gap between heading and text ===== */
@@ -1262,15 +1262,15 @@ h1.title span.purpleUnderline::after {
 }
 
 #contact.section > h2 {
-  margin: 0 0 -4px !important;     /* ✅ reduces gap after Contact Me */
+  margin: 0 0 -4px !important;     /* reduces gap after Contact Me */
 }
 
 #contact.section .contactWrap {
-  margin-top: 0 !important;       /* ✅ ensures no extra gap */
+  margin-top: 0 !important;       /* ensures no extra gap */
 }
 
 #contact.section .contactLine {
-  margin-top: 0 !important;       /* ✅ removes default p top margin */
+  margin-top: 0 !important;       /* removes default p top margin */
 }
 
 /* ===== Nav / icons hover styling to purple ===== */
@@ -1556,7 +1556,7 @@ html[data-theme="light"] .certBtn:focus-visible {
 
 .certBtn:hover,
 .certBtn:focus-visible {
-  background: var(--cardHover) !important;   /* ✅ same as icons + resume */
+  background: var(--cardHover) !important;   /* same as icons + resume */
   background-image: none !important;
 
   border-color: rgba(139, 92, 246, 0.65) !important;
@@ -1809,14 +1809,14 @@ footer.footer.footerSplit .footerRight{
 
 /* match Projects card feel */
 .skillCard{
-  padding: 22px;
+  padding: 18px;
   border-radius: 18px;
   background: var(--card);
   border: 1px solid var(--border);
   transition: background 180ms ease, border-color 180ms ease, transform 180ms ease;
 
   /* makes it look like a real “box”, not thin */
-  min-height: 220px;
+  min-height: 180px;
 
   display: flex;
   flex-direction: column;
@@ -1838,15 +1838,15 @@ footer.footer.footerSplit .footerRight{
 .skillChipWrap{
   display: flex;
   flex-wrap: wrap;
-  gap: 10px;
+  gap: 8px;
 }
 
 /* purple chips (like your old ones) */
 .skillChip{
-  padding: 8px 12px;
+  padding: 6px 10px;
   border-radius: 999px;
 
-  font-size: 14px;
+  font-size: 13px;
   font-weight: 600;
 
   color: var(--text);
@@ -1868,3 +1868,498 @@ footer.footer.footerSplit .footerRight{
   .skillsGrid{ grid-template-columns: repeat(1, minmax(0, 260px)); }
 }
 
+/* ── Waving hand animation ── */
+@keyframes wave {
+  0%   { transform: rotate(0deg);   }
+  15%  { transform: rotate(18deg);  }
+  30%  { transform: rotate(-8deg);  }
+  45%  { transform: rotate(16deg);  }
+  60%  { transform: rotate(-4deg);  }
+  75%  { transform: rotate(12deg);  }
+  100% { transform: rotate(0deg);   }
+}
+
+.waveEmoji {
+  display: inline-block;
+  transform-origin: 70% 80%;   /* pivot at palm */
+  animation: wave 2.2s ease-in-out infinite;
+  will-change: transform;
+}
+
+/* ── Hero greeting line  ("👋 Hi, I'm") ── */
+.heroGreeting {
+  margin: 0 0 14px;
+  font-size: clamp(36px, 5vw, 64px);
+  color: var(--text);
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  line-height: 1.05;
+  letter-spacing: -1px;
+}
+
+/* ── Tagline (replaces old h1.title for the tagline text) ── */
+.heroTagline {
+  font-size: clamp(20px, 2.4vw, 28px);
+  font-weight: 700;
+  line-height: 1.35;
+  margin: 0 0 16px;
+  color: var(--text);
+  max-width: 640px;
+}
+
+/* keep purpleText & purpleUnderline working inside heroTagline */
+.heroTagline .purpleText {
+  color: #8b5cf6 !important;
+}
+
+.heroTagline .purpleUnderline {
+  border-bottom: 3px solid #8b5cf6;
+  padding-bottom: 2px;
+  font-weight: 800;
+}
+
+/* ── Experience: stat pills row ── */
+.expStatRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+  margin-top: 18px;
+}
+
+.expStatPill {
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 14px;
+  border-radius: 999px;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--accent);
+  border: 1px solid var(--accentBorder);
+  background: rgba(139, 92, 246, 0.12);
+  white-space: nowrap;
+  letter-spacing: 0.2px;
+}
+
+/* ── Category group wrapper ── */
+.projectGroup {
+  margin-top: 32px;
+}
+
+.projectGroupTitle {
+  font-size: 22px;
+  font-weight: 700;
+  margin: 0 0 16px;
+  color: var(--text);
+  opacity: 0.9;
+}
+
+/* ── Card overrides for new layout ── */
+.projectCard {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  cursor: default;         /* no longer a button itself */
+}
+
+.projectCardTitle {
+  margin: 0 0 8px;
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--text);
+  line-height: 1.3;
+}
+
+.projectCardShort {
+  font-size: 14px;
+  line-height: 1.55;
+  color: var(--muted);
+  margin: 0 0 12px;
+  flex: 1;                 /* pushes chips + actions to bottom */
+}
+
+/* ── Tech chips ── */
+.projectChipWrap {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 14px;
+}
+
+.projectChip {
+  padding: 4px 9px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--text);
+  border: 1px solid rgba(139, 92, 246, 0.30);
+  background: rgba(139, 92, 246, 0.09);
+  white-space: nowrap;
+}
+
+/* ── Action buttons row ── */
+.projectActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: auto;
+}
+
+.projectActionBtn {
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 12px;
+  border-radius: 10px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 180ms ease;
+
+  /* default — ghost style */
+  background: transparent;
+  border: 1px solid var(--btnBorder);
+  color: var(--text);
+}
+
+.projectActionBtn:hover {
+  background: var(--cardHover);
+  border-color: var(--accentBorder);
+  color: var(--accent);
+}
+
+/* "View Details →" — filled purple */
+.projectActionPrimary {
+  background: rgba(139, 92, 246, 0.12) !important;
+  border-color: var(--accentBorder) !important;
+  color: var(--accent) !important;
+}
+
+.projectActionPrimary:hover {
+  background: rgba(139, 92, 246, 0.22) !important;
+  border-color: rgba(139, 92, 246, 0.65) !important;
+  color: var(--accentDark) !important;
+}
+
+/* ==========================================================
+   GLOW ON HOVER — Project cards + Certification cards
+   ========================================================== */
+
+.projectCard {
+  transition: background 180ms ease, border-color 180ms ease,
+              transform 180ms ease, box-shadow 180ms ease;
+}
+
+.projectCard:hover {
+  background: var(--cardHover);
+  border-color: rgba(139, 92, 246, 0.5);
+  transform: translateY(-3px);
+  box-shadow:
+    0 0 0 1px rgba(139, 92, 246, 0.25),
+    0 8px 32px rgba(139, 92, 246, 0.15),
+    0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.certCardBig {
+  transition: background 180ms ease, border-color 180ms ease,
+              transform 180ms ease, box-shadow 180ms ease;
+}
+
+.certCardBig:hover {
+  background: var(--cardHover);
+  border-color: rgba(139, 92, 246, 0.5);
+  transform: translateY(-3px);
+  box-shadow:
+    0 0 0 1px rgba(139, 92, 246, 0.25),
+    0 8px 32px rgba(139, 92, 246, 0.15),
+    0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Light mode — softer glow */
+html[data-theme="light"] .projectCard:hover,
+html[data-theme="light"] .certCardBig:hover {
+  box-shadow:
+    0 0 0 1px rgba(124, 58, 237, 0.2),
+    0 8px 28px rgba(124, 58, 237, 0.10),
+    0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+/* Glow on hover — all interactive cards */
+.nowCard,
+.eduCard,
+.expCard,
+.skillCard {
+  transition: background 180ms ease, border-color 180ms ease,
+              transform 180ms ease, box-shadow 180ms ease;
+}
+
+.nowCard:hover,
+.eduCard:hover,
+.expCard:hover,
+.skillCard:hover {
+  background: var(--cardHover);
+  border-color: rgba(139, 92, 246, 0.5);
+  transform: translateY(-3px);
+  box-shadow:
+    0 0 0 1px rgba(139, 92, 246, 0.25),
+    0 8px 32px rgba(139, 92, 246, 0.15),
+    0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Light mode */
+html[data-theme="light"] .nowCard:hover,
+html[data-theme="light"] .eduCard:hover,
+html[data-theme="light"] .expCard:hover,
+html[data-theme="light"] .skillCard:hover {
+  box-shadow:
+    0 0 0 1px rgba(124, 58, 237, 0.2),
+    0 8px 28px rgba(124, 58, 237, 0.10),
+    0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+/* ── Tighter cert cards ── */
+.certCardBig {
+  padding: 18px;
+}
+
+.certBadgeWrap {
+  padding: 6px 0 12px;
+}
+
+.certBadge {
+  width: 80px;
+  max-width: 80px;
+}
+
+.certBigTitle {
+  margin: 4px 0 6px;
+  font-size: 16px;
+  line-height: 1.3;
+}
+
+.certBigIssuer {
+  font-size: 13px;
+  margin-bottom: 12px;
+}
+
+.certBtnRow {
+  padding-top: 12px;
+}
+
+.certBtn {
+  padding: 8px 16px !important;
+  font-size: 13px !important;
+  border-radius: 10px !important;
+}
+
+/* ==========================================================
+   DYNAMIC SECTION GLOW
+   Replace your existing body background-image block with this.
+   ========================================================== */
+
+/* Default glow value — JS will override this per section */
+body {
+  --hero-glow: rgba(139, 92, 246, 0.13);
+}
+
+body {
+  background-color: var(--bg);
+  background-image:
+    radial-gradient(
+      circle at 50% 0%,
+      var(--hero-glow) 0%,
+      transparent 60%
+    ),
+    radial-gradient(
+      rgba(231, 233, 238, 0.07) 1px,
+      transparent 1px
+    );
+  background-size: 100% 100%, 28px 28px;
+  background-attachment: local, local;
+
+  /* smooth color transition as --hero-glow changes */
+  transition: background-color 180ms ease;
+}
+
+/* The glow itself transitions via a pseudo element so we can
+   animate it smoothly (CSS variables don't transition directly) */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background: radial-gradient(
+    circle at 50% 0%,
+    var(--hero-glow) 0%,
+    transparent 60%
+  );
+  transition: background 700ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* Remove the glow from body background-image now that
+   the pseudo-element handles it */
+body {
+  background-image:
+    radial-gradient(
+      rgba(231, 233, 238, 0.07) 1px,
+      transparent 1px
+    );
+  background-size: 28px 28px;
+}
+
+/* Light mode dots */
+html[data-theme="light"] body {
+  background-image:
+    radial-gradient(
+      rgba(11, 18, 32, 0.065) 1px,
+      transparent 1px
+    );
+  background-size: 28px 28px;
+}
+
+/* Light mode glow — softer */
+html[data-theme="light"] body::before {
+  opacity: 0.95;
+  background: radial-gradient(
+    circle at 50% 0%,
+    var(--hero-glow) 0%,
+    transparent 70%
+  );
+}
+
+/* Make sure page content sits above the pseudo-element */
+.page {
+  position: relative;
+  z-index: 1;
+}
+
+/* Top left */
+.brandLink {
+  font-weight: 800;
+  font-size: 18px;
+  color: var(--accent);
+  text-decoration: none;
+  position: relative;
+  display: inline-block;
+  transition: opacity 160ms ease;
+}
+
+.brandLink::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -3px;
+  height: 2px;
+  width: 0%;
+  background: var(--accent);
+  border-radius: 999px;
+  transition: width 200ms ease;
+}
+
+.brandLink:hover::after {
+  width: 100%;
+}
+
+.brandLink:hover {
+  opacity: 0.85;
+  color: var(--accent) !important;
+  text-decoration: none !important;
+}
+
+/* =========================
+   Scroll Progress Bar 
+========================= */
+:root {
+  --scroll-progress-scale: 0;
+  --scroll-gradient: linear-gradient(90deg, #8b5cf6 0%, #8b5cf6 100%);
+}
+
+.scrollProgress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  z-index: 99999;
+  pointer-events: none;
+
+  /* IMPORTANT: remove background completely */
+  background: none;
+}
+
+:root {
+  --scroll-progress-scale: 0;
+  --section-accent: #8b5cf6;
+}
+
+.scrollProgressBar {
+  height: 100%;
+  width: 100%;
+  transform-origin: left center;
+  transform: scaleX(var(--scroll-progress-scale, 0));
+  border-radius: 999px;
+  transition: transform 80ms linear;
+  /* background set by JS */
+}
+
+.section-divider {
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(139, 92, 246, 0.4),
+    transparent
+  );
+  margin: 4rem 0;
+  opacity: 0.6;
+}
+
+.nav-brand {
+  position: relative;
+  transition: letter-spacing 0.3s ease;
+}
+
+.nav-brand:hover {
+  letter-spacing: 1px;
+}
+
+.project-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.project-card:hover {
+  transform: translateY(-6px) scale(1.02);
+  box-shadow: 0 20px 40px rgba(139, 92, 246, 0.2);
+}
+
+.fade-in {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.6s ease;
+}
+
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+body::after {
+  content: "";
+  position: fixed;
+  pointer-events: none;
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(
+    circle,
+    rgba(139, 92, 246, 0.12),
+    transparent 60%
+  );
+  transform: translate(-50%, -50%);
+}
+
+.brandLink {
+  cursor: default;
+}

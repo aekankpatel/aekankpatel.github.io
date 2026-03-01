@@ -20,6 +20,7 @@ import heroAnim from "./assets/animations/robot.json";
 import whatIDoAnim from "./assets/animations/data.json";
 import contactAnim from "./assets/animations/contact.json";
 import ScrollToTop from "./components/ScrollToTop";
+import { useSectionGlow } from "./hooks/useSectionGlow";
 
 /**
  * Generic one-time reveal hook
@@ -32,7 +33,6 @@ function useReveal({ threshold = 0.25, rootMargin = "0px 0px -12% 0px" } = {}) {
     const el = ref.current;
     if (!el) return;
 
-    // Fallback: if IntersectionObserver is unavailable, show immediately
     if (!("IntersectionObserver" in window)) {
       el.classList.add("isVisible");
       return;
@@ -44,7 +44,7 @@ function useReveal({ threshold = 0.25, rootMargin = "0px 0px -12% 0px" } = {}) {
       ([entry]) => {
         if (entry.isIntersecting) {
           el.classList.add("isVisible");
-          io.disconnect(); // run once
+          io.disconnect();
         }
       },
       { threshold, rootMargin }
@@ -57,11 +57,10 @@ function useReveal({ threshold = 0.25, rootMargin = "0px 0px -12% 0px" } = {}) {
   return ref;
 }
 
-
-
 export default function App() {
   const [activeProject, setActiveProject] = useState(null);
   const [theme, setTheme] = useState("dark");
+  useSectionGlow();
 
   const closeModal = () => setActiveProject(null);
 
@@ -74,29 +73,125 @@ export default function App() {
   const projectsRef = useReveal();
   const certRef = useReveal();
 
-  // ESC closes modal
   useEffect(() => {
     const onKeyDown = (e) => e.key === "Escape" && closeModal();
     window.addEventListener("keydown", onKeyDown);
     return () => window.removeEventListener("keydown", onKeyDown);
   }, []);
 
-  // lock scroll when modal open
   useEffect(() => {
     document.body.style.overflow = activeProject ? "hidden" : "auto";
   }, [activeProject]);
 
-  // load theme
   useEffect(() => {
     const saved = localStorage.getItem("theme");
     if (saved === "light" || saved === "dark") setTheme(saved);
   }, []);
 
-  // apply theme
   useEffect(() => {
     document.documentElement.setAttribute("data-theme", theme);
     localStorage.setItem("theme", theme);
   }, [theme]);
+
+useEffect(() => {
+  const order = ["hero", "what", "now", "education", "experience", "tech-stack", "projects", "certifications", "contact"];
+
+  const accents = {
+    hero:           "#8b5cf6",
+    what:           "#6366f1",
+    now:            "#a78bfa",
+    education:      "#60a5fa",
+    experience:     "#c084fc",
+    "tech-stack":   "#22d3ee",
+    projects:       "#8b5cf6",
+    certifications: "#fbbf24",
+    contact:        "#8b5cf6",
+  };
+
+  const getEl = (id) =>
+    id === "hero" ? document.querySelector("main.hero") : document.getElementById(id);
+
+  const buildGradient = () => {
+    const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
+    if (scrollHeight <= 0) return;
+
+    // Get each section's scroll position as a % of total scrollable height
+    const stops = order
+      .map((id) => {
+        const el = getEl(id);
+        if (!el) return null;
+        const top = el.getBoundingClientRect().top + window.scrollY;
+        const pct = Math.max(0, Math.min(100, (top / scrollHeight) * 100));
+        return { id, pct, color: accents[id] };
+      })
+      .filter(Boolean)
+      .sort((a, b) => a.pct - b.pct);
+
+    if (!stops.length) return;
+
+    // Force first to 0
+    stops[0].pct = 0;
+
+    // Build hard-stop gradient aligned to scroll %
+    // Each color occupies from its section start to next section start
+    const gradientStops = [];
+    const blend = 2; // % crossfade width
+
+    stops.forEach((s, i) => {
+      const next = stops[i + 1];
+      if (!next) {
+        // last section goes to 100
+        gradientStops.push(`${s.color} ${s.pct.toFixed(2)}%`);
+        gradientStops.push(`${s.color} 100%`);
+      } else {
+        const crossStart = Math.max(s.pct, next.pct - blend);
+        gradientStops.push(`${s.color} ${s.pct.toFixed(2)}%`);
+        gradientStops.push(`${s.color} ${crossStart.toFixed(2)}%`);
+        gradientStops.push(`${next.color} ${next.pct.toFixed(2)}%`);
+      }
+    });
+
+    const bar = document.querySelector(".scrollProgressBar");
+    if (bar) {
+      bar.style.background = `linear-gradient(90deg, ${gradientStops.join(", ")})`;
+    }
+  };
+
+  let raf = 0;
+  const updateProgress = () => {
+    const scrollTop = window.scrollY;
+    const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const progress = scrollHeight > 0 ? Math.min(1, Math.max(0, scrollTop / scrollHeight)) : 0;
+    document.documentElement.style.setProperty("--scroll-progress-scale", String(progress));
+  };
+
+  const onScroll = () => {
+    cancelAnimationFrame(raf);
+    raf = requestAnimationFrame(updateProgress);
+  };
+
+  // Wait for full layout before measuring positions
+  const init = () => {
+    buildGradient();
+    updateProgress();
+  };
+
+  if (document.readyState === "complete") {
+    setTimeout(init, 100);
+  } else {
+    window.addEventListener("load", () => setTimeout(init, 100));
+  }
+
+  window.addEventListener("scroll", onScroll, { passive: true });
+  window.addEventListener("resize", init);
+
+  return () => {
+    cancelAnimationFrame(raf);
+    window.removeEventListener("scroll", onScroll);
+    window.removeEventListener("resize", init);
+  };
+}, []);
+
 
   const toggleTheme = () => setTheme(theme === "dark" ? "light" : "dark");
 
@@ -113,7 +208,14 @@ export default function App() {
   return (
     <div className="page">
       <header className="nav">
-        <div className="brand">Aekank Patel</div>
+        <div className="scrollProgress" aria-hidden="true">
+          <div className="scrollProgressBar" />
+        </div>
+        <div className="brand">
+          <a href="#top" className="brandLink">
+            Aekank Patel
+          </a>
+        </div>
 
         <div className="navRight">
           <nav className="links">
@@ -141,17 +243,22 @@ export default function App() {
         </div>
       </header>
 
-      {/* HERO */}
+      {/* ── HERO ── */}
       <main className="hero">
         <div className="heroGrid">
           <div className="heroLeft">
-            <h1 className="title">
-              {HERO?.headline ?? ""}
-              <br />
+
+            <p className="heroGreeting">
+              Hi, I'm Aekank <span className="waveEmoji">👋</span>
+            </p>
+
+            {/* Tagline */}
+            <p className="heroTagline">
               I turn <span className="purpleText">messy data</span> into systems that actually{" "}
               <span className="purpleUnderline">make sense</span> 📈
-            </h1>
+            </p>
 
+            {/* Summary */}
             <p className="subtitle">{HERO?.summary ?? ""}</p>
 
             <div className="cta">
@@ -166,10 +273,8 @@ export default function App() {
               {heroSocials.map((s) => {
                 const Icon = iconFor(s?.label);
                 if (!Icon) return null;
-
                 const href = s?.href ?? "#";
                 const isMail = href.startsWith("mailto:");
-
                 return (
                   <a
                     key={s.label}
@@ -282,13 +387,10 @@ export default function App() {
                 {courses.length ? (
                   <div className="courseBlock">
                     <div className="courseLabel">Courses</div>
-
                     <div className="courseMarquee" aria-label="Courses marquee">
                       <div className="courseTrack">
                         {marqueeCourses.map((c, idx) => (
-                          <div className="courseChip" key={`${c}-${idx}`}>
-                            {c}
-                          </div>
+                          <div className="courseChip" key={`${c}-${idx}`}>{c}</div>
                         ))}
                       </div>
                     </div>
@@ -318,6 +420,17 @@ export default function App() {
               <div className="expRoleBig">{x.role}</div>
               {x.time ? <div className="expTimeCenter">{x.time}</div> : null}
               {x.location ? <div className="expLocationCenter">{x.location}</div> : null}
+
+              {/* ── Stat pills — pulled from data ── */}
+              {x.stats?.length ? (
+                <div className="expStatRow">
+                  {x.stats.map((stat, i) => (
+                    <span className="expStatPill" key={i}>
+                      {stat}
+                    </span>
+                  ))}
+                </div>
+              ) : null}
             </div>
 
             {x.bullets?.length ? (
@@ -334,17 +447,13 @@ export default function App() {
       {/* Tech-Stack */}
       <section id="tech-stack" className="section revealFromTop" ref={skillsRef}>
         <h2>Tech Stack</h2>
-
         <div className="skillsGrid">
           {(SKILLS ?? []).map((group) => (
             <div key={group.title} className="skillCard">
               <h3 className="skillCardTitle">{group.title}</h3>
-
               <div className="skillChipWrap">
                 {(group.items ?? []).map((item, i) => (
-                  <span key={`${group.title}-${i}`} className="skillChip">
-                    {item}
-                  </span>
+                  <span key={`${group.title}-${i}`} className="skillChip">{item}</span>
                 ))}
               </div>
             </div>
@@ -356,45 +465,118 @@ export default function App() {
       <section id="projects" className="section revealFromTop" ref={projectsRef}>
         <h2>Projects</h2>
 
-        <div className="gridCenter">
-          <div className="projects">
-            {(PROJECTS ?? []).map((p) => (
-              <button
-                key={p.id}
-                className="projectCard cardButton"
-                onClick={() => setActiveProject(p)}
-                type="button"
-              >
-                <h3>{p.title}</h3>
-                <p>{p.short}</p>
-                <span className="tech">{p.tech}</span>
-                <span className="hint">Click for details →</span>
-              </button>
-            ))}
-          </div>
-        </div>
+        {[
+          { key: "ml",   label: "Machine Learning & AI 🤖" },
+          { key: "data", label: "Data Analysis 📊" },
+        ].map(({ key, label }) => {
+          const group = PROJECTS.filter((p) => p.category === key);
+          if (!group.length) return null;
+          return (
+            <div key={key} className="projectGroup">
+              <h3 className="projectGroupTitle">{label}</h3>
+              <div className="projects">
+                {group.map((p) => (
+                  <div key={p.id} className="projectCard">
+
+                    {/* Title */}
+                    <h3 className="projectCardTitle">{p.title}</h3>
+
+                    {/* Short description */}
+                    <p className="projectCardShort">{p.short}</p>
+
+                    {/* Tech chips */}
+                    <div className="projectChipWrap">
+                      {p.tech.split(" · ").map((t) => (
+                        <span key={t} className="projectChip">{t}</span>
+                      ))}
+                    </div>
+
+                    {/* Action row */}
+                    <div className="projectActions">
+                      <button
+                        className="projectActionBtn projectActionPrimary"
+                        onClick={() => setActiveProject(p)}
+                        type="button"
+                      >
+                        View Details →
+                      </button>
+
+                      {p.github ? (
+                        <a
+                          className="projectActionBtn"
+                          href={p.github}
+                          target="_blank"
+                          rel="noreferrer"
+                          onClick={(e) => e.stopPropagation()}
+                        >
+                          GitHub
+                        </a>
+                      ) : null}
+
+                      {p.live ? (
+                        <a
+                          className="projectActionBtn"
+                          href={p.live}
+                          target="_blank"
+                          rel="noreferrer"
+                          onClick={(e) => e.stopPropagation()}
+                        >
+                          Live Demo
+                        </a>
+                      ) : null}
+
+                      {p.medium ? (
+                        <a
+                          className="projectActionBtn"
+                          href={p.medium}
+                          target="_blank"
+                          rel="noreferrer"
+                          onClick={(e) => e.stopPropagation()}
+                        >
+                          Medium
+                        </a>
+                      ) : null}
+
+                      {p.report ? (
+                        <a
+                          className="projectActionBtn"
+                          href={p.report}
+                          target="_blank"
+                          rel="noreferrer"
+                          onClick={(e) => e.stopPropagation()}
+                        >
+                          Report
+                        </a>
+                      ) : null}
+                    </div>
+
+                  </div>
+                ))}
+              </div>
+            </div>
+          );
+        })}
       </section>
+
 
       {/* CERTIFICATIONS */}
       <section id="certifications" className="section revealFromTop" ref={certRef}>
         <h2>Certifications</h2>
-
         <div className="gridCenter">
           <div className="certGridBig">
             {(CERTIFICATIONS ?? []).map((c) => (
-              <a key={c.id} href={c.link} target="_blank" rel="noreferrer" className="certCardBig">
+              <div key={c.id} className="certCardBig">
                 <div className="certBadgeWrap">
-                  {/* If image path is wrong, it won't crash */}
                   {c.badge ? <img src={c.badge} alt={c.title} className="certBadge" /> : null}
                 </div>
-
                 <h3 className="certBigTitle">{c.title}</h3>
                 <div className="certBigIssuer">{c.issuer}</div>
-
                 <div className="certBtnRow">
-                  <span className="certBtn">View Certificate</span>
+                  <a href={c.link} target="_blank" rel="noreferrer" className="certBtn">
+                    View Certificate
+                  </a>
                 </div>
-              </a>
+              </div>
             ))}
           </div>
         </div>
@@ -403,22 +585,18 @@ export default function App() {
       {/* CONTACT */}
       <section id="contact" className="section contactSection">
         <h2>Contact Me</h2>
-
         <div className="contactWrap">
           <div className="contactLeft">
             <p className="contactLine">
-              Let’s connect — I’m open to internships and full-time opportunities in Data Science / ML.
-              If you have something interesting, I’d love to chat.
+              Let's connect — I'm open to internships and full-time opportunities in Data Science / ML.
+              If you have something interesting, I'd love to chat.
             </p>
-
             <div className="contactIcons">
               {heroSocials.map((s) => {
                 const Icon = iconFor(s?.label);
                 if (!Icon) return null;
-
                 const href = s?.href ?? "#";
                 const isMail = href.startsWith("mailto:");
-
                 return (
                   <a
                     key={`contact-${s.label}`}
@@ -463,44 +641,25 @@ export default function App() {
           <div className="modal" onClick={(e) => e.stopPropagation()} role="dialog" aria-modal="true">
             <div className="modalHeader">
               <h3 className="modalTitle">{activeProject.title}</h3>
-              <button className="modalClose" onClick={closeModal} type="button" aria-label="Close">
-                ✕
-              </button>
+              <button className="modalClose" onClick={closeModal} type="button" aria-label="Close">✕</button>
             </div>
-
             <div className="modalBody">
               <p className="modalTech">{activeProject.tech}</p>
-              <p className="modalText" style={{ whiteSpace: "pre-line" }}>
-                {activeProject.long}
-              </p>
-
-            {activeProject.report ? <div style={{opacity:0.6}}></div> : <div style={{opacity:0.6}}></div>}
-
+              <p className="modalText" style={{ whiteSpace: "pre-line" }}>{activeProject.long}</p>
               <div className="modalActions">
-              {activeProject.github ? (
-                <a className="btn primary" href={activeProject.github} target="_blank" rel="noreferrer">
-                  GitHub
-                </a>
-              ) : null}
-
-              {activeProject.live ? (
-                <a className="btn primary" href={activeProject.live} target="_blank" rel="noreferrer">
-                  Live Demo
-                </a>
-              ) : null}
-
-              {activeProject.medium ? (
-                <a className="btn primary" href={activeProject.medium} target="_blank" rel="noreferrer">
-                  Medium
-                </a>
-              ) : null}
-
-              {activeProject.report ? (
-                <a className="btn primary" href={activeProject.report} target="_blank" rel="noreferrer">
-                  View Report
-                </a>
-              ) : null}
-            </div>
+                {activeProject.github ? (
+                  <a className="btn primary" href={activeProject.github} target="_blank" rel="noreferrer">GitHub</a>
+                ) : null}
+                {activeProject.live ? (
+                  <a className="btn primary" href={activeProject.live} target="_blank" rel="noreferrer">Live Demo</a>
+                ) : null}
+                {activeProject.medium ? (
+                  <a className="btn primary" href={activeProject.medium} target="_blank" rel="noreferrer">Medium</a>
+                ) : null}
+                {activeProject.report ? (
+                  <a className="btn primary" href={activeProject.report} target="_blank" rel="noreferrer">View Report</a>
+                ) : null}
+              </div>
             </div>
           </div>
         </div>
@@ -509,4 +668,3 @@ export default function App() {
     </div>
   );
 }
-

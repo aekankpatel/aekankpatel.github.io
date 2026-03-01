@@ -14,13 +14,13 @@ export const HERO = {
   headline: "",
   subheadline: "",
   summary:
-    "Hi, I’m Aekank 👋 I like building things where math, code, and curiosity come together, from predicting risk and finding patterns to making complex models easier to understand. Right now, I am learning, building, and improving every day.",
+    "I like building things where math, code, and curiosity come together, from predicting risk and finding patterns to making complex models easier to understand. Right now, I am learning, building, and improving every day.",
   resumePath: resumePdf,
   socials: [
     { label: "LinkedIn", href: "https://www.linkedin.com/in/aekankpatel/" },
     { label: "GitHub", href: "https://github.com/aekankpatel" },
     { label: "Medium", href: "https://medium.com/@aekankpatel" },
-    { label: "Email", href: "mailto:apatel33@stevens.edu" },
+    { label: "Email", href: "mailto:aekankpatel@gmail.com" },
   ],
 };
 
@@ -47,25 +47,25 @@ export const NOW = {
   subtitle: "A quick snapshot of what I’m working on these days — updating regularly.",
   cards: [
     {
-      title: "Finishing my Master’s",
+      title: "Finishing my Master’s 🎓",
       body:
         "MS in Data Science at Stevens Institute of Technology (graduating May 2026). Currently sharpening my foundations in ML, linear algebra, and data analytics through coursework and projects.",
       tag: "MS Data Science · May 2026",
     },
     {
-      title: "Applying for roles",
+      title: "Applying for roles 🔍",
       body:
         "Actively applying for Data Science / ML internships and early full-time opportunities. Looking for teams where I can build reliable models, ship analytics, and improve decision-making with data.",
       tag: "Open to opportunities",
     },
     {
-      title: "Building projects",
+      title: "Building projects 🛠️",
       body:
         "Building end-to-end projects that go beyond notebooks — clean data pipelines, model training, evaluation, and lightweight deployments with dashboards and APIs.",
       tag: "Shipping real systems",
     },
     {
-      title: "Improving skills",
+      title: "Improving skills 📈",
       body:
         "Practicing DSA in Python, strengthening SQL for analytics + ETL, and improving my ability to write larger programs cleanly and confidently.",
       tag: "Leveling up every day",
@@ -137,6 +137,14 @@ export const EXPERIENCE = [
     time: "Sep 2025 – May 2026",
     location: "Hoboken, NJ",
     logo: stevensLogo,
+
+    // ← NEW: these render as purple pills above the bullets
+    stats: [
+      "3 Courses Supported",
+      "89 Students",
+      "MA 574 · MA 544 · MA 540",
+    ],
+
     bullets: [
       "Served as Graduate Teaching Assistant for MA 574: Foundational Mathematics for Data Science, MA 544: Numerical Algebra for Big Data and MA 540: Intro to Probability Theory under Dr. Upendra Prasad.",
       "Evaluated mathematical and programming assignments, quizzes, and exams across multiple course sections, ensuring fair, consistent, and rubric-aligned grading.",
@@ -152,6 +160,14 @@ export const EXPERIENCE = [
     time: "Jan 2024 – May 2024",
     location: "Vadodara, Gujarat, India",
     logo: matrixLogo,
+
+    // ← NEW: key numbers surface immediately above the bullets
+    stats: [
+      "91.39% Test Accuracy",
+      "100,000+ Images Annotated",
+      "YOLOv5 Multi-Person Detection",
+    ],
+
     bullets: [
       "Designed and implemented a real-time human fall detection system using deep learning and computer vision for safety monitoring applications.",
       "Engineered a hybrid CNN–MediaPipe pipeline for pose estimation and fall classification, improving detection robustness across dynamic body orientations.",
@@ -163,13 +179,47 @@ export const EXPERIENCE = [
     ],
   },
 ];
+
 // Projects: short = card, long = modal
+// ── Drop-in replacement for your PROJECTS export in portfolio.js ──
+
 export const PROJECTS = [
+
+  // ── Machine Learning & AI 🤖──
+  {
+    id: "insightforgeai",
+    category: "ml",
+    title: "Insight Forge AI: LLM-Powered Data Profiling System",
+    short: "Modular Auto-EDA engine + ML readiness scoring + Groq LLaMA insights + Streamlit dashboard + PDF reporting.",
+    tech: "Python · Scikit-learn · Pandas · Plotly · Streamlit · Groq · ReportLab · NumPy",
+    github: "https://github.com/aekankpatel/insightforgeai/",
+    live: "https://insightforgeai.streamlit.app",
+    long: `Built an end-to-end automated exploratory data analysis platform that profiles datasets, detects anomalies, scores ML readiness, and generates LLM-powered insights through a modular agentic pipeline.
+
+What I Built:
+• Architected InsightForge AI, a full-stack Auto-EDA system with 8 independent Python modules covering data profiling, anomaly detection, correlation analysis, feature summarization, health scoring, data cleaning, ML readiness evaluation, and LLM insight generation.
+• Designed a single-API-call optimization for Groq-hosted LLaMA 3.1 that generates all three insight sections (overview, anomalies, correlations) in one request to stay within free-tier rate limits.
+• Built 10 synthetic sample datasets (Titanic, Credit Card Fraud, Diabetes, Stock Market, etc.) with realistic distributions, class imbalance, and missing value patterns for out-of-the-box demos.
+
+System Design:
+• Implemented secure server-side API key management with a priority resolution chain: Streamlit Secrets → environment variable → fallback UI input, preventing key exposure in browser DevTools.
+• Engineered a session state architecture to persist analysis results, chat history, cleaning state, and dataset history across Streamlit reruns without database dependencies.
+• Computed a 5-dimension Dataset Health Scorecard (Completeness, Consistency, Outlier Health, Feature Quality, Correlation Structure) with programmatic scoring and letter grades.
+
+Frontend & Analytics:
+• Built 12-tab Streamlit dashboard with Plotly visualizations including correlation heatmaps, network graphs, outlier boxplot grids, sunburst feature breakdowns, and before/after cleaning comparisons.
+• Shipped a natural language dataset chat interface using Groq with full conversation history, dataset context injection, and suggested question shortcuts.
+• Implemented one-click PDF report export using ReportLab, generating structured reports with summary tables, missing value analysis, correlation findings, and LLM insights.
+
+Impact:
+• Demonstrates full-stack ML tooling, LLM integration, agentic pipeline design, and production deployment on Streamlit Cloud with a focus on data quality and ML readiness workflows.`,
+  },
+
   {
     id: "fraudgen",
+    category: "ml",
     title: "FRAUDGEN: Unmasking Fraud with Real-Time Explanations",
-    short:
-      "XGBoost-based fraud classifier + rules + Flask APIs + LLaMA explanations + React dashboard.",
+    short: "XGBoost-based fraud classifier + rules + Flask APIs + LLaMA explanations + React dashboard.",
     tech: "Python · XGBoost · Flask · React · SQLite · Recharts · LLaMA",
     github: "https://github.com/aekankpatel/FraudGen",
     live: "https://fraud-gen.vercel.app",
@@ -195,13 +245,13 @@ Impact:
 
   {
     id: "finrag",
+    category: "ml",
     title: "FinRAG: Financial Document Intelligence System",
-    short:
-      "RAG pipeline over 25 SEC filings & earnings transcripts; HuggingFace embeddings + Groq LLaMA; deployed on Streamlit Cloud.",
-    tech: "Python · LlamaIndex · HuggingFace · Groq · LLaMA 3.1 · Streamlit · Google Drive",
+    short: "RAG pipeline over 25 SEC filings & earnings transcripts; HuggingFace embeddings + Groq LLaMA; deployed on Streamlit Cloud.",
+    tech: "Python · LlamaIndex · HuggingFace · Groq · LLaMA · Streamlit",
     github: "https://github.com/aekankpatel/finrag",
     live: "https://fin-rag.streamlit.app",
-    long: `Built an end-to-end Retrieval-Augmented Generation system for querying 25 financial documents including SEC 10-K/10-Q filings, earnings call transcripts, and macroeconomic reports.,
+    long: `Built an end-to-end Retrieval-Augmented Generation system for querying 25 financial documents including SEC 10-K/10-Q filings, earnings call transcripts, and macroeconomic reports.
 
 What I Built:
 • Architected a full RAG pipeline using LlamaIndex: PDF ingestion, text chunking (14,055 nodes), HuggingFace BGE embeddings, and vector similarity search with metadata filtering.
@@ -222,14 +272,37 @@ Evaluation:
 
 Impact:
 • Demonstrates end-to-end RAG engineering, cloud deployment, and applied NLP on real-world financial corpora.`,
-  
   },
 
   {
+    id: "pneumonia-detection",
+    category: "ml",
+    title: "Deep Learning for Pneumonia Detection",
+    short: "Chest X-ray classifier with augmentation; CNN 96.64%, MobileNet 95.00%, ensemble 97.23%.",
+    tech: "Python · TensorFlow · CNN · MobileNet · Medical Imaging",
+    github: "https://github.com/aekankpatel/Pneumonia_Detection",
+    live: "",
+    long: `Built and fine-tuned deep learning models to detect pneumonia from chest X-rays.
+
+Model Development:
+• Applied image augmentation to improve generalization on medical imaging data.
+• Trained custom CNN achieving 96.64% test accuracy.
+• Fine-tuned MobileNet achieving 95.00% accuracy.
+
+Ensemble Strategy:
+• Combined CNN + MobileNet outputs via ensemble learning.
+• Achieved 97.23% test accuracy with improved robustness.
+
+Impact:
+• Demonstrates applied deep learning for medical image classification with production-level performance metrics.`,
+  },
+
+  // ── Data Analysis 📊 ──
+  {
     id: "oil-airline-bloomberg",
-    title: "Oil and Airline Stocks: An Empirical Study Using Bloomberg Data",
-    short:
-      "10+ years Bloomberg data (2015–2025) + multi-factor regressions; market-adjusted returns explain 25–33%.",
+    category: "data",
+    title: "Oil and Airline Stocks: An Empirical Study",
+    short: "10+ years Bloomberg data (2015–2025) + multi-factor regressions; market-adjusted returns explain 25–33%.",
     tech: "Bloomberg Terminal · Python · Econometrics · Regression · Finance",
     github: "",
     live: "",
@@ -256,10 +329,9 @@ Impact:
 
   {
     id: "netflix-hotel-ts",
-    title:
-      "Time Series Modeling and Forecasting of Netflix Stock Prices and Hotel Bookings",
-    short:
-      "Box–Jenkins workflow; ARIMA/SARIMA selection via AIC/BIC + diagnostics; interpretable forecasts.",
+    category: "data",
+    title: "Time Series Modeling: Netflix Stock & Hotel Bookings",
+    short: "Box–Jenkins workflow; ARIMA/SARIMA selection via AIC/BIC + diagnostics; interpretable forecasts.",
     tech: "R · ARIMA · SARIMA · ACF/PACF · Ljung-Box · Forecasting",
     github: "",
     report: timeSeriesReport,
@@ -283,33 +355,37 @@ Impact:
   },
 
   {
-    id: "pneumonia-detection",
-    title: "Deep Learning for Pneumonia Detection (CNN + MobileNet Ensemble)",
-    short:
-      "Chest X-ray classifier with augmentation; CNN 96.64%, MobileNet 95.00%, ensemble 97.23%.",
-    tech: "Python · TensorFlow · CNN · MobileNet · Medical Imaging",
-    github: "https://github.com/aekankpatel/Pneumonia_Detection",
+    id: "usd-inr",
+    category: "data",
+    title: "Effects of Factors Affecting USD–INR Exchange Rates",
+    short: "20-year analysis (2002–2022) using correlation + regression to study macroeconomic drivers.",
+    tech: "Python · Statsmodels · Econometrics · Regression",
+    github: "https://github.com/aekankpatel/USD_INR",
     live: "",
-    long: `Built and fine-tuned deep learning models to detect pneumonia from chest X-rays.
+    long: `Analyzed factors impacting USD–INR exchange rate movements over 20 years (2002–2022).
 
-Model Development:
-• Applied image augmentation to improve generalization on medical imaging data.
-• Trained custom CNN achieving 96.64% test accuracy.
-• Fine-tuned MobileNet achieving 95.00% accuracy.
+Data & Framework:
+• Aggregated macroeconomic indicators including inflation, interest rates, trade balance, and foreign reserves.
+• Structured time-aligned datasets for regression-based inference.
 
-Ensemble Strategy:
-• Combined CNN + MobileNet outputs via ensemble learning.
-• Achieved 97.23% test accuracy with improved robustness.
+Methodology:
+• Performed correlation analysis to identify significant macro relationships.
+• Built multivariate regression models using Statsmodels to quantify macro sensitivity.
+• Evaluated statistical significance, coefficient stability, and model assumptions.
+
+Findings:
+• Identified key macroeconomic variables contributing to exchange-rate volatility.
+• Produced interpretable econometric outputs explaining structural currency movement patterns.
 
 Impact:
-• Demonstrates applied deep learning for medical image classification with production-level performance metrics.`,
+• Demonstrates applied macroeconometrics and long-horizon financial modeling.`,
   },
 
   {
     id: "life-expectancy",
+    category: "data",
     title: "Life Expectancy Data Analysis",
-    short:
-      "WHO dataset (193 countries); EDA + hypothesis tests + models (RF R²≈0.97, RMSE≈1.67).",
+    short: "WHO dataset (193 countries); EDA + hypothesis tests + models (RF R²≈0.97, RMSE≈1.67).",
     tech: "Python · EDA · Statistics · Random Forest · Regression",
     github: "",
     live: "",
@@ -334,91 +410,30 @@ Impact:
 • Demonstrates end-to-end statistical reasoning, hypothesis validation, and high-performance predictive modeling on global health data.`,
   },
 
-  {
-    id: "usd-inr",
-    title: "Effects of Factors Affecting USD–INR Exchange Rates",
-    short:
-      "20-year analysis (2002–2022) using correlation + regression to study macroeconomic drivers.",
-    tech: "Python · Statsmodels · Econometrics · Regression",
-    github: "https://github.com/aekankpatel/USD_INR",
-    live: "",
-    long: `Analyzed factors impacting USD–INR exchange rate movements over 20 years (2002–2022).
+  // ── Commented out ──
+  // {
+  //   id: "vehicle-speed",
+  //   category: "ml",
+  //   title: "Speed Measurement of Vehicles (Computer Vision)",
+  //   short: "CV-based vehicle speed estimation using detection + tracking and pixel-motion across frames.",
+  //   tech: "Python · OpenCV · Computer Vision · Tracking",
+  //   github: "https://github.com/aekankpatel/Speed_Measurements_of_Vehicles",
+  //   live: "",
+  //   long: `...`,
+  // },
 
-Data & Framework:
-• Aggregated macroeconomic indicators including inflation, interest rates, trade balance, and foreign reserves.
-• Structured time-aligned datasets for regression-based inference.
-
-Methodology:
-• Performed correlation analysis to identify significant macro relationships.
-• Built multivariate regression models using Statsmodels to quantify macro sensitivity.
-• Evaluated statistical significance, coefficient stability, and model assumptions.
-
-Findings:
-• Identified key macroeconomic variables contributing to exchange-rate volatility.
-• Produced interpretable econometric outputs explaining structural currency movement patterns.
-
-Impact:
-• Demonstrates applied macroeconometrics and long-horizon financial modeling.`,
-  },
-
-  {
-    id: "vehicle-speed",
-    title: "Speed Measurement of Vehicles (Computer Vision)",
-    short:
-      "CV-based vehicle speed estimation using detection + tracking and pixel-motion across frames.",
-    tech: "Python · OpenCV · Computer Vision · Tracking",
-    github: "https://github.com/aekankpatel/Speed_Measurements_of_Vehicles",
-    live: "",
-    long: `Developed an image-processing-based vehicle speed detection system.
-
-System Design:
-• Implemented vehicle detection and tracking pipeline using OpenCV.
-• Calculated speed via calibrated pixel displacement across sequential frames.
-• Applied frame differencing and bounding-box tracking for motion consistency.
-
-Optimization:
-• Improved detection stability under variable lighting and motion conditions.
-• Structured pipeline for near real-time processing.
-
-Applications:
-• Suitable for traffic monitoring, road-safety analytics, and smart surveillance systems.
-
-Impact:
-• Demonstrates applied computer vision for measurable real-world traffic analytics.`,
-  },
-
-  {
-    id: "insurance-claim",
-    title: "Insurance Claim Prediction using Deep Learning",
-    short:
-      "Binary classification pipeline (10,302 rows) with MLP + TabNet ensemble; strong ROC/PR and calibration.",
-    tech: "Python · TabNet · MLP · XGBoost · Random Forest · LightGBM · Model Evaluation",
-    github: "",
-    live: "",
-    long: `Built an end-to-end claim likelihood prediction system using a real-world dataset (10,302 policyholders, 27 features).
-
-Data Engineering:
-• Designed robust preprocessing pipeline including missing-value handling, invalid-entry correction, skew treatment, encoding, and class-imbalance management.
-• Structured training-validation splits for stable performance evaluation.
-
-Modeling:
-• Trained Logistic Regression, Random Forest, XGBoost, LightGBM, MLP, and TabNet models.
-• Built soft-voting ensemble (MLP + TabNet) optimizing precision–recall tradeoff.
-
-Performance:
-• ROC-AUC ≈ 0.97
-• PR-AUC ≈ 0.95
-• F1 ≈ 0.89
-• KS ≈ 0.85 (strong class separation)
-
-Evaluation & Calibration:
-• Generated confusion matrices, ROC/PR curves, and KS plots.
-• Produced calibrated probability outputs for risk-aware underwriting and pricing decisions.
-
-Impact:
-• Demonstrates advanced classification modeling, ensemble learning, and financial risk analytics.`,
-  },
+  // {
+  //   id: "insurance-claim",
+  //   category: "ml",
+  //   title: "Insurance Claim Prediction using Deep Learning",
+  //   short: "Binary classification pipeline (10,302 rows) with MLP + TabNet ensemble; strong ROC/PR and calibration.",
+  //   tech: "Python · TabNet · MLP · XGBoost · Random Forest · LightGBM · Model Evaluation",
+  //   github: "",
+  //   live: "",
+  //   long: `...`,
+  // },
 ];
+
 
 export const SKILLS = [
   {
@@ -430,19 +445,15 @@ export const SKILLS = [
       "C",
       "Object-Oriented Programming",
       "Data Structures & Algorithms",
-      "Problem Solving",
-      "Debugging",
-      "Clean Code Practices",
+      "Scripting & Automation",
+      "Functional Programming",
       "Git & Version Control",
-      "Modular Code Design",
       "MATLAB"
     ]
   },
   {
     title: "Machine Learning",
     items: [
-      "Supervised Learning",
-      "Unsupervised Learning",
       "Regression",
       "Classification",
       "Clustering",
@@ -450,8 +461,7 @@ export const SKILLS = [
       "Feature Engineering",
       "Model Evaluation",
       "Cross Validation",
-      "Hyperparameter Tuning",
-      "Explainable AI (SHAP, LIME)",   
+      "Hyperparameter Tuning"
     ]
   },
   {
@@ -459,28 +469,25 @@ export const SKILLS = [
     items: [
       "Neural Networks",
       "CNN",
-      "RNN",
+      "RNN", 
       "LSTM",
       "Transfer Learning",
-      "Computer Vision",
-      "Time Series Forecasting",
       "Model Optimization",
-      "Backpropagation",
-      "Ensemble Deep Learning"
+      "Computer Vision",
+      "Ensemble Methods",
+      "Training & Regularization"
     ]
   },
   {
-    title: "Natural Language Processing",
+    title: "NLP & LLMs",
     items: [
-      "Text Preprocessing",
-      "Tokenization",
       "Word Embeddings",
       "Transformer Models",
-      "Large Language Models (LLMs)",
       "Prompt Engineering",
       "Retrieval-Augmented Generation (RAG)",
       "Semantic Search",
-      "Text Classification"
+      "Text Classification",
+      "Large Language Models"
     ]
   },
   {
@@ -492,92 +499,42 @@ export const SKILLS = [
       "Hypothesis Testing",
       "Time Series Analysis",
       "A/B Testing",
-      "Feature Importance Analysis",
+      "Feature Importance",
       "Data Visualization"
     ]
   },
   {
-    title: "Libraries & Frameworks",
-    items: [
-      "Scikit-learn",
-      "TensorFlow",
-      "PyTorch",
-      "Keras",
-      "XGBoost",
-      "NumPy",
-      "Pandas",
-      "Matplotlib",
-      "Seaborn",
-      "OpenCV",
-      "Statsmodels"
+  title: "Libraries & Frameworks",
+  items: [
+    "NumPy",
+    "Pandas",
+    "Scikit-learn",
+    "TensorFlow",
+    "PyTorch",
+    "XGBoost",
+    "OpenCV",
+    "Streamlit",
+    "Statsmodels",
+    "Matplotlib",
+    "Seaborn",
+    "Plotly",
+    "LlamaIndex",
+    "HuggingFace Transformers"
     ]
   },
   {
-    title: "Backend & APIs",
+    title: "Backend & Deployment",
     items: [
       "Flask",
       "REST APIs",
       "API Design",
-      "Model Deployment",
-      "JSON Handling",
-      "Authentication",
-      "Microservices (Basic)",
-      "SQLite"
-    ]
-  },
-  {
-    title: "Big Data & Distributed Systems",
-    items: [
-      "Apache Spark",
-      "Hadoop",
-      "YARN",
-      "ETL Pipelines",
-      "Data Pipelines",
-      "Distributed Computing",
-      "Large-Scale Data Processing",
-      "Delta Lake (Conceptual)"
-    ]
-  },
-  {
-    title: "Cloud & DevOps",
-    items: [
-      "Amazon Web Services (AWS)",
-      "Google Cloud Platform (GCP)",
+      "SQLite",
       "Docker (Basic)",
-      "Render Deployment",
-      "GitHub Workflows",
-      "Cloud Storage",
-      "Compute & Deployment Concepts",
-      "CI/CD Fundamentals"
-    ]
-  },
-  {
-    title: "Data Analysis & Business Intelligence",
-    items: [
-      "SQL",
-      "Excel",
-      "Tableau",
-      "Power BI",
-      "Dashboard Design",
-      "KPI Development",
-      "Data Reporting",
-      "Pivot Tables",
-      "Data Storytelling"
-    ]
-  },
-  {
-    title: "Model Deployment & ML Systems",
-    items: [
-      "End-to-End ML Pipelines",
+      "Cloud Deployment",
       "Model Serialization",
-      "Prediction APIs",
-      "Experiment Tracking (Conceptual)",
-      "Monitoring & Logging (Basic)",
-      "Production Readiness Considerations",
-      "Scalable Model Architecture"
+      "Monitoring & Logging (Basic)"
     ]
   },
-
   {
     title: "Interpersonal Skills",
     items: [
@@ -585,7 +542,7 @@ export const SKILLS = [
       "Teaching & Mentoring",
       "Leadership",
       "Analytical Thinking",
-      "Problem Decomposition",
+      "Problem Solving",
       "Team Collaboration",
       "Adaptability",
       "Continuous Learning"
@@ -612,14 +569,14 @@ export const CERTIFICATIONS = [
     id: "aws-cloud-foundations",
     title: "AWS Cloud Foundations",
     issuer: "AWS",
-    badge: "/logos/aws.png",
+    badge: "src/assets/logos/awscf.png",
     link: "https://www.credly.com/badges/463d6e11-fa00-4c7f-806f-732a82aafbd3",
   },
   {
     id: "aws-data-engineering",
     title: "AWS Data Engineering",
     issuer: "AWS",
-    badge: "/logos/aws.png",
+    badge: "src/assets/logos/awsde.png",
     link: "https://www.credly.com/badges/5eb28d13-eab2-4769-b437-550e83b2bc1e/public_url",
   },
   {
@@ -642,5 +599,12 @@ export const CERTIFICATIONS = [
     issuer: "MathWorks",
     link: "https://matlabacademy.mathworks.com/progress/share/certificate.html?id=a4b379b7-6ea3-4f08-98b1-7f5746741ff5&",
     badge: "/logos/matlab.png",
+  },
+  {
+    id: "sql-essential-training",
+    title: "SQL Essential Training",
+    issuer: "LinkedIn Learning",
+    link: "https://www.linkedin.com/learning/certificates/b1a021f81e9166c07ada8a6a2f0ba7fcc6109a9832fbfee70c31168a36b4c5e8?trk=share_certificate",
+    badge: "src/assets/logos/ll.png",
   }
 ];
