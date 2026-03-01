@@ -569,14 +569,14 @@ export const CERTIFICATIONS = [
     id: "aws-cloud-foundations",
     title: "AWS Cloud Foundations",
     issuer: "AWS",
-    badge: "src/assets/logos/awscf.png",
+    badge: "/logos/awscf.png",
     link: "https://www.credly.com/badges/463d6e11-fa00-4c7f-806f-732a82aafbd3",
   },
   {
     id: "aws-data-engineering",
     title: "AWS Data Engineering",
     issuer: "AWS",
-    badge: "src/assets/logos/awsde.png",
+    badge: "/logos/awsde.png",
     link: "https://www.credly.com/badges/5eb28d13-eab2-4769-b437-550e83b2bc1e/public_url",
   },
   {
@@ -605,6 +605,6 @@ export const CERTIFICATIONS = [
     title: "SQL Essential Training",
     issuer: "LinkedIn Learning",
     link: "https://www.linkedin.com/learning/certificates/b1a021f81e9166c07ada8a6a2f0ba7fcc6109a9832fbfee70c31168a36b4c5e8?trk=share_certificate",
-    badge: "src/assets/logos/ll.png",
+    badge: "/logos/ll.png",
   }
 ];
