@@ -2623,4 +2623,28 @@ body::after {
   .section h2 {
     font-size: 26px;
   }
+  /* Fix Tech Stack not showing */
+  .skillsGrid {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+  }
+
+  /* Fix scroll issue on Projects + Certs */
+  .projects,
+  .certGridBig {
+    grid-template-columns: 1fr !important;
+    justify-content: stretch !important;
+  }
+
+  /* Fix project group taking too much space */
+  .projectGroup {
+    margin-top: 16px;
+  }
+
+  /* Tighter card padding on mobile */
+  .projectCard,
+  .certCardBig,
+  .skillCard {
+    padding: 16px !important;
+  }
 }
