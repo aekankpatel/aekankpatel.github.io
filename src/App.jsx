@@ -60,6 +60,8 @@ function useReveal({ threshold = 0.25, rootMargin = "0px 0px -12% 0px" } = {}) {
 export default function App() {
   const [activeProject, setActiveProject] = useState(null);
   const [theme, setTheme] = useState("dark");
+  const [menuOpen, setMenuOpen] = useState(false);
+
   useSectionGlow();
 
   const closeModal = () => setActiveProject(null);
@@ -212,22 +214,21 @@ useEffect(() => {
           <div className="scrollProgressBar" />
         </div>
         <div className="brand">
-          <a href="#top" className="brandLink">
-            Aekank Patel
-          </a>
+          <a href="#top" className="brandLink">Aekank Patel</a>
         </div>
 
         <div className="navRight">
-          <nav className="links">
-            <a href="#what">What I Do</a>
-            <a href="#now">Now</a>
-            <a href="#education">Education</a>
-            <a href="#experience">Experience</a>
-            <a href="#tech-stack">Tech Stack</a>
-            <a href="#projects">Projects</a>
-            <a href="#certifications">Certifications</a>
-            <a href="#contact">Contact Me</a>
+          <nav className={`links ${menuOpen ? "menuOpen" : ""}`}>
+            <a href="#what" onClick={() => setMenuOpen(false)}>What I Do</a>
+            <a href="#now" onClick={() => setMenuOpen(false)}>Now</a>
+            <a href="#education" onClick={() => setMenuOpen(false)}>Education</a>
+            <a href="#experience" onClick={() => setMenuOpen(false)}>Experience</a>
+            <a href="#tech-stack" onClick={() => setMenuOpen(false)}>Tech Stack</a>
+            <a href="#projects" onClick={() => setMenuOpen(false)}>Projects</a>
+            <a href="#certifications" onClick={() => setMenuOpen(false)}>Certifications</a>
+            <a href="#contact" onClick={() => setMenuOpen(false)}>Contact Me</a>
           </nav>
+
           <button
             className={`themeSwitch ${theme === "dark" ? "isDark" : "isLight"}`}
             onClick={toggleTheme}
@@ -240,6 +241,17 @@ useEffect(() => {
               <span className="switchIcon">{theme === "dark" ? "🌙" : "☀️"}</span>
             </span>
           </button>
+
+          <button
+            className="hamburger"
+            onClick={() => setMenuOpen(!menuOpen)}
+            aria-label="Toggle menu"
+            type="button"
+          >
+            <span className={`hamburgerLine ${menuOpen ? "open" : ""}`} />
+            <span className={`hamburgerLine ${menuOpen ? "open" : ""}`} />
+            <span className={`hamburgerLine ${menuOpen ? "open" : ""}`} />
+          </button>
         </div>
       </header>
 
@@ -247,7 +259,10 @@ useEffect(() => {
       <main className="hero">
         <div className="heroGrid">
           <div className="heroLeft">
-
+          <div className="availableBadge">
+            <span className="availableDot" />
+            Open to Opportunities
+          </div>
             <p className="heroGreeting">
               Hi, I'm Aekank <span className="waveEmoji">👋</span>
             </p>
