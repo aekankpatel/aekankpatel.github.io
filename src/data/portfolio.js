@@ -443,51 +443,52 @@ export const SKILLS = [
       "R",
       "SQL",
       "C",
+      "MATLAB",
       "Object-Oriented Programming",
       "Data Structures & Algorithms",
       "Scripting & Automation",
-      "Functional Programming",
-      "Git & Version Control",
-      "MATLAB"
+      "Git & Version Control"
     ]
   },
   {
     title: "Machine Learning",
     items: [
-      "Regression",
-      "Classification",
-      "Clustering",
-      "Anomaly Detection",
-      "Feature Engineering",
-      "Model Evaluation",
+      "Supervised Learning",
+      "Unsupervised Learning",
       "Cross Validation",
+      "Model Selection",
+      "Pipeline Design",
+      "Ensemble Learning",
+      "Performance Metrics & Evaluation",
+      "Feature Engineering & Selection",
       "Hyperparameter Tuning"
     ]
   },
   {
-    title: "Deep Learning",
+    title: "Deep Learning & AI",
     items: [
       "Neural Networks",
       "CNN",
-      "RNN", 
+      "RNN",
       "LSTM",
       "Transfer Learning",
+      "Training & Regularization",
       "Model Optimization",
       "Computer Vision",
-      "Ensemble Methods",
-      "Training & Regularization"
+      "Explainable AI"
     ]
   },
   {
     title: "NLP & LLMs",
     items: [
+      "NLP",
       "Word Embeddings",
       "Transformer Models",
       "Prompt Engineering",
+      "Large Language Models",
       "Retrieval-Augmented Generation (RAG)",
       "Semantic Search",
-      "Text Classification",
-      "Large Language Models"
+      "Text Classification"
     ]
   },
   {
@@ -500,39 +501,50 @@ export const SKILLS = [
       "Time Series Analysis",
       "A/B Testing",
       "Feature Importance",
-      "Data Visualization"
+      "Data Visualization",
+      "Tableau",
+      "Power BI"
     ]
   },
   {
-  title: "Libraries & Frameworks",
-  items: [
-    "NumPy",
-    "Pandas",
-    "Scikit-learn",
-    "TensorFlow",
-    "PyTorch",
-    "XGBoost",
-    "OpenCV",
-    "Streamlit",
-    "Statsmodels",
-    "Matplotlib",
-    "Seaborn",
-    "Plotly",
-    "LlamaIndex",
-    "HuggingFace Transformers"
+    title: "Libraries & Frameworks",
+    items: [
+      "NumPy",
+      "Pandas",
+      "SciPy",
+      "Scikit-learn",
+      "TensorFlow",
+      "Keras",
+      "PyTorch",
+      "XGBoost",
+      "OpenCV",
+      "Statsmodels",
+      "Matplotlib",
+      "Seaborn",
+      "Plotly",
+      "HuggingFace Transformers",
+      "LangChain",
+      "LlamaIndex",
+      "Streamlit"
     ]
   },
   {
-    title: "Backend & Deployment",
+    title: "Data Engineering, Backend & Deployment",
     items: [
       "Flask",
       "REST APIs",
       "API Design",
       "SQLite",
+      "PostgreSQL",
+      "MongoDB",
+      "Apache Spark",
+      "Hadoop",
+      "YARN",
       "Docker (Basic)",
       "Cloud Deployment",
       "Model Serialization",
-      "Monitoring & Logging (Basic)"
+      "Monitoring & Logging (Basic)",
+      "ETL Pipelines"
     ]
   },
   {
