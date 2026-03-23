@@ -1,36 +1,27 @@
 import { useEffect, useState } from "react";
-import { FaHandPointUp } from "react-icons/fa";
 
 export default function ScrollToTop() {
-  const [show, setShow] = useState(false);
+  const [visible, setVisible] = useState(false);
 
   useEffect(() => {
-    const getScrollTop = () =>
-      window.scrollY ||
-      document.documentElement.scrollTop ||
-      document.body.scrollTop ||
-      0;
-
     const onScroll = () => {
-      setShow(getScrollTop() > 250);
+      setVisible(window.scrollY > 400);
     };
-
     window.addEventListener("scroll", onScroll, { passive: true });
-    onScroll(); // run once on mount
-
+    onScroll();
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  const goTop = () => {
-    (document.documentElement || document.body).scrollTo?.({ top: 0, behavior: "smooth" });
-    window.scrollTo({ top: 0, behavior: "smooth" }); // fallback
-  };
-
-  if (!show) return null;
+  if (!visible) return null;
 
   return (
-    <button className="scrollTopBtn" onClick={goTop} type="button" aria-label="Scroll to top">
-      <FaHandPointUp size={20} />
+    <button
+      className="scrollTopBtn"
+      onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+      aria-label="Scroll to top"
+      type="button"
+    >
+      ☝️
     </button>
   );
 }

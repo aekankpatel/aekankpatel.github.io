@@ -1,6 +1,5 @@
 // src/data/portfolio.js
 
-// Only these 3 logos
 import stevensLogo from "../assets/logos/stevens.png";
 import mitLogo from "../assets/logos/mit.png";
 import matrixLogo from "../assets/logos/matrixcomsec.png";
@@ -14,7 +13,7 @@ export const HERO = {
   headline: "",
   subheadline: "",
   summary:
-    "I didn't plan on ending up in data science. But somewhere in my mechatronics degree, between the robots and sensors, I fell in love with the patterns hiding inside the data they generated. Then the math hit me. Every number and equation felt like it was describing something real. I couldn't stop pulling on that thread. The robots became a footnote, the math became everything, and data science stopped being a detour and became an exciting journey.",
+    "I started in mechatronics, building robots and working with sensors. But I kept getting more interested in the data coming off those systems than the systems themselves. The math behind it clicked for me in a way nothing else had. So I switched tracks. Now I spend my time building ML models, writing Python, and figuring out what messy datasets are actually trying to say.",
   resumePath: resumePdf,
   socials: [
     { label: "LinkedIn", href: "https://www.linkedin.com/in/aekankpatel/" },
@@ -27,48 +26,43 @@ export const HERO = {
 export const WHAT_I_DO = {
   title: "What I do",
   intro:
-    "I like asking “why did this happen?” and “what can we do about it next?” — then using data to figure out the answer.",
+    "Most of my time goes into figuring out why something happened in a dataset and whether we can predict it next time. I like the full loop \u2014 from messy CSVs to a working model.",
   bullets: [
-    "⚡ Build ML systems end-to-end — from raw data and feature ideas to models, APIs, and dashboards.",
-    "⚡ Enjoy working with real-world data that’s noisy, imperfect, and full of surprises.",
-    "⚡ Care a lot about explainability — models should not just predict, but also explain themselves.",
-    "⚡ Love experimenting, breaking things, fixing them, and learning something new each time.",
+    "\u26A1 Build ML systems from scratch. Data cleaning, feature work, model training, evaluation, and sometimes a Flask API or Streamlit dashboard on top.",
+    "\u26A1 Comfortable with messy, real world data. Missing values, weird distributions, inconsistent labels. That's most datasets.",
+    "\u26A1 Big on explainability. If a model can't tell you why it made a prediction, I don't trust it much.",
+    "\u26A1 I break things a lot while building. That's usually where I learn the most.",
   ],
 };
-
-// ==============================
-// NOW / CURRENT FOCUS SECTION
-// Add this to src/data/portfolio.js
-// ==============================
 
 export const NOW = {
   kicker: "CURRENT FOCUS",
   title: "Now",
-  subtitle: "A quick snapshot of what I’m working on these days — updating regularly.",
+  subtitle: "What I'm up to right now. I try to update this regularly.",
   cards: [
     {
-      title: "Finishing my Master’s 🎓",
+      title: "Finishing my Master\u2019s \uD83C\uDF93",
       body:
-        "MS in Data Science at Stevens Institute of Technology (graduating May 2026). Currently sharpening my foundations in ML, linear algebra, and data analytics through coursework and projects.",
-      tag: "MS Data Science · May 2026",
+        "MS in Data Science at Stevens, graduating May 2026. Coursework in ML, linear algebra, time series, deep learning. Lots of math, lots of Python.",
+      tag: "MS Data Science \u00B7 May 2026",
     },
     {
-      title: "Applying for roles 🔍",
+      title: "Looking for work \uD83D\uDD0D",
       body:
-        "Actively applying for Data Science / ML internships and early full-time opportunities. Looking for teams where I can build reliable models, ship analytics, and improve decision-making with data.",
+        "Applying to Data Science and ML roles, both internships and full time. I want to be on a team that actually ships models, not just builds slide decks about them.",
       tag: "Open to opportunities",
     },
     {
-      title: "Building projects 🛠️",
+      title: "Building projects \uD83D\uDEE0\uFE0F",
       body:
-        "Building end-to-end projects that go beyond notebooks — clean data pipelines, model training, evaluation, and lightweight deployments with dashboards and APIs.",
-      tag: "Shipping real systems",
+        "Working on projects that go past Jupyter notebooks. Pipelines, model training, evaluation, and getting things deployed with dashboards or APIs.",
+      tag: "Always building",
     },
     {
-      title: "Improving skills 📈",
+      title: "The basics \uD83D\uDCC8",
       body:
-        "Practicing DSA in Python, strengthening SQL for analytics + ETL, and improving my ability to write larger programs cleanly and confidently.",
-      tag: "Leveling up every day",
+        "Practicing data structures in Python, getting faster at SQL, and trying to write cleaner code in general. The fundamentals matter more than I thought.",
+      tag: "Work in progress",
     },
   ],
 };
@@ -77,13 +71,13 @@ export const EDUCATION = [
   {
     school: "Stevens Institute of Technology",
     degree: "Master of Science in Data Science",
-    time: "Aug 2024 – May 2026",
+    time: "Aug 2024 \u2013 May 2026",
     gpa: "GPA: 3.966 / 4.0",
     logo: stevensLogo,
     details: [
-      "Pursuing Graduate Certificate in Applied Statistics (GPA: 3.918 / 4.0) alongside the MS in Data Science, focused on applied ML, statistics, finance, and scalable data systems.",
-      "Graduate Teaching Assistant for MA 574, MA 544, and MA 540, supporting grading, feedback, and course operations across multiple sections.",
-      "Hands-on, project-driven learning across machine learning, deep learning, time series, big data, and financial analytics."
+      "Also doing a Graduate Certificate in Applied Statistics (3.918 GPA) on top of the MS DS. Focused on applied ML, stats, finance, and working with large datasets.",
+      "TA for 3 graduate math courses: Foundational Math for Data Science (MA 574), Numerical Linear Algebra for Big Data (MA 544), and Introduction to Probability Theory (MA 540). Grading and feedback for 89 students.",
+      "Most of my learning happens through projects. I've built things across ML, deep learning, time series, and financial analytics."
     ],
     courses: [
       "Foundational Mathematics for Data Science",
@@ -103,13 +97,13 @@ export const EDUCATION = [
   {
     school: "Manipal Institute of Technology",
     degree: "Bachelor of Technology in Mechatronics Engineering",
-    time: "Oct 2020 – Jul 2024",
+    time: "Oct 2020 \u2013 Jul 2024",
     gpa: "GPA: 7.83 / 10",
     logo: mitLogo,
     details: [
-      "Served as Class Representative, acting as a liaison between faculty and students and handling academic and administrative queries.",
-      "Mechatronics Peer Programme Coordinator, guiding juniors, supporting coursework and projects, and organizing peer-learning initiatives.",
-      "Built a strong applied engineering foundation in robotics, embedded systems, sensors, and machine vision with exposure to fintech and analytics."
+      "Was Class Representative for my batch. Mostly meant answering a lot of questions and being the go-between for students and faculty.",
+      "Ran the Mechatronics Peer Programme, which was basically tutoring juniors and organizing events.",
+      "Got a solid foundation in robotics, embedded systems, and sensors. Also took electives in financial technology, which is where data science started making sense to me."
     ],
     courses: [
       "Data Structures and Algorithms",
@@ -134,304 +128,210 @@ export const EXPERIENCE = [
   {
     company: "Stevens Institute of Technology",
     role: "Graduate Teaching Assistant",
-    time: "Sep 2025 – May 2026",
+    time: "Sep 2025 \u2013 May 2026",
     location: "Hoboken, NJ",
     logo: stevensLogo,
-
-    // ← NEW: these render as purple pills above the bullets
     stats: [
       "3 Courses Supported",
       "89 Students",
-      "MA 574 · MA 544 · MA 540",
+      "MA 574 \u00B7 MA 544 \u00B7 MA 540",
     ],
-
     bullets: [
-      "Served as Graduate Teaching Assistant for MA 574: Foundational Mathematics for Data Science, MA 544: Numerical Algebra for Big Data and MA 540: Intro to Probability Theory under Dr. Upendra Prasad.",
-      "Evaluated mathematical and programming assignments, quizzes, and exams across multiple course sections, ensuring fair, consistent, and rubric-aligned grading.",
-      "Supported 89 students by delivering clear, constructive, and actionable feedback to improve mathematical reasoning and coding accuracy.",
-      "Maintained accurate grade records, monitored submission trends, and collaborated closely with the course instructor to ensure transparent and timely assessment.",
-      "Utilized Canvas LMS to streamline grading workflows, manage submissions, and provide structured digital feedback at scale.",
-      "Contributed to student learning outcomes by identifying common misconceptions and reinforcing best practices in linear algebra, numerical methods, and data science foundations.",
+      "TA for 3 graduate math courses under Dr. Upendra Prasad: Foundational Math for Data Science (MA 574), Numerical Linear Algebra for Big Data (MA 544), and Introduction to Probability Theory (MA 540).",
+      "Graded assignments, quizzes, and exams across multiple sections. Tried to keep grading consistent and fair, which is harder than it sounds with 89 students.",
+      "Gave written feedback on math and coding work. The goal was always to be specific enough that students could actually fix what went wrong.",
+      "Kept grade records up to date, tracked submission patterns, and flagged issues to the professor when something seemed off.",
+      "Used Canvas for grading and feedback.",
+      "Noticed the same mistakes coming up repeatedly in linear algebra and numerical methods, so I started pointing those out proactively in feedback.",
     ],
   },
   {
     company: "Matrix ComSec Pvt. Ltd.",
     role: "Research & Development Intern",
-    time: "Jan 2024 – May 2024",
+    time: "Jan 2024 \u2013 May 2024",
     location: "Vadodara, Gujarat, India",
     logo: matrixLogo,
-
-    // ← NEW: key numbers surface immediately above the bullets
     stats: [
       "91.39% Test Accuracy",
       "100,000+ Images Annotated",
       "YOLOv5 Multi-Person Detection",
     ],
-
     bullets: [
-      "Designed and implemented a real-time human fall detection system using deep learning and computer vision for safety monitoring applications.",
-      "Engineered a hybrid CNN–MediaPipe pipeline for pose estimation and fall classification, improving detection robustness across dynamic body orientations.",
-      "Evaluated multiple architectures (CNN, RNN, BodyPix, R-CNN) and optimized model selection based on accuracy–latency tradeoffs for deployment readiness.",
-      "Integrated YOLOv5 multi-person detection, enabling scalable monitoring across multi-subject live video streams.",
-      "Personally annotated 100,000+ images to enhance dataset quality and improve generalization performance.",
-      "Achieved 91.39% test accuracy and validated performance on real-world video feeds.",
-      "Built and evaluated models using TensorFlow, PyTorch, OpenCV, NumPy, and Matplotlib; optimized inference for real-time deployment.",
+      "Built a fall detection system using deep learning and computer vision. The idea was to detect when someone falls in a live video feed and flag it for safety monitoring.",
+      "Tried a bunch of approaches (CNN, RNN, BodyPix, R-CNN) before landing on a hybrid CNN + MediaPipe pipeline for pose estimation. It handled different body orientations better than the alternatives.",
+      "Added YOLOv5 for multi person detection so the system could track several people at once in the same frame.",
+      "Annotated over 100,000 images myself. It was tedious but it made a real difference in how well the model generalized.",
+      "Got to 91.39% test accuracy and tested it on actual video feeds, not just test sets.",
+      "Used TensorFlow, PyTorch, OpenCV, NumPy, and Matplotlib. Spent a lot of time optimizing inference speed to keep things real time.",
     ],
   },
 ];
 
-// Projects: short = card, long = modal
-// ── Drop-in replacement for your PROJECTS export in portfolio.js ──
-
 export const PROJECTS = [
-
-  // ── Machine Learning & AI 🤖──
+  // \u2500\u2500 Machine Learning & AI \uD83E\uDD16\u2500\u2500
   {
     id: "insightforgeai",
     category: "ml",
     title: "Insight Forge AI: LLM-Powered Data Profiling System",
-    short: "Modular Auto-EDA engine + ML readiness scoring + Groq LLaMA insights + Streamlit dashboard + PDF reporting.",
-    tech: "Python · Scikit-learn · Pandas · Plotly · Streamlit · Groq · ReportLab · NumPy",
+    short: "Upload any dataset and get a full EDA report with anomaly detection, health scores, and LLM-generated insights. Deployed on Streamlit Cloud.",
+    tech: "Python \u00B7 Scikit-learn \u00B7 Pandas \u00B7 Plotly \u00B7 Streamlit \u00B7 Groq \u00B7 ReportLab \u00B7 NumPy",
     github: "https://github.com/aekankpatel/insightforgeai/",
     live: "https://insightforgeai.streamlit.app",
-    long: `Built an end-to-end automated exploratory data analysis platform that profiles datasets, detects anomalies, scores ML readiness, and generates LLM-powered insights through a modular agentic pipeline.
+    impact: "8 module Auto-EDA pipeline deployed on Streamlit Cloud with LLM insights",
+    long: `I wanted a tool where you could drop in any CSV and get a useful EDA report without writing code. So I built one.
 
-What I Built:
-• Architected InsightForge AI, a full-stack Auto-EDA system with 8 independent Python modules covering data profiling, anomaly detection, correlation analysis, feature summarization, health scoring, data cleaning, ML readiness evaluation, and LLM insight generation.
-• Designed a single-API-call optimization for Groq-hosted LLaMA 3.1 that generates all three insight sections (overview, anomalies, correlations) in one request to stay within free-tier rate limits.
-• Built 10 synthetic sample datasets (Titanic, Credit Card Fraud, Diabetes, Stock Market, etc.) with realistic distributions, class imbalance, and missing value patterns for out-of-the-box demos.
+It has 8 Python modules that run in sequence: profiling, anomaly detection, correlation analysis, feature summaries, a health scorecard, data cleaning, ML readiness scoring, and LLM insight generation via Groq-hosted LLaMA 3.1.
 
-System Design:
-• Implemented secure server-side API key management with a priority resolution chain: Streamlit Secrets → environment variable → fallback UI input, preventing key exposure in browser DevTools.
-• Engineered a session state architecture to persist analysis results, chat history, cleaning state, and dataset history across Streamlit reruns without database dependencies.
-• Computed a 5-dimension Dataset Health Scorecard (Completeness, Consistency, Outlier Health, Feature Quality, Correlation Structure) with programmatic scoring and letter grades.
+The tricky part was staying within Groq's free tier rate limits. I ended up designing a single API call that generates all three insight sections (overview, anomalies, correlations) in one request instead of three separate ones. That solved it.
 
-Frontend & Analytics:
-• Built 12-tab Streamlit dashboard with Plotly visualizations including correlation heatmaps, network graphs, outlier boxplot grids, sunburst feature breakdowns, and before/after cleaning comparisons.
-• Shipped a natural language dataset chat interface using Groq with full conversation history, dataset context injection, and suggested question shortcuts.
-• Implemented one-click PDF report export using ReportLab, generating structured reports with summary tables, missing value analysis, correlation findings, and LLM insights.
+I also built 10 synthetic sample datasets with realistic class imbalance and missing values so people could try it without uploading anything.
 
-Impact:
-• Demonstrates full-stack ML tooling, LLM integration, agentic pipeline design, and production deployment on Streamlit Cloud with a focus on data quality and ML readiness workflows.`,
+The frontend is a 12-tab Streamlit dashboard with Plotly charts \u2014 heatmaps, network graphs, outlier grids, before/after cleaning comparisons. There's also a chat interface where you can ask questions about your dataset in plain English, and a one-click PDF report export.
+
+One thing I'd do differently: the session state management got messy. I'm persisting everything (analysis results, chat history, cleaning state) in Streamlit session state because there's no database. It works, but it's fragile across reruns.`,
   },
 
   {
     id: "fraudgen",
     category: "ml",
     title: "FRAUDGEN: Unmasking Fraud with Real-Time Explanations",
-    short: "XGBoost-based fraud classifier + rules + Flask APIs + LLaMA explanations + React dashboard.",
-    tech: "Python · XGBoost · Flask · React · SQLite · Recharts · LLaMA",
+    short: "Classifies transactions into four risk tiers using XGBoost, then explains why using LLaMA. Full stack with Flask backend and React dashboard.",
+    tech: "Python \u00B7 XGBoost \u00B7 Flask \u00B7 React \u00B7 SQLite \u00B7 Recharts \u00B7 LLaMA",
     github: "https://github.com/aekankpatel/FraudGen",
     live: "https://fraud-gen.vercel.app",
-    long: `Built an end-to-end fraud detection system that classifies transactions into Legitimate, Needs Review, High Risk, and Confirmed Fraud.
+    impact: "Multi-tier fraud classifier on 6.36M transactions with LLaMA explanations",
+    long: `The idea was simple: don't just flag fraud, explain why it's suspicious. Most fraud systems give you a score. I wanted mine to say "this transaction is flagged because the amount is 4x the user's average and it came from a new IP in a different country."
 
-What I Built:
-• Architected FraudGen, a full-stack system combining an XGBoost model with rule-based refinement to assign multi-tier risk labels (Legitimate, Needs Review, High Risk, Confirmed Fraud).
-• Trained on PaySim dataset (6.36M transactions, 0.129% fraud) using 5-fold stratified temporal validation to handle extreme imbalance.
-• Engineered behavioral and transactional features including balance shifts, transaction velocity, cross-border mismatches, and IP anomaly signals.
+Trained an XGBoost model on the PaySim dataset (6.36M transactions, only 0.129% fraud). The class imbalance was brutal \u2014 I used 5-fold stratified temporal validation to deal with it. On top of the model output, I added rule-based refinement to sort transactions into Legitimate, Needs Review, High Risk, and Confirmed Fraud.
 
-System Design:
-• Developed Flask REST APIs for real-time scoring and structured transaction storage in SQLite.
-• Integrated LLaMA to generate contextual natural-language explanations for high-risk and cross-border transactions.
-• Enriched transactions via IPInfo API for geolocation, VPN/proxy detection, and automated risk escalation logic.
+For the explanations, I hooked up LLaMA via Groq to generate plain English summaries of why each high-risk transaction got flagged. Also added IPInfo for geolocation and VPN detection.
 
-Frontend & Analytics:
-• Built a React + Tailwind dashboard with Recharts visualizing fraud trends, severity distributions, and geolocation intelligence.
-• Designed modular architecture separating ML pipeline, backend services, and frontend UI for scalability and cloud readiness.
+The frontend is a React + Tailwind dashboard with Recharts showing fraud trends, severity breakdowns, and a map view. Flask handles the API layer, SQLite stores transactions.
 
-Impact:
-• Demonstrates applied ML + explainable AI + product engineering in a production-style fraud monitoring system.`,
+What I'd change: the rule layer and ML layer sometimes disagree on edge cases. I'd probably add a conflict resolution mechanism if I rebuilt this.`,
   },
 
   {
     id: "finrag",
     category: "ml",
     title: "FinRAG: Financial Document Intelligence System",
-    short: "RAG pipeline over 25 SEC filings & earnings transcripts; HuggingFace embeddings + Groq LLaMA; deployed on Streamlit Cloud.",
-    tech: "Python · LlamaIndex · HuggingFace · Groq · LLaMA · Streamlit",
+    short: "Ask questions about SEC filings and earnings calls in plain English. RAG system over 25 financial documents, deployed on Streamlit.",
+    tech: "Python \u00B7 LlamaIndex \u00B7 HuggingFace \u00B7 Groq \u00B7 LLaMA \u00B7 Streamlit",
     github: "https://github.com/aekankpatel/finrag",
     live: "https://fin-rag.streamlit.app",
-    long: `Built an end-to-end Retrieval-Augmented Generation system for querying 25 financial documents including SEC 10-K/10-Q filings, earnings call transcripts, and macroeconomic reports.
+    impact: "RAG over 25 SEC filings, 80% eval pass rate",
+    long: `I built this because reading 10-K filings is painful. The idea was: upload a bunch of SEC filings and earnings transcripts, then ask questions in plain English and get answers with source citations.
 
-What I Built:
-• Architected a full RAG pipeline using LlamaIndex: PDF ingestion, text chunking (14,055 nodes), HuggingFace BGE embeddings, and vector similarity search with metadata filtering.
-• Replaced local Ollama inference with Groq-hosted LLaMA 3.1 for cloud deployment, bypassing LlamaIndex's LLM layer entirely to call Groq SDK directly.
-• Designed auto-company detection logic that maps query keywords to source documents for targeted retrieval.
+The pipeline uses LlamaIndex for PDF ingestion and chunking (ended up with 14,055 text nodes), HuggingFace BGE embeddings for vector search, and Groq-hosted LLaMA 3.1 for answer generation.
 
-System Design:
-• Built Google Drive-based index distribution: 4 vector store files (~150MB) auto-downloaded at app startup via gdown, eliminating GitHub file size constraints.
-• Implemented source-level metadata filtering to restrict retrieval to specific filings per query.
-• Managed full MLOps lifecycle: local Ollama prototyping → HuggingFace embeddings → Groq inference → Streamlit Cloud deployment.
+Getting this deployed was the hardest part. I started with local Ollama for inference, but that doesn't work on Streamlit Cloud. Switched to Groq, but had to bypass LlamaIndex's LLM layer entirely and call the Groq SDK directly. The vector index files were ~150MB, too big for GitHub, so I hosted them on Google Drive and download them at startup.
 
-Frontend & UX:
-• Shipped production Streamlit app with compare mode (side-by-side document Q&A), retrieval confidence scoring, chat history, and export functionality.
-• Designed dark-themed UI with custom CSS, color-coded confidence indicators, and suggested question shortcuts.
+The app has a compare mode where you can ask the same question to two different companies side by side. Also added confidence scores and source highlighting.
 
-Evaluation:
-• Ran custom evaluation framework across 10 domain-specific financial queries achieving 80% pass rate and 0.57 average keyword recall score.
-
-Impact:
-• Demonstrates end-to-end RAG engineering, cloud deployment, and applied NLP on real-world financial corpora.`,
+I ran an evaluation on 10 financial queries and got an 80% pass rate with 0.57 average keyword recall. Not amazing, but honest \u2014 retrieval over long financial documents is hard, especially when the answer spans multiple sections.`,
   },
 
   {
     id: "pneumonia-detection",
     category: "ml",
     title: "Deep Learning for Pneumonia Detection",
-    short: "Chest X-ray classifier with augmentation; CNN 96.64%, MobileNet 95.00%, ensemble 97.23%.",
-    tech: "Python · TensorFlow · CNN · MobileNet · Medical Imaging",
+    short: "Can a CNN tell if a chest X-ray shows pneumonia? Trained two models and combined them. 97.23% accuracy on the ensemble.",
+    tech: "Python \u00B7 TensorFlow \u00B7 CNN \u00B7 MobileNet \u00B7 Medical Imaging",
     github: "https://github.com/aekankpatel/Pneumonia_Detection",
     live: "",
-    long: `Built and fine-tuned deep learning models to detect pneumonia from chest X-rays.
+    impact: "97.23% ensemble accuracy on chest X-ray classification",
+    long: `This was a straightforward image classification project but I learned a lot about how augmentation affects medical imaging.
 
-Model Development:
-• Applied image augmentation to improve generalization on medical imaging data.
-• Trained custom CNN achieving 96.64% test accuracy.
-• Fine-tuned MobileNet achieving 95.00% accuracy.
+Trained a custom CNN from scratch \u2014 got 96.64% accuracy. Then fine-tuned MobileNet and got 95.00%. Neither was bad, but combining them as an ensemble pushed it to 97.23%.
 
-Ensemble Strategy:
-• Combined CNN + MobileNet outputs via ensemble learning.
-• Achieved 97.23% test accuracy with improved robustness.
+The augmentation mattered more than I expected. Without it, the CNN was overfitting badly on the training set. Random rotations, flips, and zoom brought the gap between train and test accuracy down significantly.
 
-Impact:
-• Demonstrates applied deep learning for medical image classification with production-level performance metrics.`,
+It's a clean project \u2014 not a lot of moving parts \u2014 but it taught me that simpler ensembles often beat trying to build one perfect model.`,
   },
 
-  // ── Data Analysis 📊 ──
+  // \u2500\u2500 Data Analysis \uD83D\uDCCA \u2500\u2500
   {
     id: "oil-airline-bloomberg",
     category: "data",
     title: "Oil and Airline Stocks: An Empirical Study",
-    short: "10+ years Bloomberg data (2015–2025) + multi-factor regressions; market-adjusted returns explain 25–33%.",
-    tech: "Bloomberg Terminal · Python · Econometrics · Regression · Finance",
+    short: "Everyone assumes oil prices drive airline stocks. I used 10 years of Bloomberg data to check. The answer is more nuanced than you'd think.",
+    tech: "Bloomberg Terminal \u00B7 Python \u00B7 Econometrics \u00B7 Regression \u00B7 Finance",
     github: "",
     live: "",
     report: oilAirlineReport,
     medium: "https://medium.com/@aekankpatel/oil-prices-vs-airline-stocks-the-relationship-everyone-gets-wrong-c493da0cf700",
-    long: `Collected and analyzed 10+ years of Bloomberg Terminal data (2015–2025) to study how oil cost pressure impacts airline equity returns.
+    impact: "Market-adjusted models explain 25-33% of airline return variability",
+    long: `The common wisdom is: oil goes up, airline stocks go down. I wanted to see if the data actually supports that.
 
-Data Scope:
-• Collected 10+ years (2015–2025) of Bloomberg Terminal data: WTI crude (CL1), DAL, AAL, UAL, and SPX.
-• Leveraged Bloomberg analytics functions including CRP, CMT, HRA, and GP.
+Pulled 10+ years of Bloomberg data (2015-2025): WTI crude, Delta, American Airlines, United, and the S&P 500. Used Bloomberg's analytics functions (CRP, CMT, HRA, GP) for the raw data.
 
-Methodology:
-• Computed daily log returns and constructed multi-factor regression models controlling for market exposure.
-• Evaluated statistical significance and beta shifts under market-adjusted frameworks.
+When I ran a simple regression of oil on airline returns, the relationship was weak. Oil alone barely explains anything. But when I controlled for the broader market (S&P 500), something interesting happened \u2014 the oil betas flipped negative and became statistically significant.
 
-Key Findings:
-• Oil alone explains minimal airline return variation.
-• After controlling for SPX, oil betas become negative and statistically significant.
-• Market-adjusted models explain ~25–33% of airline return variability.
+So the relationship exists, but only after you strip out the market noise. The adjusted models explain about 25-33% of airline return variability. Not huge, but real.
 
-Impact:
-• Delivered data-driven insights challenging simplistic oil–airline correlations and highlighting importance of market controls.`,
+I wrote a Medium article about this because the "oil kills airlines" narrative is oversimplified and I thought the actual finding was more interesting.`,
   },
 
   {
     id: "netflix-hotel-ts",
     category: "data",
     title: "Time Series Modeling: Netflix Stock & Hotel Bookings",
-    short: "Box–Jenkins workflow; ARIMA/SARIMA selection via AIC/BIC + diagnostics; interpretable forecasts.",
-    tech: "R · ARIMA · SARIMA · ACF/PACF · Ljung-Box · Forecasting",
+    short: "Forecasted Netflix stock prices and hotel booking demand using ARIMA and SARIMA. Full Box-Jenkins workflow in R.",
+    tech: "R \u00B7 ARIMA \u00B7 SARIMA \u00B7 ACF/PACF \u00B7 Ljung-Box \u00B7 Forecasting",
     github: "",
     report: timeSeriesReport,
     live: "",
-    long: `Analyzed two real-world datasets: Netflix adjusted close prices (2002–2022) and monthly hotel booking demand.
+    impact: "ARIMA/SARIMA models with validated white-noise residuals",
+    long: `Two datasets, one workflow. Netflix adjusted close prices (2002-2022) for trend forecasting, and monthly hotel bookings for seasonal demand.
 
-Workflow:
-• Implemented full Box–Jenkins methodology: visualization, log transformation, ADF stationarity testing, differencing.
-• Identified ARIMA/SARIMA structures using ACF/PACF diagnostics.
-• Selected optimal models via AIC/BIC.
+I followed the full Box-Jenkins approach: plotted the data, applied log transforms, ran ADF tests for stationarity, differenced where needed, then used ACF/PACF plots to identify the right ARIMA and SARIMA structures. Model selection came down to AIC/BIC scores.
 
-Validation:
-• Conducted Ljung–Box residual diagnostics to ensure white-noise residuals.
-• Evaluated forecast stability and interpretability.
+The Netflix data was relatively straightforward \u2014 strong upward trend, no seasonality. Hotel bookings were trickier because of the seasonal component. SARIMA handled it well but I had to experiment with the seasonal period to get clean residuals.
 
-Output:
-• Produced long-term Netflix trend projections and seasonality-preserving 12-month forecasts for hotel bookings.
+Ran Ljung-Box tests on all residuals to confirm they looked like white noise. The Netflix projections captured the long-term trend, and the hotel forecasts preserved the monthly seasonality pattern over a 12-month horizon.
 
-Impact:
-• Demonstrates statistical rigor in financial forecasting and seasonal demand modeling.`,
+Honest take: ARIMA models are limited for stock forecasting. They capture trend but miss regime changes completely. I'd pair this with something like GARCH for volatility if I did it again.`,
   },
 
   {
     id: "usd-inr",
     category: "data",
-    title: "Effects of Factors Affecting USD–INR Exchange Rates",
-    short: "20-year analysis (2002–2022) using correlation + regression to study macroeconomic drivers.",
-    tech: "Python · Statsmodels · Econometrics · Regression",
+    title: "Effects of Factors Affecting USD\u2013INR Exchange Rates",
+    short: "What actually moves the rupee against the dollar? Tested 20 years of macro data to find out.",
+    tech: "Python \u00B7 Statsmodels \u00B7 Econometrics \u00B7 Regression",
     github: "https://github.com/aekankpatel/USD_INR",
     live: "",
-    long: `Analyzed factors impacting USD–INR exchange rate movements over 20 years (2002–2022).
+    impact: "20-year regression identifying key macro drivers of INR volatility",
+    long: `I grew up in India and always heard people blame different things for the rupee falling \u2014 inflation, trade deficit, oil prices. I wanted to check which ones actually matter statistically.
 
-Data & Framework:
-• Aggregated macroeconomic indicators including inflation, interest rates, trade balance, and foreign reserves.
-• Structured time-aligned datasets for regression-based inference.
+Collected 20 years (2002-2022) of macroeconomic data: inflation, interest rates, trade balance, foreign reserves, and a few others. Aligned everything by time period and ran correlation analysis first to see what stood out.
 
-Methodology:
-• Performed correlation analysis to identify significant macro relationships.
-• Built multivariate regression models using Statsmodels to quantify macro sensitivity.
-• Evaluated statistical significance, coefficient stability, and model assumptions.
+Then built multivariate regression models in Statsmodels. Checked coefficient stability, ran significance tests, and validated assumptions (normality, homoscedasticity, multicollinearity).
 
-Findings:
-• Identified key macroeconomic variables contributing to exchange-rate volatility.
-• Produced interpretable econometric outputs explaining structural currency movement patterns.
+Some of the "obvious" drivers turned out to be weaker than expected once you control for other variables. Trade balance and foreign reserves had the most consistent explanatory power across different model specifications.
 
-Impact:
-• Demonstrates applied macroeconometrics and long-horizon financial modeling.`,
+It's a straightforward econometrics project, but I liked it because the question was personal and the answer was less obvious than I assumed going in.`,
   },
 
   {
     id: "life-expectancy",
     category: "data",
     title: "Life Expectancy Data Analysis",
-    short: "WHO dataset (193 countries); EDA + hypothesis tests + models (RF R²≈0.97, RMSE≈1.67).",
-    tech: "Python · EDA · Statistics · Random Forest · Regression",
+    short: "What predicts how long people live in different countries? Ran stats and ML on WHO data from 193 countries. Random Forest got R-squared of 0.97.",
+    tech: "Python \u00B7 EDA \u00B7 Statistics \u00B7 Random Forest \u00B7 Regression",
     github: "",
     live: "",
-    long: `Performed a comprehensive statistical analysis on WHO life expectancy data (193 countries, 2000–2015).
+    impact: "Random Forest R-squared 0.97 on WHO data across 193 countries",
+    long: `Started with a simple question: across 193 countries and 15 years of WHO data, what actually predicts life expectancy?
 
-Data Preparation:
-• Cleaned and standardized multi-country health indicators using median imputation, z-score outlier filtering, encoding, and normalization.
-• Structured longitudinal panel data for consistent cross-country comparison.
+The data needed a lot of cleaning. Missing values across countries, outliers in health spending data, inconsistent encoding. Used median imputation, z-score filtering, and normalization to get it into shape.
 
-Exploratory & Statistical Analysis:
-• Conducted EDA using boxplots, heatmaps, distribution analysis, and temporal trend visualization.
-• Performed hypothesis testing including Z-tests, Chi-Square tests, one-way ANOVA, and Tukey HSD for post-hoc comparisons.
+For the exploratory analysis I used boxplots, heatmaps, and distribution plots. Then ran formal hypothesis tests \u2014 Z-tests, Chi-Square, one-way ANOVA with Tukey HSD for post-hoc comparisons.
 
-Modeling:
-• Built Multiple Linear Regression model achieving R² ≈ 0.82.
-• Developed Random Forest Regression achieving R² ≈ 0.97 and RMSE ≈ 1.67.
+Built a linear regression first (R-squared around 0.82), then a Random Forest that jumped to 0.97 with RMSE of 1.67. The gap was surprising \u2014 the nonlinear relationships between variables like HIV/AIDS prevalence and income composition really benefit from tree-based models.
 
-Insights:
-• Identified HIV/AIDS prevalence, income composition index, and adult mortality as dominant life-expectancy predictors.
-
-Impact:
-• Demonstrates end-to-end statistical reasoning, hypothesis validation, and high-performance predictive modeling on global health data.`,
+The strongest predictors were HIV/AIDS prevalence, income composition, and adult mortality. Some variables I expected to matter (like healthcare spending) were weaker than I thought once you controlled for income.`,
   },
-
-  // ── Commented out ──
-  // {
-  //   id: "vehicle-speed",
-  //   category: "ml",
-  //   title: "Speed Measurement of Vehicles (Computer Vision)",
-  //   short: "CV-based vehicle speed estimation using detection + tracking and pixel-motion across frames.",
-  //   tech: "Python · OpenCV · Computer Vision · Tracking",
-  //   github: "https://github.com/aekankpatel/Speed_Measurements_of_Vehicles",
-  //   live: "",
-  //   long: `...`,
-  // },
-
-  // {
-  //   id: "insurance-claim",
-  //   category: "ml",
-  //   title: "Insurance Claim Prediction using Deep Learning",
-  //   short: "Binary classification pipeline (10,302 rows) with MLP + TabNet ensemble; strong ROC/PR and calibration.",
-  //   tech: "Python · TabNet · MLP · XGBoost · Random Forest · LightGBM · Model Evaluation",
-  //   github: "",
-  //   live: "",
-  //   long: `...`,
-  // },
 ];
 
 
@@ -566,14 +466,16 @@ export const CERTIFICATIONS = [
   {
     id: "google-data-analytics",
     title: "Google Data Analytics",
-    issuer: "Google · Coursera",
+    issuer: "Google \u00B7 Coursera",
+    desc: "Where I first learned the full analytics workflow \u2014 spreadsheets, SQL, Tableau, and thinking about data cleaning properly.",
     badge: "/logos/google.png",
     link: "https://www.coursera.org/account/accomplishments/specialization/certificate/3JLUGFNQVEEE",
   },
   {
     id: "ibm-ai-engineering",
     title: "IBM AI Engineering",
-    issuer: "IBM · Coursera",
+    issuer: "IBM \u00B7 Coursera",
+    desc: "Deep learning with TensorFlow and Keras. My first serious exposure to neural networks.",
     badge: "/logos/ibm.png",
     link: "https://www.coursera.org/account/accomplishments/specialization/4GP8HGGM8HBU",
   },
@@ -581,6 +483,7 @@ export const CERTIFICATIONS = [
     id: "aws-cloud-foundations",
     title: "AWS Cloud Foundations",
     issuer: "AWS",
+    desc: "Basics of cloud infra \u2014 EC2, S3, IAM. Helped me understand how deployed apps actually run.",
     badge: "/logos/awscf.png",
     link: "https://www.credly.com/badges/463d6e11-fa00-4c7f-806f-732a82aafbd3",
   },
@@ -588,6 +491,7 @@ export const CERTIFICATIONS = [
     id: "aws-data-engineering",
     title: "AWS Data Engineering",
     issuer: "AWS",
+    desc: "Data pipelines on AWS \u2014 Glue, Redshift, S3. Useful for thinking about scale.",
     badge: "/logos/awsde.png",
     link: "https://www.credly.com/badges/5eb28d13-eab2-4769-b437-550e83b2bc1e/public_url",
   },
@@ -595,13 +499,15 @@ export const CERTIFICATIONS = [
     id: "bloomberg-market-concepts",
     title: "Bloomberg Market Concepts (BMC)",
     issuer: "Bloomberg for Education",
+    desc: "Fixed income, equities, currencies, commodities. Gave me the finance vocabulary I needed.",
     badge: "/logos/bloomberg.png",
     link: "https://portal.bloombergforeducation.com/certificates/K9TARksDTbVAsVMjzUceWYMT",
   },
   {
     id: "python-for-everybody",
-    title: "Python for Everybody Specialization",
-    issuer: "University of Michigan · Coursera",
+    title: "Python for Everybody",
+    issuer: "University of Michigan \u00B7 Coursera",
+    desc: "The course that got me started with Python back in college. Still recommend it.",
     link: "https://www.coursera.org/account/accomplishments/specialization/certificate/LBSKYLVNXD8H",
     badge: "/logos/um.png",
   },
@@ -609,6 +515,7 @@ export const CERTIFICATIONS = [
     id: "matlab-onramp",
     title: "MATLAB Onramp",
     issuer: "MathWorks",
+    desc: "Used MATLAB for signal processing coursework. Not my daily driver, but good to know.",
     link: "https://matlabacademy.mathworks.com/progress/share/certificate.html?id=a4b379b7-6ea3-4f08-98b1-7f5746741ff5&",
     badge: "/logos/matlab.png",
   },
@@ -616,6 +523,7 @@ export const CERTIFICATIONS = [
     id: "sql-essential-training",
     title: "SQL Essential Training",
     issuer: "LinkedIn Learning",
+    desc: "Filled in the gaps in my SQL knowledge. Joins, subqueries, window functions.",
     link: "https://www.linkedin.com/learning/certificates/b1a021f81e9166c07ada8a6a2f0ba7fcc6109a9832fbfee70c31168a36b4c5e8?trk=share_certificate",
     badge: "/logos/ll.png",
   }
