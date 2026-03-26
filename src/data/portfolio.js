@@ -314,32 +314,12 @@ It is a straightforward econometrics project, but I liked it because the questio
   },
 
   {
-    id: "life-expectancy",
-    category: "data",
-    title: "Life Expectancy Data Analysis",
-    short: "What predicts how long people live in different countries? I ran statistics and ML on WHO data from 193 countries. Random Forest achieved an R-squared of 0.97.",
-    tech: "Python \u00B7 EDA \u00B7 Statistics \u00B7 Random Forest \u00B7 Regression",
-    github: "",
-    live: "",
-    impact: "Random Forest R-squared of 0.97 on WHO data across 193 countries",
-    long: `I started with a simple question: across 193 countries and fifteen years of WHO data, what actually predicts life expectancy?
-
-The data needed a lot of cleaning. There were missing values across countries, outliers in health spending data, and inconsistent encoding. I used median imputation, z-score filtering, and normalization to get it into shape.
-
-For the exploratory analysis, I used boxplots, heatmaps, and distribution plots. Then I ran formal hypothesis tests: Z-tests, Chi-Square, one-way ANOVA with Tukey HSD for post-hoc comparisons.
-
-I built a linear regression first (R-squared around 0.82), then a Random Forest that jumped to 0.97 with an RMSE of 1.67. The gap was surprising. The nonlinear relationships between variables like HIV/AIDS prevalence and income composition really benefit from tree-based models.
-
-The strongest predictors were HIV/AIDS prevalence, income composition, and adult mortality. Some variables I expected to matter (like healthcare spending) were weaker than I thought once you controlled for income.`,
-  },
-
-  {
     id: "ecommerce-dashboard",
     category: "data",
     title: "E-Commerce Sales Dashboard",
     short: "Built a full analytics pipeline on 541K retail transactions. SQL for cleaning and segmentation, Tableau for dashboards. Found that 43% of customers drive 88% of revenue.",
     tech: "SQL \u00B7 SQLite \u00B7 Tableau \u00B7 Excel \u00B7 Data Cleaning \u00B7 RFM Segmentation",
-    github: "https://github.com/aekankpatel/ecommerce-dashboard",
+    github: "",
     tableau: "https://public.tableau.com/app/profile/aekank.patel/viz/E-commerceSalesDashboard_17744839619360/Dashboard1",
     impact: "RFM segmentation across 4,338 customers revealing that Champions drive 88% of \u00A38.9M revenue",
     long: `This started as a SQL practice project but turned into something more interesting once I started digging into the customer data.
@@ -353,24 +333,6 @@ The SQL work covered most of what you would need in practice: aggregations, mult
 The findings were interesting. Champions (1,883 customers, 43% of the base) account for 88% of total revenue (\u00A37.84M out of \u00A38.9M). The At Risk segment has 1,085 customers worth \u00A3476K. Thursday is the peak revenue day, and 85% of sales happen between 9 AM and 3 PM, which suggests this is more of a B2B wholesale operation than a typical consumer store.
 
 I built Tableau dashboards for revenue trends, geographic breakdowns, product rankings, and the customer segment distribution. The UK dominates at 82% of revenue, with the Netherlands, Ireland, and Germany as the top international markets.`,
-  },
-
-  {
-    id: "prepowl",
-    category: "web",
-    title: "PrepOwl: Entrance Exam Practice Platform",
-    short: "A timed, subject-wise entrance exam simulator with instant scoring and answer review. Built for students preparing for competitive exams.",
-    tech: "HTML \u00B7 CSS \u00B7 JavaScript",
-    github: "https://github.com/aekankpatel/prepowl",
-    live: "https://aekankpatel.com/prepowl",
-    impact: "Subject-wise timed quizzes with instant feedback and score breakdown",
-    long: `I built this because most entrance exam prep tools are either bloated or behind a paywall. I wanted something clean, fast, and usable without logging in.
-
-It is a static web app: no backend, no database. The questions are loaded from a JavaScript file, the timer runs client-side, and the scoring happens instantly on submission.
-
-The UI walks you through subject selection, a timed exam session, and a review screen showing which answers were correct and why. Everything is accessible on any device without installing anything.
-
-I kept the stack intentionally simple. HTML, CSS, and vanilla JavaScript. No frameworks, no build tools. It loads fast and works anywhere.`,
   },
 ];
 
