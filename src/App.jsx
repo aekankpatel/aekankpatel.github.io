@@ -281,7 +281,7 @@ export default function App() {
               {/* Quick-stats strip */}
               <div className="heroStats">
                 <div className="heroStat">
-                  <span className="heroStatNum">8</span>
+                  <span className="heroStatNum">10</span>
                   <span className="heroStatLabel">Key Projects</span>
                 </div>
                 <div className="heroStatDivider" />
@@ -441,12 +441,54 @@ export default function App() {
         <SectionDivider />
         <section id="projects" className="section revealFromTop" ref={projectsRef}>
           <span className="sectionKicker">Selected Work</span><h2>Projects</h2>
-          {[{ key: "ml", label: "Machine Learning & AI 🤖" }, { key: "data", label: "Data Analysis 📊" }].map(({ key, label }) => {
-            const group = PROJECTS.filter((p) => p.category === key); if (!group.length) return null;
-            return (
-              <div key={key} className="projectGroup"><h3 className="projectGroupTitle">{label}</h3>
+
+          {/* Row 1: Machine Learning & AI (4 cards) */}
+          <div className="projectGroup"><h3 className="projectGroupTitle">Machine Learning & AI 🤖</h3>
+            <div className="projects staggerChildren">
+              {PROJECTS.filter((p) => p.category === "ml").map((p) => (
+                <div key={p.id} className="projectCard">
+                  <h3 className="projectCardTitle">{p.title}</h3><p className="projectCardShort">{p.short}</p>
+                  <div className="projectChipWrap">{p.tech.split(" · ").map((t) => <span key={t} className="projectChip">{t}</span>)}</div>
+                  <div className="projectActions">
+                    <button className="projectActionBtn projectActionPrimary" onClick={() => setActiveProject(p)} type="button">View Details →</button>
+                    {p.github ? <a className="projectActionBtn" href={p.github} target="_blank" rel="noreferrer" onClick={(e) => e.stopPropagation()}>GitHub</a> : null}
+                    {p.live ? <a className="projectActionBtn" href={p.live} target="_blank" rel="noreferrer" onClick={(e) => e.stopPropagation()}>Live Demo</a> : null}
+                    {p.medium ? <a className="projectActionBtn" href={p.medium} target="_blank" rel="noreferrer" onClick={(e) => e.stopPropagation()}>Medium</a> : null}
+                    {p.report ? <a className="projectActionBtn" href={p.report} target="_blank" rel="noreferrer" onClick={(e) => e.stopPropagation()}>Report</a> : null}
+                    {p.tableau ? <a className="projectActionBtn" href={p.tableau} target="_blank" rel="noreferrer" onClick={(e) => e.stopPropagation()}>Tableau</a> : null}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Row 2: Data Analysis with Python/R (first 4 cards) */}
+          <div className="projectGroup"><h3 className="projectGroupTitle">Data Analysis · Python & R 📊</h3>
+            <div className="projects staggerChildren">
+              {PROJECTS.filter((p) => p.category === "data").slice(0, 4).map((p) => (
+                <div key={p.id} className="projectCard">
+                  <h3 className="projectCardTitle">{p.title}</h3><p className="projectCardShort">{p.short}</p>
+                  <div className="projectChipWrap">{p.tech.split(" · ").map((t) => <span key={t} className="projectChip">{t}</span>)}</div>
+                  <div className="projectActions">
+                    <button className="projectActionBtn projectActionPrimary" onClick={() => setActiveProject(p)} type="button">View Details →</button>
+                    {p.github ? <a className="projectActionBtn" href={p.github} target="_blank" rel="noreferrer" onClick={(e) => e.stopPropagation()}>GitHub</a> : null}
+                    {p.live ? <a className="projectActionBtn" href={p.live} target="_blank" rel="noreferrer" onClick={(e) => e.stopPropagation()}>Live Demo</a> : null}
+                    {p.medium ? <a className="projectActionBtn" href={p.medium} target="_blank" rel="noreferrer" onClick={(e) => e.stopPropagation()}>Medium</a> : null}
+                    {p.report ? <a className="projectActionBtn" href={p.report} target="_blank" rel="noreferrer" onClick={(e) => e.stopPropagation()}>Report</a> : null}
+                    {p.tableau ? <a className="projectActionBtn" href={p.tableau} target="_blank" rel="noreferrer" onClick={(e) => e.stopPropagation()}>Tableau</a> : null}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Row 3: Remaining Data Analysis + Web Apps side by side */}
+          <div className="projectGroup">
+            <div className="projectRowSplit">
+              <div className="projectRowSplitCol">
+                <h3 className="projectGroupTitle">Data Analysis · SQL & Tableau 📊</h3>
                 <div className="projects staggerChildren">
-                  {group.map((p) => (
+                  {PROJECTS.filter((p) => p.category === "data").slice(4).map((p) => (
                     <div key={p.id} className="projectCard">
                       <h3 className="projectCardTitle">{p.title}</h3><p className="projectCardShort">{p.short}</p>
                       <div className="projectChipWrap">{p.tech.split(" · ").map((t) => <span key={t} className="projectChip">{t}</span>)}</div>
@@ -456,13 +498,30 @@ export default function App() {
                         {p.live ? <a className="projectActionBtn" href={p.live} target="_blank" rel="noreferrer" onClick={(e) => e.stopPropagation()}>Live Demo</a> : null}
                         {p.medium ? <a className="projectActionBtn" href={p.medium} target="_blank" rel="noreferrer" onClick={(e) => e.stopPropagation()}>Medium</a> : null}
                         {p.report ? <a className="projectActionBtn" href={p.report} target="_blank" rel="noreferrer" onClick={(e) => e.stopPropagation()}>Report</a> : null}
+                        {p.tableau ? <a className="projectActionBtn" href={p.tableau} target="_blank" rel="noreferrer" onClick={(e) => e.stopPropagation()}>Tableau</a> : null}
                       </div>
                     </div>
                   ))}
                 </div>
               </div>
-            );
-          })}
+              <div className="projectRowSplitCol">
+                <h3 className="projectGroupTitle">Web Apps 🌐</h3>
+                <div className="projects staggerChildren">
+                  {PROJECTS.filter((p) => p.category === "web").map((p) => (
+                    <div key={p.id} className="projectCard">
+                      <h3 className="projectCardTitle">{p.title}</h3><p className="projectCardShort">{p.short}</p>
+                      <div className="projectChipWrap">{p.tech.split(" · ").map((t) => <span key={t} className="projectChip">{t}</span>)}</div>
+                      <div className="projectActions">
+                        <button className="projectActionBtn projectActionPrimary" onClick={() => setActiveProject(p)} type="button">View Details →</button>
+                        {p.github ? <a className="projectActionBtn" href={p.github} target="_blank" rel="noreferrer" onClick={(e) => e.stopPropagation()}>GitHub</a> : null}
+                        {p.live ? <a className="projectActionBtn" href={p.live} target="_blank" rel="noreferrer" onClick={(e) => e.stopPropagation()}>Live Demo</a> : null}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
         </section>
 
         {/* ═══════════ CERTIFICATIONS ═══════════ */}
@@ -533,6 +592,7 @@ export default function App() {
                   {activeProject.live ? <a className="btn primary" href={activeProject.live} target="_blank" rel="noreferrer">Live Demo</a> : null}
                   {activeProject.medium ? <a className="btn primary" href={activeProject.medium} target="_blank" rel="noreferrer">Medium</a> : null}
                   {activeProject.report ? <a className="btn primary" href={activeProject.report} target="_blank" rel="noreferrer">View Report</a> : null}
+                  {activeProject.tableau ? <a className="btn primary" href={activeProject.tableau} target="_blank" rel="noreferrer">Tableau</a> : null}
                 </div>
               </div>
             </div>

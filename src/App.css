@@ -897,6 +897,29 @@ html[data-theme="light"] .heroPhotoBorder:hover {
 .projectGroupTitle { font-family: var(--font-display); font-size: 20px; font-weight: 600; margin: 0 0 16px; letter-spacing: -0.5px; }
 .projects { display: grid; gap: 14px; grid-template-columns: repeat(4, 1fr); }
 
+/* Split row: two categories side by side */
+.projectRowSplit {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+.projectRowSplitCol .projects {
+  grid-template-columns: 1fr;
+}
+.projects.projects5 { grid-template-columns: repeat(5, 1fr); }
+
+.projectRowLabels {
+  display: grid;
+  grid-template-columns: 4fr 1fr;
+  gap: 14px;
+  align-items: end;
+  margin-bottom: 0;
+}
+
+.projectGroupTitleRight {
+  text-align: left;
+}
+
 .projectCard {
   padding: 24px; border-radius: var(--radius-lg); background: var(--bg-glass);
   backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
@@ -1303,6 +1326,8 @@ button:not(.contactFormBtn), a, input, textarea {
    ══════════════════════════════════════════ */
 @media (max-width: 1200px) {
   .projects, .certGridBig, .skillsGrid { grid-template-columns: repeat(3, 1fr); }
+  .projects.projects5 { grid-template-columns: repeat(3, 1fr); }
+  .projectRowLabels { grid-template-columns: 1fr; }
   .nowGrid { grid-template-columns: repeat(2, 1fr); }
 }
 
@@ -1318,6 +1343,7 @@ button:not(.contactFormBtn), a, input, textarea {
 
   .whatTitle { font-size: 36px; }
   .projects, .certGridBig, .skillsGrid { grid-template-columns: repeat(2, 1fr); }
+  .projects.projects5 { grid-template-columns: repeat(2, 1fr); }
   .eduRow { grid-template-columns: 68px 1fr; padding: 22px; }
   .logoCircle { width: 56px; height: 56px; }
   .eduSchool { font-size: 20px; }
@@ -1385,6 +1411,7 @@ button:not(.contactFormBtn), a, input, textarea {
     grid-template-columns: 1fr !important;
     gap: 12px;
   }
+  .projectRowSplit { grid-template-columns: 1fr; }
 
   /* Education — stack */
   .eduRow { grid-template-columns: 1fr; gap: 10px; padding: 20px; }
