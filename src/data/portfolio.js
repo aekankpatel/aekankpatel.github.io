@@ -26,10 +26,10 @@ export const HERO = {
 export const WHAT_I_DO = {
   title: "What I do",
   intro:
-    "Most of my time goes into figuring out why something happened in a dataset and whether we can predict it next time. I like the full loop\u2014from messy CSVs to a working model.",
+    "Most of my time goes into figuring out why something happened in a dataset and whether we can predict it next time. I like the full loop, from messy CSVs to a working model.",
   bullets: [
     "\u26A1 Build ML systems from scratch: data cleaning, feature work, model training, evaluation, and sometimes a Flask API or Streamlit dashboard on top.",
-    "\u26A1 Comfortable with messy, real-world data. Missing values, weird distributions, inconsistent labels\u2014that is most datasets.",
+    "\u26A1 Comfortable with messy, real-world data. Missing values, weird distributions, inconsistent labels. That is most datasets.",
     "\u26A1 Big on explainability. If a model cannot tell you why it made a prediction, I do not trust it much.",
     "\u26A1 I break things a lot while building. That is usually where I learn the most.",
   ],
@@ -76,7 +76,7 @@ export const EDUCATION = [
     logo: stevensLogo,
     details: [
       "Also pursuing a Graduate Certificate in Applied Statistics (3.918 GPA) alongside the MS in Data Science. Focused on applied ML, statistics, finance, and working with large datasets.",
-      "TA for three graduate math courses: Foundational Math for Data Science (MA 574), Numerical Linear Algebra for Big Data (MA 544), and Introduction to Probability Theory (MA 540). Responsible for grading, feedback, and office hours for 89 students.",
+      "TA for three graduate math courses: Foundational Math for Data Science (MA 574), Numerical Linear Algebra for Big Data (MA 544), and Introduction to Probability Theory (MA 540). Responsible for grading and feedback for 89 students.",
       "Most of my learning happens through projects. I have built things across ML, deep learning, time series, and financial analytics."
     ],
     courses: [
@@ -339,7 +339,7 @@ The strongest predictors were HIV/AIDS prevalence, income composition, and adult
     title: "E-Commerce Sales Dashboard",
     short: "Built a full analytics pipeline on 541K retail transactions. SQL for cleaning and segmentation, Tableau for dashboards. Found that 43% of customers drive 88% of revenue.",
     tech: "SQL \u00B7 SQLite \u00B7 Tableau \u00B7 Excel \u00B7 Data Cleaning \u00B7 RFM Segmentation",
-    github: "",
+    github: "https://github.com/aekankpatel/ecommerce-dashboard",
     tableau: "https://public.tableau.com/app/profile/aekank.patel/viz/E-commerceSalesDashboard_17744839619360/Dashboard1",
     impact: "RFM segmentation across 4,338 customers revealing that Champions drive 88% of \u00A38.9M revenue",
     long: `This started as a SQL practice project but turned into something more interesting once I started digging into the customer data.
@@ -507,7 +507,7 @@ export const CERTIFICATIONS = [
     id: "google-data-analytics",
     title: "Google Data Analytics",
     issuer: "Google \u00B7 Coursera",
-    desc: "Where I first learned the full analytics workflow: spreadsheets, SQL, tableau, R, and thinking about data cleaning properly.",
+    desc: "Where I first learned the full analytics workflow: spreadsheets, SQL, R, and thinking about data cleaning properly.",
     badge: "/logos/google.png",
     link: "https://www.coursera.org/account/accomplishments/specialization/certificate/3JLUGFNQVEEE",
   },
