@@ -319,7 +319,7 @@ It is a straightforward econometrics project, but I liked it because the questio
     title: "E-Commerce Sales Dashboard",
     short: "Built a full analytics pipeline on 541K retail transactions. SQL for cleaning and segmentation, Tableau for dashboards. Found that 43% of customers drive 88% of revenue.",
     tech: "SQL \u00B7 SQLite \u00B7 Tableau \u00B7 Excel \u00B7 Data Cleaning \u00B7 RFM Segmentation",
-    github: "",
+    github: "https://github.com/aekankpatel/ecommerce-dashboard",
     tableau: "https://public.tableau.com/app/profile/aekank.patel/viz/E-commerceSalesDashboard_17744839619360/Dashboard1",
     impact: "RFM segmentation across 4,338 customers revealing that Champions drive 88% of \u00A38.9M revenue",
     long: `This started as a SQL practice project but turned into something more interesting once I started digging into the customer data.
@@ -333,6 +333,49 @@ The SQL work covered most of what you would need in practice: aggregations, mult
 The findings were interesting. Champions (1,883 customers, 43% of the base) account for 88% of total revenue (\u00A37.84M out of \u00A38.9M). The At Risk segment has 1,085 customers worth \u00A3476K. Thursday is the peak revenue day, and 85% of sales happen between 9 AM and 3 PM, which suggests this is more of a B2B wholesale operation than a typical consumer store.
 
 I built Tableau dashboards for revenue trends, geographic breakdowns, product rankings, and the customer segment distribution. The UK dominates at 82% of revenue, with the Netherlands, Ireland, and Germany as the top international markets.`,
+  },
+
+  {
+    id: "noshow-dashboard",
+    category: "data",
+    title: "Patient No-Show Risk Dashboard",
+    short: "Why do patients miss appointments? I analyzed 110K medical records, built a Random Forest model (AUC 0.966), and created dashboards in both HTML and Tableau.",
+    tech: "Python \u00B7 SQL \u00B7 SQLite \u00B7 Random Forest \u00B7 Chart.js \u00B7 Tableau \u00B7 Pandas",
+    tableau: "https://public.tableau.com/app/profile/aekank.patel/viz/noshow_dashboard/PatientNo-ShowRiskDashboard?publish=yes",
+    impact: "AUC of 0.966 on predicting patient no-shows across 110,527 appointments",
+    long: `One in five patients does not show up for their medical appointments. I wanted to figure out why, and whether it is predictable.
+
+The dataset has 110,527 appointments from Vitória, Brazil. About 35% of rows had negative lead times because the scheduled timestamp included time-of-day but the appointment date was always midnight. I clamped those to zero instead of dropping them, which would have cut the dataset by a third.
+
+I normalized everything into three SQLite tables (clinics, patients, appointments) and wrote SQL queries to break down no-show rates by weekday, clinic, age group, and SMS reminder status.
+
+The SMS result was surprising. Patients who received reminders actually had a higher no-show rate (28% vs 17%). It turns out SMS was only being sent to patients already flagged as high risk, so the correlation is misleading.
+
+For the prediction model, I built 13 features and trained a Random Forest (100 trees, max depth 8). The model achieved an AUC of 0.966. The single strongest predictor was prior missed visits. If someone has missed three or more times before, they will very likely miss again. Lead time and age were the next most important factors.
+
+I built two dashboards: a standalone HTML version using Chart.js that works offline, and a Tableau Public dashboard with KPI cards, bar charts by weekday, clinic, and age group, plus a feature importance breakdown from the model.
+
+The main takeaway is simple: call patients with three or more prior misses first. That one variable explains more than everything else combined.`,
+  },
+
+  {
+    id: "life-expectancy",
+    category: "data",
+    title: "Life Expectancy Data Analysis",
+    short: "What predicts how long people live in different countries? I ran statistics and ML on WHO data from 193 countries. Random Forest got an R-squared of 0.97.",
+    tech: "Python \u00B7 EDA \u00B7 Statistics \u00B7 Random Forest \u00B7 Regression",
+    github: "",
+    live: "",
+    impact: "Random Forest R-squared of 0.97 on WHO data across 193 countries",
+    long: `I started with a simple question: across 193 countries and fifteen years of WHO data (2000 to 2015), what actually predicts life expectancy?
+
+The data needed a lot of work before I could do anything useful with it. Missing values across countries, outliers in health spending figures, inconsistent encoding. I cleaned and standardized everything using median imputation, z-score outlier filtering, encoding, and normalization. The goal was to get a consistent longitudinal panel that allowed fair cross-country comparisons.
+
+For the exploratory analysis, I used boxplots, heatmaps, distribution plots, and temporal trend visualizations to get a feel for the data. Then I ran formal hypothesis tests: Z-tests, Chi-Square tests, one-way ANOVA, and Tukey HSD for post-hoc comparisons.
+
+I built a Multiple Linear Regression first and got an R-squared of about 0.82. Then I trained a Random Forest and it jumped to 0.97 with an RMSE of about 1.67. That gap surprised me. The nonlinear relationships between variables like HIV/AIDS prevalence and income composition clearly benefit from tree-based models.
+
+The strongest predictors turned out to be HIV/AIDS prevalence, income composition index, and adult mortality. Some variables I expected to matter a lot, like healthcare spending, were weaker than I thought once you controlled for income. That was probably the most interesting finding.`,
   },
 ];
 

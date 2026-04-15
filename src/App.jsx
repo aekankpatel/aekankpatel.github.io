@@ -281,7 +281,7 @@ export default function App() {
               {/* Quick-stats strip */}
               <div className="heroStats">
                 <div className="heroStat">
-                  <span className="heroStatNum">8</span>
+                  <span className="heroStatNum">10</span>
                   <span className="heroStatLabel">Key Projects</span>
                 </div>
                 <div className="heroStatDivider" />
