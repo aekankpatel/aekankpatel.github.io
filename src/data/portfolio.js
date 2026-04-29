@@ -197,7 +197,7 @@ One thing I would do differently: the session state management got messy. I am p
     title: "FRAUDGEN: Unmasking Fraud with Real-Time Explanations",
     short: "Classifies transactions into four risk tiers using XGBoost, then explains why using LLaMA. Full stack with a Flask backend and React dashboard.",
     tech: "Python \u00B7 XGBoost \u00B7 Flask \u00B7 React \u00B7 SQLite \u00B7 Recharts \u00B7 LLaMA",
-    github: "https://github.com/aekankpatel/FraudGen",
+    github: "https://github.com/aekankpatel/Fraud_Gen",
     live: "https://fraud-gen.vercel.app",
     impact: "Multi-tier fraud classifier on 6.36M transactions with LLaMA explanations",
     long: `The idea was simple: do not just flag fraud, explain why it is suspicious. Most fraud systems give you a score. I wanted mine to say "this transaction is flagged because the amount is four times the user's average and it came from a new IP in a different country."
