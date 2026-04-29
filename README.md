@@ -11,6 +11,7 @@ This site showcases my work in Data Science and Machine Learning, along with exp
 - JavaScript (ES6+)
 
 ## Live
+https://aekankpatel.com
 https://aekankpatel.github.io
 
 ## Copyright
