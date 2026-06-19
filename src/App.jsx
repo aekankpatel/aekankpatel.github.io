@@ -11,8 +11,25 @@ import {
   CERTIFICATIONS,
 } from "./data/portfolio.js";
 
-import { FaGithub, FaLinkedin, FaMedium } from "react-icons/fa";
+import {
+  FaGithub, FaLinkedin, FaMedium,
+  FaCode, FaBrain, FaRobot, FaComments, FaChartBar, FaCubes, FaServer, FaSquareRootAlt, FaUsers,
+  FaBolt, FaArrowUp, FaMoon, FaSun, FaChartLine,
+} from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
+
+/* ── Tech-stack category → icon ── */
+const SKILL_ICONS = {
+  "Programming": FaCode,
+  "Machine Learning": FaBrain,
+  "Deep Learning & AI": FaRobot,
+  "NLP & LLMs": FaComments,
+  "Data Science & Analytics": FaChartBar,
+  "Libraries & Frameworks": FaCubes,
+  "Data Engineering, Backend & Deployment": FaServer,
+  "Mathematics": FaSquareRootAlt,
+  "Interpersonal Skills": FaUsers,
+};
 
 import Lottie from "lottie-react";
 
@@ -192,14 +209,66 @@ function ContactForm() {
   );
 }
 
+/* ── Rotating accent word in the hero tagline ── */
+function RotatingWord({ words, interval = 2200 }) {
+  const [i, setI] = useState(0);
+  useEffect(() => {
+    const id = setInterval(() => setI((x) => (x + 1) % words.length), interval);
+    return () => clearInterval(id);
+  }, [words.length, interval]);
+  return (
+    <span className="rotatingWordWrap">
+      <span className="rotatingWord" key={i}>{words[i]}</span>
+    </span>
+  );
+}
+
+/* ── Animated count-up number (hero stats) ── */
+function CountUp({ value, decimals = 0, prefix = "", suffix = "", duration = 1500, run = true }) {
+  const [n, setN] = useState(0);
+  const done = useRef(false);
+  useEffect(() => {
+    if (!run || done.current) return;
+    let raf;
+    const t0 = performance.now();
+    const tick = (t) => {
+      const p = Math.min(1, (t - t0) / duration);
+      const eased = 1 - Math.pow(1 - p, 3);
+      setN(value * eased);
+      if (p < 1) raf = requestAnimationFrame(tick);
+      else { setN(value); done.current = true; }
+    };
+    raf = requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(raf);
+  }, [run, value, duration]);
+  return <>{prefix}{n.toFixed(decimals)}{suffix}</>;
+}
+
 /* ══════════════════════════════════════════ APP ══════════════════════════════════════════ */
 export default function App() {
   const [activeProject, setActiveProject] = useState(null);
   const [theme, setTheme] = useState("dark");
   const [menuOpen, setMenuOpen] = useState(false);
   const [fontsLoaded, setFontsLoaded] = useState(false);
+  const [activeFilter, setActiveFilter] = useState("All");
   const closeModal = () => setActiveProject(null);
   useCursorSpotlight();
+
+  // Pointer-tracked 3D tilt for the hero photo card
+  const heroCardRef = useRef(null);
+  const handleCardTilt = (e) => {
+    const el = heroCardRef.current; if (!el) return;
+    const r = el.getBoundingClientRect();
+    const px = (e.clientX - r.left) / r.width - 0.5;
+    const py = (e.clientY - r.top) / r.height - 0.5;
+    el.style.setProperty("--tilt-x", `${(-py * 9).toFixed(2)}deg`);
+    el.style.setProperty("--tilt-y", `${(px * 9).toFixed(2)}deg`);
+  };
+  const resetCardTilt = () => {
+    const el = heroCardRef.current; if (!el) return;
+    el.style.setProperty("--tilt-x", "0deg");
+    el.style.setProperty("--tilt-y", "0deg");
+  };
 
   const whatRef = useReveal({ threshold: 0.2, rootMargin: "0px 0px -8% 0px" });
   const nowRef = useReveal(); const eduRef = useReveal(); const expRef = useReveal();
@@ -260,7 +329,7 @@ export default function App() {
               <a href="#contact" onClick={() => setMenuOpen(false)}>Contact</a>
             </nav>
             <button className={`themeSwitch ${theme === "dark" ? "isDark" : "isLight"}`} onClick={toggleTheme} type="button" role="switch" aria-checked={theme === "dark"} aria-label="Toggle theme">
-              <span className="switchThumb"><span className="switchIcon">{theme === "dark" ? "🌙" : "☀️"}</span></span>
+              <span className="switchThumb"><span className="switchIcon">{theme === "dark" ? <FaMoon size={10} /> : <FaSun size={11} />}</span></span>
             </button>
             <button className="hamburger" onClick={() => setMenuOpen(!menuOpen)} aria-label="Toggle menu" type="button">
               <span className="hamburgerLine" /><span className="hamburgerLine" /><span className="hamburgerLine" />
@@ -275,33 +344,33 @@ export default function App() {
             <div className="heroLeft">
               <div className="availableBadge"><span className="availableDot" />Open to Opportunities</div>
               <p className="heroGreeting">Hi, I'm Aekank <span className="waveEmoji">👋</span></p>
-              <p className="heroTagline">I turn <span className="orangeText">messy data</span> into systems <br />that actually <span className="orangeUnderline">make sense</span>.</p>
+              <p className="heroTagline">I turn <RotatingWord words={["messy data", "raw numbers", "noisy signals", "chaos", "spreadsheets"]} /> into systems <br />that actually <span className="orangeUnderline">make sense</span>.</p>
               <p className="subtitle">{HERO?.summary ?? ""}</p>
 
               {/* Quick-stats strip */}
               <div className="heroStats">
                 <div className="heroStat">
-                  <span className="heroStatNum">10</span>
-                  <span className="heroStatLabel">Key Projects</span>
+                  <span className="heroStatNum"><CountUp value={18} run={fontsLoaded} /></span>
+                  <span className="heroStatLabel">Projects</span>
                 </div>
                 <div className="heroStatDivider" />
                 <div className="heroStat">
-                  <span className="heroStatNum">3.97</span>
+                  <span className="heroStatNum"><CountUp value={3.967} decimals={3} run={fontsLoaded} /></span>
                   <span className="heroStatLabel">GPA</span>
                 </div>
                 <div className="heroStatDivider" />
                 <div className="heroStat">
-                  <span className="heroStatNum">4+</span>
+                  <span className="heroStatNum"><CountUp value={5} suffix="+" run={fontsLoaded} /></span>
                   <span className="heroStatLabel">Yrs Python</span>
                 </div>
                 <div className="heroStatDivider" />
                 <div className="heroStat">
-                  <span className="heroStatNum">1</span>
-                  <span className="heroStatLabel">Yr Work Exp</span>
+                  <span className="heroStatNum"><CountUp value={3} suffix="+" run={fontsLoaded} /></span>
+                  <span className="heroStatLabel">yrs SQL</span>
                 </div>
                 <div className="heroStatDivider" />
                 <div className="heroStat">
-                  <span className="heroStatNum">8</span>
+                  <span className="heroStatNum"><CountUp value={8} run={fontsLoaded} /></span>
                   <span className="heroStatLabel">Certifications</span>
                 </div>
               </div>
@@ -309,21 +378,21 @@ export default function App() {
 
             {/* Right — photo card with emojis connected by dashed arc */}
             <div className="heroRight">
-              <div className="heroCardWrap">
+              <div className="heroCardWrap" ref={heroCardRef} onMouseMove={handleCardTilt} onMouseLeave={resetCardTilt}>
                 {/* Dashed arc connecting the two emojis, sweeping around the photo */}
                 <svg className="heroArc" viewBox="0 0 300 480" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                   <path d="M50 460 C10 350, 0 220, 15 140 C30 60, 90 10, 170 0 C230 -8, 270 15, 275 45" stroke="var(--accent)" strokeWidth="3.5" strokeDasharray="16 12" strokeLinecap="round" fill="none" opacity="0.55" />
                 </svg>
 
-                {/* Emoji 1 — bottom-left of photo (start of arc) */}
-                <div className="heroEmoji heroEmoji1">📊</div>
+                {/* Icon badge 1 — bottom-left of photo (start of arc) */}
+                <div className="heroEmoji heroEmoji1"><FaChartBar size={18} /></div>
 
                 <div className="heroPhotoBorder">
                   <img className="heroPhoto" src={myPhoto} alt="Aekank Patel" />
                 </div>
 
-                {/* Emoji 2 — top-right of photo (end of arc) */}
-                <div className="heroEmoji heroEmoji2">📈</div>
+                {/* Icon badge 2 — top-right of photo (end of arc) */}
+                <div className="heroEmoji heroEmoji2"><FaChartLine size={18} /></div>
 
                 <p className="heroPhotoName">Aekank Patel</p>
 
@@ -357,7 +426,12 @@ export default function App() {
               <h2 className="whatTitle">{WHAT_I_DO?.title ?? ""}</h2>
               <p className="whatIntro">{WHAT_I_DO?.intro ?? ""}</p>
               <div className="whatBullets">
-                {(WHAT_I_DO?.bullets ?? []).map((b, i) => <p key={i} className="whatBullet">{b}</p>)}
+                {(WHAT_I_DO?.bullets ?? []).map((b, i) => (
+                  <p key={i} className="whatBullet">
+                    <span className="whatBulletIcon"><FaBolt size={12} /></span>
+                    {b.replace(/^⚡\s*/, "")}
+                  </p>
+                ))}
               </div>
             </div>
           </div>
@@ -368,7 +442,7 @@ export default function App() {
         <section id="now" className="section revealFromTop" ref={nowRef}>
           <span className="sectionKicker">Current Focus</span>
           <h2>{NOW?.title ?? "Now"}</h2>
-          {NOW?.subtitle ? <p className="sectionSubtitle">{NOW.subtitle}<span className="nowTimestamp"> — Last updated March 2026</span></p> : null}
+          {NOW?.subtitle ? <p className="sectionSubtitle">{NOW.subtitle}<span className="nowTimestamp">Last updated June 2026</span></p> : null}
           <div className="nowGrid staggerChildren">
             {(NOW?.cards ?? []).map((c, i) => (
               <div className="nowCard" key={`${c.title}-${i}`}>
@@ -429,11 +503,34 @@ export default function App() {
         <section id="tech-stack" className="section revealFromTop" ref={skillsRef}>
           <span className="sectionKicker">Tools & Technologies</span><h2>Tech Stack</h2>
           <div className="skillsGrid staggerChildren">
-            {(SKILLS ?? []).map((group) => (
-              <div key={group.title} className="skillCard"><h3 className="skillCardTitle">{group.title}</h3>
-                <div className="skillChipWrap">{(group.items ?? []).map((item, i) => <span key={`${group.title}-${i}`} className="skillChip">{item}</span>)}</div>
-              </div>
-            ))}
+            {(() => {
+              const skills = SKILLS ?? [];
+              const cols = 3;
+              const perCol = Math.ceil(skills.length / cols);
+              return Array.from({ length: cols }, (_, col) => {
+                const start = col * perCol;
+                const colGroups = skills.slice(start, start + perCol);
+                if (!colGroups.length) return null;
+                return (
+                  <div className="skillsCol" key={`skillcol-${col}`}>
+                    {colGroups.map((group, gi) => {
+                      const idx = start + gi;
+                      const Icon = SKILL_ICONS[group.title];
+                      return (
+                        <div key={group.title} className="skillCard">
+                          <div className="skillCardHead">
+                            <span className="skillCardIcon">{Icon ? <Icon size={15} /> : <span className="skillCardIndex">{String(idx + 1).padStart(2, "0")}</span>}</span>
+                            <h3 className="skillCardTitle">{group.title}</h3>
+                            <span className="skillCardCount">{(group.items ?? []).length}</span>
+                          </div>
+                          <div className="skillChipWrap">{(group.items ?? []).map((item, i) => <span key={`${group.title}-${i}`} className="skillChip">{item}</span>)}</div>
+                        </div>
+                      );
+                    })}
+                  </div>
+                );
+              });
+            })()}
           </div>
         </section>
 
@@ -442,29 +539,54 @@ export default function App() {
         <section id="projects" className="section revealFromTop" ref={projectsRef}>
           <span className="sectionKicker">Selected Work</span><h2>Projects</h2>
 
-          {[{ key: "ml", label: "Machine Learning & AI 🤖" }, { key: "data", label: "Data Analysis 📊" }].map(({ key, label }) => {
-            const group = PROJECTS.filter((p) => p.category === key); if (!group.length) return null;
-            return (
-              <div key={key} className="projectGroup"><h3 className="projectGroupTitle">{label}</h3>
-                <div className="projects staggerChildren">
-                  {group.map((p) => (
-                    <div key={p.id} className="projectCard">
-                      <h3 className="projectCardTitle">{p.title}</h3><p className="projectCardShort">{p.short}</p>
-                      <div className="projectChipWrap">{p.tech.split(" · ").map((t) => <span key={t} className="projectChip">{t}</span>)}</div>
-                      <div className="projectActions">
-                        <button className="projectActionBtn projectActionPrimary" onClick={() => setActiveProject(p)} type="button">View Details →</button>
-                        {p.github ? <a className="projectActionBtn" href={p.github} target="_blank" rel="noreferrer" onClick={(e) => e.stopPropagation()}>GitHub</a> : null}
-                        {p.live ? <a className="projectActionBtn" href={p.live} target="_blank" rel="noreferrer" onClick={(e) => e.stopPropagation()}>Live Demo</a> : null}
-                        {p.medium ? <a className="projectActionBtn" href={p.medium} target="_blank" rel="noreferrer" onClick={(e) => e.stopPropagation()}>Medium</a> : null}
-                        {p.report ? <a className="projectActionBtn" href={p.report} target="_blank" rel="noreferrer" onClick={(e) => e.stopPropagation()}>Report</a> : null}
-                        {p.tableau ? <a className="projectActionBtn" href={p.tableau} target="_blank" rel="noreferrer" onClick={(e) => e.stopPropagation()}>Tableau</a> : null}
-                      </div>
-                    </div>
-                  ))}
+          {/* Filter bar */}
+          <div className="projectFilters">
+            {["All", ...Array.from(new Set(PROJECTS.map(p => p.tag)))].map(f => (
+              <button
+                key={f}
+                className={`projectFilter ${activeFilter === f ? "projectFilterActive" : ""}`}
+                onClick={() => setActiveFilter(f)}
+                type="button"
+              >
+                {f}
+              </button>
+            ))}
+          </div>
+
+          {/* Project grid */}
+          <div className="projectsUnified staggerChildren">
+            {PROJECTS.filter(p => activeFilter === "All" || p.tag === activeFilter).map((p) => (
+              <div key={p.id} className="projectCardNew" data-tag={p.tag?.replace(/[&\s]/g, '-').toLowerCase()}>
+                {/* Visual header with gradient + category badge */}
+                <div className="projectVisual">
+                  {p.image ? (
+                    <img className="projectImage" src={p.image} alt={p.title} />
+                  ) : (
+                    <>
+                      <div className="projectVisualGlow" />
+                      <div className="projectVisualGrid" />
+                    </>
+                  )}
+                  <span className="projectTag">{p.tag}</span>
+                </div>
+
+                {/* Card content */}
+                <div className="projectCardBody">
+                  <h3 className="projectCardTitle">{p.title}</h3>
+                  <p className="projectCardShort">{p.short}</p>
+                  <div className="projectChipWrap">{p.tech.split(" · ").map((t) => <span key={t} className="projectChip">{t}</span>)}</div>
+                  <div className="projectActions">
+                    <button className="projectActionBtn projectActionPrimary" onClick={() => setActiveProject(p)} type="button">View Details →</button>
+                    {p.github ? <a className="projectActionBtn" href={p.github} target="_blank" rel="noreferrer" onClick={(e) => e.stopPropagation()}>GitHub</a> : null}
+                    {p.live ? <a className="projectActionBtn" href={p.live} target="_blank" rel="noreferrer" onClick={(e) => e.stopPropagation()}>Live Demo</a> : null}
+                    {p.medium ? <a className="projectActionBtn" href={p.medium} target="_blank" rel="noreferrer" onClick={(e) => e.stopPropagation()}>Medium</a> : null}
+                    {p.report ? <a className="projectActionBtn" href={p.report} target="_blank" rel="noreferrer" onClick={(e) => e.stopPropagation()}>Report</a> : null}
+                    {p.tableau ? <a className="projectActionBtn" href={p.tableau} target="_blank" rel="noreferrer" onClick={(e) => e.stopPropagation()}>Tableau</a> : null}
+                  </div>
                 </div>
               </div>
-            );
-          })}
+            ))}
+          </div>
         </section>
 
         {/* ═══════════ CERTIFICATIONS ═══════════ */}
@@ -510,7 +632,7 @@ export default function App() {
         </section>
 
         <footer className="footer footerSplit">
-          <div className="footerLeft">Designed & built by me · Animations powered by LottieFiles · When I'm not training models, I'm probably listening to music or playing cricket</div>
+          <div className="footerLeft">Designed & built by me · Animations powered by LottieFiles</div>
           <div className="footerRight">© {new Date().getFullYear()} Aekank Patel</div>
         </footer>
 

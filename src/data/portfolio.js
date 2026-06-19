@@ -9,6 +9,26 @@ import resumePdf from "../assets/Aekank_Patel_Resume.pdf";
 import oilAirlineReport from "../assets/reports/oil_airline_report.pdf";
 import timeSeriesReport from "../assets/reports/Time_Series.pdf";
 
+
+import insightforgeImg from "../assets/projects/insightforgeai.png";
+import fraudgenImg from "../assets/projects/fraudgen.png";
+import finragImg from "../assets/projects/finrag.png";
+import pneumoniaImg from "../assets/projects/pneumonia-detection.png";
+import oilAirlineImg from "../assets/projects/oil-airline.png";
+import netflixHotelImg from "../assets/projects/netflix-hotel-ts.png";
+import usdInrImg from "../assets/projects/usd-inr.png";
+import ecommerceImg from "../assets/projects/ecommerce-dashboard.png";
+import noshowImg from "../assets/projects/noshow-dashboard.png";
+import lifeExpectancyImg from "../assets/projects/life-expectancy.png";
+import ecommerceSearchImg from "../assets/projects/ecommerce_search.png";
+import nlipSentinelImg from "../assets/projects/nlip.png";
+import pageRankImg from "../assets/projects/page_rank.png";
+import movieRecommendationImg from "../assets/projects/movie.png";
+import videoBackgroundRemovalImg from "../assets/projects/video_bg_remove.png";
+import eigenfacesImg from "../assets/projects/face.png";
+import insuranceClaimImg from "../assets/projects/insurance.png";
+import tradingRLImg from "../assets/projects/rl.png";
+
 export const HERO = {
   headline: "",
   subheadline: "",
@@ -41,15 +61,15 @@ export const NOW = {
   subtitle: "What I am up to right now. I try to update this regularly.",
   cards: [
     {
-      title: "Finishing my Master\u2019s \uD83C\uDF93",
+      title: "Recently completed my Master’s 🎓",
       body:
-        "MS in Data Science at Stevens, graduating May 2026. Coursework in ML, linear algebra, time series, and deep learning. Lots of math, lots of Python.",
-      tag: "MS Data Science \u00B7 May 2026",
+        "Completed my MS in Data Science at Stevens in May 2026. My coursework focused on machine learning, statistics, linear algebra, time series, deep learning, big data, and financial analytics.",
+      tag: "Graduated May 2026",
     },
     {
       title: "Looking for work \uD83D\uDD0D",
       body:
-        "Applying to Data Science and ML roles, both internships and full-time. I want to be on a team that actually ships models, not just builds slide decks about them.",
+        "Applying to Data Science, Machine Learning, AI Engineering, and Data Engineering roles, both internships and full-time. I want to work on teams that build real systems, not just prototypes that stay in notebooks.",
       tag: "Open to opportunities",
     },
     {
@@ -72,11 +92,11 @@ export const EDUCATION = [
     school: "Stevens Institute of Technology",
     degree: "Master of Science in Data Science",
     time: "Aug 2024 \u2013 May 2026",
-    gpa: "GPA: 3.966 / 4.0",
+    gpa: "GPA: 3.967 / 4.0",
     logo: stevensLogo,
     details: [
-      "Also pursuing a Graduate Certificate in Applied Statistics (3.918 GPA) alongside the MS in Data Science. Focused on applied ML, statistics, finance, and working with large datasets.",
-      "TA for three graduate math courses: Foundational Math for Data Science (MA 574), Numerical Linear Algebra for Big Data (MA 544), and Introduction to Probability Theory (MA 540). Responsible for grading and feedback for 89 students.",
+      "Completed an MS in Data Science (GPA: 3.967 / 4.0) along with a Graduate Certificate in Applied Statistics (GPA: 3.918 / 4.0). Focused on applied machine learning, statistics, finance, time series, and large-scale data systems.",
+      "TA for three graduate math courses: Foundational Math for Data Science (MA 574), Numerical Linear Algebra for Big Data (MA 544), and Intro to Probability Theory (MA 540). Responsible for grading and feedback for 89 students.",
       "Most of my learning happens through projects. I have built things across ML, deep learning, time series, and financial analytics."
     ],
     courses: [
@@ -137,11 +157,11 @@ export const EXPERIENCE = [
       "MA 574 \u00B7 MA 544 \u00B7 MA 540",
     ],
     bullets: [
-      "TA for three graduate math courses under Dr. Upendra Prasad: Foundational Math for Data Science (MA 574), Numerical Algebra for Big Data (MA 544), and Introduction to Probability Theory (MA 540).",
+      "Served as TA for three graduate math courses under Dr. Upendra Prasad: Foundational Math for Data Science (MA 574), Numerical Linear Algebra for Big Data (MA 544), and Intro to Probability Theory (MA 540).",
       "Graded assignments, quizzes, and exams across multiple sections. Keeping grading consistent and fair is harder than it sounds with 89 students.",
       "Gave written feedback on math and coding work. The goal was always to be specific enough that students could actually fix what went wrong.",
       "Kept grade records up to date, tracked submission patterns, and flagged issues to the professor when something seemed off.",
-      "Used Canvas for everything: grading, submissions, and feedback. It is not perfect, but it scales.",
+      "Used Canvas LMS for grading, submission review, feedback, and grade record management.",
       "Noticed the same mistakes coming up repeatedly in linear algebra and numerical methods, so I started pointing those out proactively in my feedback.",
     ],
   },
@@ -169,10 +189,145 @@ export const EXPERIENCE = [
 
 export const PROJECTS = [
   // \u2500\u2500 Machine Learning & AI \uD83E\uDD16\u2500\u2500
+
+    {
+    id: "finrag",
+    category: "ai",
+    tag: "AI Engineering",
+    title: "FinRAG: Financial Document Intelligence System",
+    image: finragImg,
+    short: "Ask questions about SEC filings and earnings calls in plain English. A RAG system over 25 financial documents, deployed on Streamlit.",
+    tech: "Python \u00B7 LlamaIndex \u00B7 HuggingFace \u00B7 Groq \u00B7 LLaMA \u00B7 Streamlit",
+    github: "https://github.com/aekankpatel/finrag",
+    live: "https://huggingface.co/spaces/aekankpatel/finrag",
+    impact: "RAG over 25 SEC filings with an 80% evaluation pass rate",
+    long: `I built this because reading 10-K filings is painful. The idea was to upload a bunch of SEC filings and earnings transcripts, then ask questions in plain English and get answers with source citations.
+
+The pipeline uses LlamaIndex for PDF ingestion and chunking (I ended up with 14,055 text nodes), HuggingFace BGE embeddings for vector search, and Groq-hosted LLaMA 3.1 for answer generation.
+
+Getting this deployed was the hardest part. I started with local Ollama for inference, but that does not work on Streamlit Cloud. I switched to Groq, but had to bypass LlamaIndex's LLM layer entirely and call the Groq SDK directly. The vector index files were around 150 MB, too big for GitHub, so I hosted them on Google Drive and download them at startup.
+
+The app has a compare mode where you can ask the same question to two different companies side by side. I also added confidence scores and source highlighting.
+
+I ran an evaluation on ten financial queries and got an 80% pass rate with 0.57 average keyword recall. Not amazing, but honest. Retrieval over long financial documents is hard, especially when the answer spans multiple sections.`,
+  },
+
+    {
+    id: "fraudgen",
+    category: "ml",
+    tag: "Machine Learning",
+    title: "FRAUDGEN: Unmasking Fraud with Real-Time Explanations",
+    image: fraudgenImg,
+    short: "Classifies transactions into four risk tiers using XGBoost, then explains why using LLaMA. Full stack with a Flask backend and React dashboard.",
+    tech: "Python \u00B7 XGBoost \u00B7 Flask \u00B7 React \u00B7 SQLite \u00B7 Recharts \u00B7 LLaMA",
+    github: "https://github.com/aekankpatel/FraudGen",
+    live: "https://fraud-gen.vercel.app",
+    impact: "Multi-tier fraud classifier on 6.36M transactions with LLaMA explanations",
+    long: `The idea was simple: do not just flag fraud, explain why it is suspicious. Most fraud systems give you a score. I wanted mine to say "this transaction is flagged because the amount is four times the user's average and it came from a new IP in a different country."
+
+I trained an XGBoost model on the PaySim dataset (6.36 million transactions, only 0.129% fraud). The class imbalance was brutal. I used five-fold stratified temporal validation to deal with it. On top of the model output, I added rule-based refinement to sort transactions into Legitimate, Needs Review, High Risk, and Confirmed Fraud.
+
+For the explanations, I connected LLaMA via Groq to generate plain-English summaries of why each high-risk transaction got flagged. I also added IPInfo for geolocation and VPN detection.
+
+The frontend is a React and Tailwind dashboard with Recharts showing fraud trends, severity breakdowns, and a map view. Flask handles the API layer, and SQLite stores transactions.
+
+What I would change: the rule layer and ML layer sometimes disagree on edge cases. I would probably add a conflict resolution mechanism if I rebuilt this.`,
+  },
+
+  {
+
+  id: "nlip-sentinel",
+
+  category: "ai",
+
+  tag: "AI Engineering",
+
+  title: "NLIP Sentinel: Trust Firewall for Multi-Agent AI Workflows",
+
+  image: nlipSentinelImg,
+
+  short: "Built a trust firewall for AG2 multi-agent workflows that validates messages, blocks unsafe tool calls, gates risky actions, and produces an auditable trust score.",
+
+  tech: "Python · FastAPI · React · AG2 · Multi-Agent Systems · Gemini · Tavily · Daytona · Vercel",
+
+  github: "https://github.com/aekankpatel/nlip-sentinel",
+
+  live: "https://nlip-sentinel.vercel.app/",
+
+  impact: "End-to-end multi-agent safety layer with schema validation, tool-risk scanning, human approval gates, trust scoring, and audit trails",
+
+  long: `Most multi-agent demos show agents doing impressive things: searching the web, writing code, calling tools. But nobody talks about what happens when agents start talking to each other and using real tools without any guardrails. That is the problem I built NLIP Sentinel to solve.
+ 
+The system runs on AG2 GroupChat with six specialized agents: a PlannerAgent, ResearchAgent, CodeAgent, SandboxExecutionAgent, VerifierAgent, and ReportAgent. Instead of letting them pass messages freely, every step goes through a Sentinel Firewall that checks message schema, validates sender-receiver pairs, scans tool calls for unsafe behavior, and requires human approval for risky execution.
+ 
+The main safety demo is the code execution path. The CodeAgent first produces unsafe code that tries to access environment variables. The firewall catches it, blocks the attempt, logs the decision, and forces the workflow to regenerate safer code. Only after the tool call passes safety checks and human approval can it move to sandbox execution.
+ 
+The backend is FastAPI with endpoints for running demos, checking message envelopes, validating tool requests, and handling approvals. The frontend is a React dashboard that shows the workflow output, trust score, and audit trail.
+ 
+By default, it runs in mock mode so the demo is deterministic without needing external API keys. With real keys, it connects to Tavily for search, Gemini for summaries, and Daytona for sandbox execution.
+ 
+The part I care about most is the audit trail. Every decision is logged: what was checked, what passed, what was blocked, where approval was needed. That makes the system debuggable and closer to how enterprise AI agents would need to work in production.`
+
+  },
+
+    {
+    id: "noshow-dashboard",
+    category: "analytics",
+    tag: "Analytics",
+    title: "Patient No-Show Risk Dashboard",
+    image: noshowImg,
+    short: "Why do patients miss appointments? I analyzed 110K medical records, built a Random Forest model (AUC 0.966), and created dashboards in both HTML and Tableau.",
+    tech: "Python \u00B7 SQL \u00B7 SQLite \u00B7 Random Forest \u00B7 Chart.js \u00B7 Tableau \u00B7 Pandas",
+    github: "https://github.com/aekankpatel/noshow-dashboard",
+    tableau: "https://public.tableau.com/app/profile/aekank.patel/viz/noshow_dashboard/PatientNo-ShowRiskDashboard",
+    impact: "AUC of 0.966 on predicting patient no-shows across 110,527 appointments",
+    long: `One in five patients does not show up for their medical appointments. I wanted to figure out why, and whether it is predictable.
+
+The dataset has 110,527 appointments from Vitória, Brazil. About 35% of rows had negative lead times because the scheduled timestamp included time-of-day but the appointment date was always midnight. I clamped those to zero instead of dropping them, which would have cut the dataset by a third.
+
+I normalized everything into three SQLite tables (clinics, patients, appointments) and wrote SQL queries to break down no-show rates by weekday, clinic, age group, and SMS reminder status.
+
+The SMS result was surprising. Patients who received reminders actually had a higher no-show rate (28% vs 17%). It turns out SMS was only being sent to patients already flagged as high risk, so the correlation is misleading.
+
+For the prediction model, I built 13 features and trained a Random Forest (100 trees, max depth 8). The model achieved an AUC of 0.966. The single strongest predictor was prior missed visits. If someone has missed three or more times before, they will very likely miss again. Lead time and age were the next most important factors.
+
+I built two dashboards: a standalone HTML version using Chart.js that works offline, and a Tableau Public dashboard with KPI cards, bar charts by weekday, clinic, and age group, plus a feature importance breakdown from the model.
+
+The main takeaway is simple: call patients with three or more prior misses first. That one variable explains more than everything else combined.`,
+  },
+
+  {
+  id: "ecommerce-product-search-recommendation",
+  category: "de",
+  tag: "Data Engineering",
+  title: "E-Commerce Product Search & Recommendation on Google Cloud",
+  image: ecommerceSearchImg,
+  short: "Built a cloud-scale product search and recommendation pipeline on 9.8M product-query records using Spark, Dataproc, TF-IDF, LSH, and FP-Growth.",
+  tech: "Python · PySpark · Google Cloud · Dataproc · GCS · TF-IDF · LSH · FP-Growth · Recommender Systems",
+  github: "",
+  live: "",
+  impact: "Processed 9.72M cleaned records and achieved 0.856 NDCG, with relevant products usually appearing in the top 1–2 results",
+  long: `I wanted to build a product search system that could actually scale. Not a toy demo on a small CSV, but something that worked on nearly 10 million product-query records from Google Shopping.
+ 
+The dataset was MARQO-GS-10M, and just loading it was a problem. My first attempt in Databricks ran out of memory. I ended up using a Compute Engine VM for ingestion into Google Cloud Storage, then Dataproc Spark clusters for the actual processing. Separating storage from compute made everything more manageable.
+ 
+The ETL followed a Medallion architecture: Bronze for raw Parquet, Silver for cleaning and feature engineering, Gold for the final analytics table with about 9.72 million cleaned records. Text went through a TF-IDF pipeline in PySpark (tokenization, stopword removal, lemmatization, HashingTF, IDF, L2 normalization), and I used Bucketed Random Projection LSH for approximate nearest neighbor search at scale.
+ 
+The retrieval metrics were solid: 0.856 NDCG, 0.79 MRR, 0.748 MAP. In practice, a relevant product usually showed up in the first one or two results.
+ 
+I also added an FP-Growth recommendation layer on top. Product baskets were mined for association rules using support, confidence, and lift. This complemented the text search because it captured behavioral co-occurrence patterns that TF-IDF misses entirely.
+ 
+The scaling work was honestly the hardest part. I tested at 100K, 500K, 3M, and full 10M rows. The full ETL ran in about 43 minutes even under quota constraints. Partitioning, shuffle behavior, and cluster lifecycle management mattered more than I expected.
+ 
+If I rebuilt this, I would swap TF-IDF for transformer embeddings and add a learning-to-rank layer on top.`
+  },
+
   {
     id: "insightforgeai",
-    category: "ml",
+    category: "ai",
+    tag: "AI Engineering",
     title: "Insight Forge AI: LLM-Powered Data Profiling System",
+    image: insightforgeImg,
     short: "Upload any dataset and get a full EDA report with anomaly detection, health scores, and LLM-generated insights. Deployed on Streamlit Cloud.",
     tech: "Python \u00B7 Scikit-learn \u00B7 Pandas \u00B7 Plotly \u00B7 Streamlit \u00B7 Groq \u00B7 ReportLab \u00B7 NumPy",
     github: "https://github.com/aekankpatel/insightforgeai/",
@@ -192,49 +347,60 @@ One thing I would do differently: the session state management got messy. I am p
   },
 
   {
-    id: "fraudgen",
-    category: "ml",
-    title: "FRAUDGEN: Unmasking Fraud with Real-Time Explanations",
-    short: "Classifies transactions into four risk tiers using XGBoost, then explains why using LLaMA. Full stack with a Flask backend and React dashboard.",
-    tech: "Python \u00B7 XGBoost \u00B7 Flask \u00B7 React \u00B7 SQLite \u00B7 Recharts \u00B7 LLaMA",
-    github: "https://github.com/aekankpatel/Fraud_Gen",
-    live: "https://fraud-gen.vercel.app",
-    impact: "Multi-tier fraud classifier on 6.36M transactions with LLaMA explanations",
-    long: `The idea was simple: do not just flag fraud, explain why it is suspicious. Most fraud systems give you a score. I wanted mine to say "this transaction is flagged because the amount is four times the user's average and it came from a new IP in a different country."
-
-I trained an XGBoost model on the PaySim dataset (6.36 million transactions, only 0.129% fraud). The class imbalance was brutal. I used five-fold stratified temporal validation to deal with it. On top of the model output, I added rule-based refinement to sort transactions into Legitimate, Needs Review, High Risk, and Confirmed Fraud.
-
-For the explanations, I connected LLaMA via Groq to generate plain-English summaries of why each high-risk transaction got flagged. I also added IPInfo for geolocation and VPN detection.
-
-The frontend is a React and Tailwind dashboard with Recharts showing fraud trends, severity breakdowns, and a map view. Flask handles the API layer, and SQLite stores transactions.
-
-What I would change: the rule layer and ML layer sometimes disagree on edge cases. I would probably add a conflict resolution mechanism if I rebuilt this.`,
+  id: "reinforcement-learning-stock-trading",
+  category: "rl",
+  tag: "Reinforcement Learning",
+  title: "Reinforcement Learning for Stock Trading",
+  image: tradingRLImg,
+  short: "Built a reinforcement learning trading system for SPY using a custom Gymnasium environment, DQN, PPO, technical indicators, and portfolio backtesting.",
+  tech: "Python · Gymnasium · Stable-Baselines3 · PyTorch · DQN · PPO · yFinance · Pandas · NumPy · Backtesting",
+  github: "https://github.com/aekankpatel/stock_trading/",
+  live: "",
+  impact: "Compared DQN and PPO trading agents and found that PPO, despite being the more advanced policy-gradient method, produced weaker out-of-sample trading behavior than expected",
+  long: `I built this to see if RL agents could learn to trade SPY better than simple baseline strategies. The short answer is: sometimes, but not as reliably as you would hope.
+ 
+The system used SPY data from 2015 to 2024, converted into features: daily returns, moving-average ratios, 20-day volatility, RSI, MACD histogram, and volume change. I built a custom Gymnasium environment from scratch where the agent sees the market state and its own portfolio (cash ratio, invested ratio, current return), then picks hold, buy, or sell. A 0.1% transaction cost per trade kept things realistic.
+ 
+The reward function measured excess return over the market, not just portfolio growth. This gave a stronger learning signal: staying in cash while the market rose was penalized, while avoiding a decline was rewarded.
+ 
+I trained DQN and PPO using Stable-Baselines3. PPO was expected to be stronger since it is the more advanced algorithm. It was not. PPO produced weaker out-of-sample behavior, sometimes leaning toward overly conservative policies. DQN, being simpler, handled the discrete action space more reliably.
+ 
+For comparison, I also ran Buy-and-Hold, Random, and Moving-Average Crossover baselines. The evaluation included equity curves, drawdown curves, Sharpe ratio, max drawdown, win rate, and trade count.
+ 
+The honest takeaway is that RL in finance is hard. Model complexity does not guarantee better performance. PPO looked like the smart choice on paper but DQN actually traded better in practice. That made the project more interesting to me than if everything had worked perfectly.`
   },
 
-  {
-    id: "finrag",
-    category: "ml",
-    title: "FinRAG: Financial Document Intelligence System",
-    short: "Ask questions about SEC filings and earnings calls in plain English. A RAG system over 25 financial documents, deployed on Streamlit.",
-    tech: "Python \u00B7 LlamaIndex \u00B7 HuggingFace \u00B7 Groq \u00B7 LLaMA \u00B7 Streamlit",
-    github: "https://github.com/aekankpatel/finrag",
-    live: "https://huggingface.co/spaces/aekankpatel/finrag",
-    impact: "RAG over 25 SEC filings with an 80% evaluation pass rate",
-    long: `I built this because reading 10-K filings is painful. The idea was to upload a bunch of SEC filings and earnings transcripts, then ask questions in plain English and get answers with source citations.
+      {
+    id: "ecommerce-dashboard",
+    category: "analytics",
+    tag: "Analytics",
+    title: "E-Commerce Sales Dashboard",
+    image: ecommerceImg,
+    short: "Built a full analytics pipeline on 541K retail transactions. SQL for cleaning and segmentation, Tableau for dashboards. Found that 43% of customers drive 88% of revenue.",
+    tech: "SQL \u00B7 SQLite \u00B7 Tableau \u00B7 Excel \u00B7 Data Cleaning \u00B7 RFM Segmentation",
+    github: "https://github.com/aekankpatel/ecommerce-dashboard",
+    tableau: "https://public.tableau.com/app/profile/aekank.patel/viz/E-commerceSalesDashboard_17744839619360/Dashboard1",
+    impact: "RFM segmentation across 4,338 customers revealing that Champions drive 88% of \u00A38.9M revenue",
+    long: `This started as a SQL practice project but turned into something more interesting once I started digging into the customer data.
 
-The pipeline uses LlamaIndex for PDF ingestion and chunking (I ended up with 14,055 text nodes), HuggingFace BGE embeddings for vector search, and Groq-hosted LLaMA 3.1 for answer generation.
+The dataset is 541,909 transactions from a UK-based online gift retailer (UCI Online Retail Dataset). After cleaning out cancellations, null customer IDs, and invalid quantities, I was left with about 398,000 rows.
 
-Getting this deployed was the hardest part. I started with local Ollama for inference, but that does not work on Streamlit Cloud. I switched to Groq, but had to bypass LlamaIndex's LLM layer entirely and call the Groq SDK directly. The vector index files were around 150 MB, too big for GitHub, so I hosted them on Google Drive and download them at startup.
+I normalized the raw CSV into four relational tables: customers, products, orders, and a cleaned line-items table. All done in SQLite using CREATE TABLE AS SELECT statements.
 
-The app has a compare mode where you can ask the same question to two different companies side by side. I also added confidence scores and source highlighting.
+The SQL work covered most of what you would need in practice: aggregations, multi-table joins, window functions (RANK, LAG, NTILE, SUM OVER), CTEs, subqueries, and HAVING clauses. The most involved part was building an RFM (Recency, Frequency, Monetary) segmentation pipeline using NTILE scoring and CASE WHEN logic.
 
-I ran an evaluation on ten financial queries and got an 80% pass rate with 0.57 average keyword recall. Not amazing, but honest. Retrieval over long financial documents is hard, especially when the answer spans multiple sections.`,
+The findings were interesting. Champions (1,883 customers, 43% of the base) account for 88% of total revenue (\u00A37.84M out of \u00A38.9M). The At Risk segment has 1,085 customers worth \u00A3476K. Thursday is the peak revenue day, and 85% of sales happen between 9 AM and 3 PM, which suggests this is more of a B2B wholesale operation than a typical consumer store.
+
+I built Tableau dashboards for revenue trends, geographic breakdowns, product rankings, and the customer segment distribution. The UK dominates at 82% of revenue, with the Netherlands, Ireland, and Germany as the top international markets.`,
   },
+
 
   {
     id: "pneumonia-detection",
     category: "ml",
+    tag: "Machine Learning",
     title: "Deep Learning for Pneumonia Detection",
+    image: pneumoniaImg,
     short: "Can a CNN tell if a chest X-ray shows pneumonia? I trained two models and combined them. The ensemble hit 97.23% accuracy.",
     tech: "Python \u00B7 TensorFlow \u00B7 CNN \u00B7 MobileNet \u00B7 Medical Imaging",
     github: "https://github.com/aekankpatel/Pneumonia_Detection",
@@ -249,11 +415,12 @@ The augmentation mattered more than I expected. Without it, the CNN was overfitt
 It is a clean project with not a lot of moving parts, but it taught me that simpler ensembles often beat trying to build one perfect model.`,
   },
 
-  // \u2500\u2500 Data Analysis \uD83D\uDCCA \u2500\u2500
   {
     id: "oil-airline-bloomberg",
-    category: "data",
+    category: "analytics",
+    tag: "Analytics",
     title: "Oil and Airline Stocks: An Empirical Study",
+    image: oilAirlineImg,
     short: "Everyone assumes oil prices drive airline stocks. I used ten years of Bloomberg data to check. The answer is more nuanced than you would think.",
     tech: "Bloomberg Terminal \u00B7 Python \u00B7 Econometrics \u00B7 Regression \u00B7 Finance",
     github: "",
@@ -273,9 +440,35 @@ I wrote a Medium article about this because the "oil kills airlines" narrative i
   },
 
   {
+  id: "video-background-removal",
+  category: "cv",
+  tag: "Computer Vision",
+  title: "Video Background Removal using SVD and Robust PCA",
+  image: videoBackgroundRemovalImg,
+  short: "Built a video background subtraction pipeline that separates static background from moving foreground objects using SVD and Robust PCA.",
+  tech: "Python · MoviePy · NumPy · SciPy · Scikit-image · SVD · Robust PCA · Computer Vision · Matrix Factorization",
+  github: "",
+  live: "",
+  impact: "Separated foreground motion from 309 CCTV frames using low-rank and sparse matrix decomposition techniques",
+  long: `I wanted to see if I could separate a moving person from a static CCTV background using nothing but linear algebra. No pretrained models, no object detectors, just matrix decomposition.
+ 
+The input was 309 frames from a porch security camera at 768 by 432 resolution. Each frame was converted to grayscale, smoothed, flattened into a vector, and stacked column-wise into a big data matrix. The key insight is that the background of a mostly static scene behaves like a low-rank structure, while moving objects show up as sparse deviations.
+ 
+My first approach used SVD. I took a low-rank approximation as the background, subtracted it from the original, and thresholded the difference to isolate motion. It worked, but picked up noise and ghosting from shadows and compression artifacts.
+ 
+The second approach used Robust PCA, which explicitly decomposes the matrix into a low-rank part (background) and a sparse part (foreground). It uses iterative soft-thresholding and randomized SVD. I added morphological filtering on top (binary opening, closing, small-object removal) to clean up the motion masks.
+ 
+Both methods produced usable results. The SVD version was faster but noisier. Robust PCA gave cleaner separation because it models the sparse component directly instead of treating it as leftover error.
+ 
+The main limitation is that both methods assume a fixed camera and mostly stable background. If the camera moves or lighting changes heavily, the separation breaks down. But for a simple CCTV setup, it is surprisingly effective without any deep learning.`
+},
+
+  {
     id: "netflix-hotel-ts",
-    category: "data",
+    category: "analytics",
+    tag: "Analytics",
     title: "Time Series Modeling: Netflix Stock & Hotel Bookings",
+    image: netflixHotelImg,
     short: "Forecasted Netflix stock prices and hotel booking demand using ARIMA and SARIMA. Full Box\u2013Jenkins workflow in R.",
     tech: "R \u00B7 ARIMA \u00B7 SARIMA \u00B7 ACF/PACF \u00B7 Ljung-Box \u00B7 Forecasting",
     github: "",
@@ -294,9 +487,81 @@ Honest take: ARIMA models are limited for stock forecasting. They capture trend 
   },
 
   {
+  id: "movie-recommendation-matrix-factorization",
+  category: "rs",
+  tag: "Recommendation System",
+  title: "Movie Recommendation System using Matrix Factorization",
+  image: movieRecommendationImg,
+  short: "Built a movie recommendation system on the MovieLens dataset using sparse user-item matrices, SVD-based matrix factorization, cosine similarity, and nearest-neighbor retrieval.",
+  tech: "Python · Pandas · NumPy · SciPy · SVD · Sparse Matrices · Cosine Similarity · KNN · Recommendation Systems",
+  github: "",
+  live: "",
+  impact: "Generated top-10 personalized movie recommendations from a 330K-user, 83K-movie sparse rating matrix with 33.8M ratings",
+  long: `I built this to understand how recommendation systems actually work under the hood, not just calling a library function, but seeing how a sparse rating matrix turns into useful suggestions.
+ 
+The dataset was MovieLens with 330,975 users, 83,239 movies, and 33.8 million ratings. Most user-movie pairs are missing because people only rate a tiny fraction of what is available. That sparsity is the core challenge.
+ 
+After building the sparse user-item matrix, I normalized ratings by subtracting each user's mean. This removes the bias where some people rate everything high and others rate everything low. Then I applied SVD to decompose the matrix into lower-dimensional user and movie embeddings. A scree plot showed the elbow around 9 components, which I used as the latent dimension count.
+ 
+For recommendations, I used cosine similarity on the user embeddings to find similar users, then surfaced movies those users liked that the target user had not seen yet. Evaluation on a holdout set gave 0.31 recall and 0.14 precision. Recall being higher makes sense because the system recovers a decent chunk of relevant movies, but the top 10 list also includes some exploratory picks.
+ 
+I also built a movie-to-movie similarity layer using the learned embeddings. Fantasy films clustered near other fantasy titles, action movies near action, and so on. This made it possible to show "similar movies" alongside each recommendation.
+ 
+The interesting part was seeing how factorization compresses a huge sparse table into a small shared space where similarity search actually works. No deep learning needed.`
+},
+
+  {
+  id: "large-scale-pagerank",
+  category: "de",
+  tag: "Data Engineering",
+  title: "Large-Scale PageRank on Web Graph using Sparse Matrices",
+  image: pageRankImg,
+  short: "Implemented PageRank on the Berkeley-Stanford web graph with 685K pages and 7.6M hyperlinks using sparse matrix formats and optimized iterative computation.",
+  tech: "Python · NumPy · SciPy · Sparse Matrices · PageRank · Graph Analytics · Numerical Linear Algebra",
+  github: "",
+  live: "",
+  impact: "Computed PageRank on a 685K-node web graph in under 1.32 seconds and compared standard and personalized ranking behavior",
+  long: `I wanted to implement PageRank on something large enough that a naive approach would fail. The Berkeley-Stanford web graph has 685,230 pages and 7.6 million hyperlinks. A dense matrix for that would need hundreds of billions of entries, so sparse matrices were the only option.
+ 
+I converted the raw edge list into a link matrix using DoK format (good for incremental construction), normalized each row so outgoing probabilities summed to one, then converted to CSR format for the iterative computation. CSR is much faster for repeated matrix-vector multiplication, which is all PageRank really does.
+ 
+I tested two damping factors. With alpha = 0.85, it converged in about 0.85 seconds. With alpha = 0.95, it took about 1.31 seconds because the random walk depends more heavily on the link structure and takes longer to stabilize. Both produced the same top 10 pages.
+ 
+I also built a personalized version where the teleportation vector only assigned probability to pages with prime-numbered indices. This changed the ranking slightly, biasing toward a specific subset of the graph. It is the same math, but the results behave differently because the random walk has a different "home base."
+ 
+The main lesson was that the PageRank formula is simple, but making it run on hundreds of thousands of nodes requires the right sparse format, careful normalization, and efficient iteration. Representation matters more than the algorithm itself at this scale.`
+},
+
+{
+  id: "face-recognition-eigenfaces",
+  category: "cv",
+  tag: "Computer Vision",
+  title: "Face Recognition using Eigenfaces",
+  image: eigenfacesImg,
+  short: "Built a PCA-based face recognition system using 10K+ images, Eigenfaces, reconstruction, cosine similarity, and nearest-neighbor search.",
+  tech: "Python · OpenCV · NumPy · Scikit-learn · PCA · Eigenfaces · Cosine Similarity · KNN · Computer Vision",
+  github: "",
+  live: "",
+  impact: "Processed 10,181 face images and retained 95.54% variance using 450 principal components for reconstruction and recognition",
+  long: `I built a face recognition system using PCA and Eigenfaces to understand how dimensionality reduction works on visual data, before reaching for a CNN.
+ 
+The dataset combined three sources: AT&T/ORL face database, a face recognition dataset, and a larger human faces dataset. In total, 10,181 images standardized to 112 by 92 grayscale pixels, flattened into 10,304-dimensional vectors, and stacked into a single matrix.
+ 
+The idea behind Eigenfaces is that faces are structured enough that most of the variation can be captured by a small number of directions. After subtracting the mean face, I fitted PCA with 450 components, retaining 95.54% of the total variance. That means each face compressed from 10,304 pixel values to 450 meaningful features.
+ 
+Reconstruction showed the tradeoff clearly. The reconstructed faces were blurrier, but the core structure (pose, contrast, facial shape) survived. PCA was keeping the signal and dropping the noise.
+ 
+For recognition, every image was projected into the Eigenface space, normalized, and indexed with cosine distance. A query face was projected into the same space and matched against the nearest neighbors. The results were solid: the top matches were visually similar even across mixed datasets with different image quality and formats.
+ 
+Eigenfaces are sensitive to lighting, pose, and alignment since PCA is linear. A CNN would handle that better. But the point was to see how far you can get with just linear algebra, and the answer is surprisingly far for a method from 1991.`
+},
+
+  {
     id: "usd-inr",
-    category: "data",
+    category: "analytics",
+    tag: "Analytics",
     title: "Effects of Factors Affecting USD\u2013INR Exchange Rates",
+    image: usdInrImg,
     short: "What actually moves the rupee against the dollar? I tested twenty years of macro data to find out.",
     tech: "Python \u00B7 Statsmodels \u00B7 Econometrics \u00B7 Regression",
     github: "https://github.com/aekankpatel/USD_INR",
@@ -314,54 +579,11 @@ It is a straightforward econometrics project, but I liked it because the questio
   },
 
   {
-    id: "ecommerce-dashboard",
-    category: "data",
-    title: "E-Commerce Sales Dashboard",
-    short: "Built a full analytics pipeline on 541K retail transactions. SQL for cleaning and segmentation, Tableau for dashboards. Found that 43% of customers drive 88% of revenue.",
-    tech: "SQL \u00B7 SQLite \u00B7 Tableau \u00B7 Excel \u00B7 Data Cleaning \u00B7 RFM Segmentation",
-    github: "https://github.com/aekankpatel/ecommerce-dashboard",
-    tableau: "https://public.tableau.com/app/profile/aekank.patel/viz/E-commerceSalesDashboard_17744839619360/Dashboard1",
-    impact: "RFM segmentation across 4,338 customers revealing that Champions drive 88% of \u00A38.9M revenue",
-    long: `This started as a SQL practice project but turned into something more interesting once I started digging into the customer data.
-
-The dataset is 541,909 transactions from a UK-based online gift retailer (UCI Online Retail Dataset). After cleaning out cancellations, null customer IDs, and invalid quantities, I was left with about 398,000 rows.
-
-I normalized the raw CSV into four relational tables: customers, products, orders, and a cleaned line-items table. All done in SQLite using CREATE TABLE AS SELECT statements.
-
-The SQL work covered most of what you would need in practice: aggregations, multi-table joins, window functions (RANK, LAG, NTILE, SUM OVER), CTEs, subqueries, and HAVING clauses. The most involved part was building an RFM (Recency, Frequency, Monetary) segmentation pipeline using NTILE scoring and CASE WHEN logic.
-
-The findings were interesting. Champions (1,883 customers, 43% of the base) account for 88% of total revenue (\u00A37.84M out of \u00A38.9M). The At Risk segment has 1,085 customers worth \u00A3476K. Thursday is the peak revenue day, and 85% of sales happen between 9 AM and 3 PM, which suggests this is more of a B2B wholesale operation than a typical consumer store.
-
-I built Tableau dashboards for revenue trends, geographic breakdowns, product rankings, and the customer segment distribution. The UK dominates at 82% of revenue, with the Netherlands, Ireland, and Germany as the top international markets.`,
-  },
-
-  {
-    id: "noshow-dashboard",
-    category: "data",
-    title: "Patient No-Show Risk Dashboard",
-    short: "Why do patients miss appointments? I analyzed 110K medical records, built a Random Forest model (AUC 0.966), and created dashboards in both HTML and Tableau.",
-    tech: "Python \u00B7 SQL \u00B7 SQLite \u00B7 Random Forest \u00B7 Chart.js \u00B7 Tableau \u00B7 Pandas",
-    tableau: "https://public.tableau.com/app/profile/aekank.patel/viz/noshow_dashboard/PatientNo-ShowRiskDashboard?publish=yes",
-    impact: "AUC of 0.966 on predicting patient no-shows across 110,527 appointments",
-    long: `One in five patients does not show up for their medical appointments. I wanted to figure out why, and whether it is predictable.
-
-The dataset has 110,527 appointments from Vitória, Brazil. About 35% of rows had negative lead times because the scheduled timestamp included time-of-day but the appointment date was always midnight. I clamped those to zero instead of dropping them, which would have cut the dataset by a third.
-
-I normalized everything into three SQLite tables (clinics, patients, appointments) and wrote SQL queries to break down no-show rates by weekday, clinic, age group, and SMS reminder status.
-
-The SMS result was surprising. Patients who received reminders actually had a higher no-show rate (28% vs 17%). It turns out SMS was only being sent to patients already flagged as high risk, so the correlation is misleading.
-
-For the prediction model, I built 13 features and trained a Random Forest (100 trees, max depth 8). The model achieved an AUC of 0.966. The single strongest predictor was prior missed visits. If someone has missed three or more times before, they will very likely miss again. Lead time and age were the next most important factors.
-
-I built two dashboards: a standalone HTML version using Chart.js that works offline, and a Tableau Public dashboard with KPI cards, bar charts by weekday, clinic, and age group, plus a feature importance breakdown from the model.
-
-The main takeaway is simple: call patients with three or more prior misses first. That one variable explains more than everything else combined.`,
-  },
-
-  {
     id: "life-expectancy",
-    category: "data",
+    category: "analytics",
+    tag: "Analytics",
     title: "Life Expectancy Data Analysis",
+    image: lifeExpectancyImg,
     short: "What predicts how long people live in different countries? I ran statistics and ML on WHO data from 193 countries. Random Forest got an R-squared of 0.97.",
     tech: "Python \u00B7 EDA \u00B7 Statistics \u00B7 Random Forest \u00B7 Regression",
     github: "",
@@ -377,6 +599,33 @@ I built a Multiple Linear Regression first and got an R-squared of about 0.82. T
 
 The strongest predictors turned out to be HIV/AIDS prevalence, income composition index, and adult mortality. Some variables I expected to matter a lot, like healthcare spending, were weaker than I thought once you controlled for income. That was probably the most interesting finding.`,
   },
+
+{
+  id: "insurance-claim-prediction",
+  category: "ml",
+  tag: "Machine Learning",
+  title: "Insurance Claim Prediction using Deep Learning",
+  image: insuranceClaimImg,
+  short: "Built a claim-risk prediction system on 10K+ policyholder records using Logistic Regression, MLP, TabNet, and an MLP–TabNet ensemble.",
+  tech: "Python · Scikit-learn · PyTorch · TabNet · MLP · Logistic Regression · ROC-AUC · PR-AUC · Calibration",
+  github: "",
+  live: "",
+  impact: "MLP–TabNet ensemble achieved 0.9457 accuracy, 0.9696 ROC-AUC, 0.9516 PR-AUC, and 0.8477 KS statistic",
+  long: `The goal was to predict whether a policyholder would file an insurance claim, not just as a classification problem, but as a calibrated probability estimate. In insurance, downstream decisions depend on risk scores, not just labels.
+ 
+The dataset had 10,302 policyholders with 27 variables: demographics, vehicle info, driving behavior, claim history, and regional data. The data needed cleanup: dollar signs in monetary fields, missing values, a few entries with negative car age. Class imbalance was moderate at about 26.7% claim rate.
+ 
+I tried tree-based models first (Random Forest, XGBoost, LightGBM) and they produced near-perfect scores. That looked too good, so I moved to deep learning models that gave strong but more believable numbers.
+ 
+The final system was a soft-voting ensemble averaging predictions from an MLP (dense layers, ReLU, dropout, L2 regularization, early stopping) and TabNet (attention-based feature selection for tabular data). The MLP carried most of the weight since TabNet underperformed on this dataset.
+ 
+Results: 0.9457 accuracy, 0.9696 ROC-AUC, 0.9516 PR-AUC, 0.8477 KS statistic. The confusion matrix showed 1,481 true negatives, 468 true positives, 31 false positives, and 81 false negatives. That is a strong tradeoff: the model catches most claim-risk customers while keeping false alarms low.
+ 
+I also checked calibration because insurance predictions need to behave like actual probabilities. The Brier score was 0.076, confirming the model was well-calibrated for ranking policyholders by risk.
+ 
+The main takeaway: high accuracy is not the same as a trustworthy model. Some models hit near-perfect scores but were clearly overfitting. The ensemble gave more realistic, stable, and useful results.`
+},
+
 ];
 
 
@@ -398,15 +647,19 @@ export const SKILLS = [
   {
     title: "Machine Learning",
     items: [
-      "Supervised Learning",
+      "Supervised Learning", 
+      "Classification",
+      "Regression",
       "Unsupervised Learning",
       "Cross Validation",
       "Model Selection",
-      "Pipeline Design",
+      "Feature Engineering", "Risk Scoring",
+      "Hyperparameter Tuning",
       "Ensemble Learning",
-      "Performance Metrics & Evaluation",
-      "Feature Engineering & Selection",
-      "Hyperparameter Tuning"
+      "Model Evaluation",
+      "Recommendation Systems",
+      "Matrix Factorization",
+      "Model Calibration"
     ]
   },
   {
@@ -417,23 +670,27 @@ export const SKILLS = [
       "RNN",
       "LSTM",
       "Transfer Learning",
-      "Training & Regularization",
-      "Model Optimization",
       "Computer Vision",
-      "Explainable AI"
+      "Tabular Deep Learning",
+      "Model Optimization",
+      "Explainable AI",
+      "Reinforcement Learning",
+      "Human-in-the-Loop Systems"
     ]
   },
   {
     title: "NLP & LLMs",
     items: [
-      "NLP",
-      "Word Embeddings",
-      "Transformer Models",
-      "Prompt Engineering",
       "Large Language Models",
       "Retrieval-Augmented Generation (RAG)",
       "Semantic Search",
-      "Text Classification"
+      "Prompt Engineering",
+      "Embeddings",
+      "Vector Search",
+      "Document Intelligence",
+      "LLM Evaluation",
+      "Multi-Agent AI Systems",
+      "Agentic AI Workflows"
     ]
   },
   {
@@ -444,11 +701,12 @@ export const SKILLS = [
       "Statistical Analysis",
       "Hypothesis Testing",
       "Time Series Analysis",
+      "Econometrics",
       "A/B Testing",
-      "Feature Importance",
+      "Graph Analytics",
+      "Backtesting",
       "Data Visualization",
-      "Tableau",
-      "Power BI"
+      "Business Analytics"
     ]
   },
   {
@@ -467,29 +725,57 @@ export const SKILLS = [
       "Matplotlib",
       "Seaborn",
       "Plotly",
-      "HuggingFace Transformers",
+      "HuggingFace",
       "LangChain",
       "LlamaIndex",
-      "Streamlit"
+      "Streamlit",
+      "Stable-Baselines3",
+      "Gymnasium",
+      "MoviePy",
+      "ReportLab"
     ]
   },
   {
     title: "Data Engineering, Backend & Deployment",
     items: [
       "Flask",
+      "FastAPI",
       "REST APIs",
       "API Design",
       "SQLite",
       "PostgreSQL",
       "MongoDB",
       "Apache Spark",
+      "PySpark",
       "Hadoop",
       "YARN",
+      "Dataproc",
+      "MapReduce",
+      "Vercel",
       "Docker (Basic)",
-      "Cloud Deployment",
-      "Model Serialization",
-      "Monitoring & Logging (Basic)",
-      "ETL Pipelines"
+      "Model Deployment",
+      "ETL Pipelines",
+      "Google Cloud Storage",
+      "Medallion Architecture",
+      "Cloud ETL"
+    ]
+  },
+  {
+    title: "Mathematics",
+    items: [
+      "Probability",
+      "Statistics",
+      "Linear Algebra",
+      "Calculus",
+      "Multivariable Calculus",
+      "Differential Equations",
+      "Optimization",
+      "Numerical Methods",
+      "Discrete Mathematics",
+      "Bayesian Methods",
+      "Stochastic Processes",
+      "Time Series",
+      "Graph Theory"
     ]
   },
   {
@@ -504,7 +790,7 @@ export const SKILLS = [
       "Adaptability",
       "Continuous Learning"
     ]
-  }
+  },
 ];
 
 export const CERTIFICATIONS = [
