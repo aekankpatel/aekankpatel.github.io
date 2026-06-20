@@ -17,6 +17,7 @@ import {
   FaBolt, FaArrowUp, FaMoon, FaSun, FaChartLine,
 } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
+import { SiTableau } from "react-icons/si";
 
 /* ── Tech-stack category → icon ── */
 const SKILL_ICONS = {
@@ -300,14 +301,20 @@ export default function App() {
   const heroSocials = Array.isArray(HERO?.socials) ? HERO.socials : [];
   const iconFor = (label) => {
     if (label === "GitHub") return FaGithub; if (label === "LinkedIn") return FaLinkedin;
-    if (label === "Medium") return FaMedium; if (label === "Email") return MdEmail; return null;
+    if (label === "Medium") return FaMedium; if (label === "Email") return MdEmail;
+    if (label === "Tableau") return SiTableau; return null;
   };
 
   return (
     <>
       <div className={`loaderScreen ${fontsLoaded ? "loaderHidden" : ""}`}>
         <div className="loaderRing">
-          <div className="loaderInitials">AP</div>
+          <div className="loaderMark">
+            <span className="loaderInitials">AP</span>
+            <svg className="loaderSpark" viewBox="0 0 40 12" fill="none" aria-hidden="true">
+              <polyline points="2,10 12,6 20,8 32,2" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+          </div>
         </div>
       </div>
 
@@ -381,17 +388,17 @@ export default function App() {
               <div className="heroCardWrap" ref={heroCardRef} onMouseMove={handleCardTilt} onMouseLeave={resetCardTilt}>
                 {/* Dashed arc connecting the two emojis, sweeping around the photo */}
                 <svg className="heroArc" viewBox="0 0 300 480" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                  <path d="M50 460 C10 350, 0 220, 15 140 C30 60, 90 10, 170 0 C230 -8, 270 15, 275 45" stroke="var(--accent)" strokeWidth="3.5" strokeDasharray="16 12" strokeLinecap="round" fill="none" opacity="0.55" />
+                  <path d="M22 360 C8 290, 6 200, 15 140 C30 60, 90 10, 170 0 C230 -8, 270 15, 275 45" stroke="var(--accent)" strokeWidth="3.5" strokeDasharray="16 12" strokeLinecap="round" fill="none" opacity="0.55" />
                 </svg>
 
-                {/* Icon badge 1 — bottom-left of photo (start of arc) */}
+                {/* Icon badge 1 — bottom-left of photo */}
                 <div className="heroEmoji heroEmoji1"><FaChartBar size={18} /></div>
 
                 <div className="heroPhotoBorder">
                   <img className="heroPhoto" src={myPhoto} alt="Aekank Patel" />
                 </div>
 
-                {/* Icon badge 2 — top-right of photo (end of arc) */}
+                {/* Icon badge 2 — top-right of photo */}
                 <div className="heroEmoji heroEmoji2"><FaChartLine size={18} /></div>
 
                 <p className="heroPhotoName">Aekank Patel</p>
@@ -537,7 +544,7 @@ export default function App() {
         {/* ═══════════ PROJECTS ═══════════ */}
         <SectionDivider />
         <section id="projects" className="section revealFromTop" ref={projectsRef}>
-          <span className="sectionKicker">Selected Work</span><h2>Projects</h2>
+          <span className="sectionKicker">Things I've Built</span><h2>Projects</h2>
 
           {/* Filter bar */}
           <div className="projectFilters">
@@ -609,7 +616,7 @@ export default function App() {
         <SectionDivider />
         <section id="contact" className="section revealFromTop" ref={contactRef}>
           <span className="sectionKicker">Get in Touch</span><h2>Contact Me</h2>
-          <p className="contactLine">I'm looking for Data Science and ML roles. If you're hiring or just want to talk about a project, drop me a message below or reach out on any of these.</p>
+          <p className="contactLine">I'm looking for Data Science, Machine Learning, AI Engineering, and Data Engineering roles, both internships and full-time. If you're hiring or just want to talk about a project, drop me a message below or reach out on any of these.</p>
 
           <div className="contactGrid">
             {/* Left — Form + social icons at the bottom */}

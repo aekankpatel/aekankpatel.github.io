@@ -39,6 +39,7 @@ export const HERO = {
     { label: "LinkedIn", href: "https://www.linkedin.com/in/aekankpatel/" },
     { label: "GitHub", href: "https://github.com/aekankpatel" },
     { label: "Medium", href: "https://medium.com/@aekankpatel" },
+    { label: "Tableau", href: "https://public.tableau.com/app/profile/aekank.patel/vizzes" },
     { label: "Email", href: "mailto:aekankpatel@gmail.com" },
   ],
 };
@@ -846,7 +847,7 @@ export const CERTIFICATIONS = [
     id: "matlab-onramp",
     title: "MATLAB Onramp",
     issuer: "MathWorks",
-    desc: "Used MATLAB for signal processing coursework. Not my daily driver, but good to know.",
+    desc: "Used MATLAB for two of my coursework. Not my daily driver, but good to know.",
     link: "https://matlabacademy.mathworks.com/progress/share/certificate.html?id=a4b379b7-6ea3-4f08-98b1-7f5746741ff5&",
     badge: "/logos/matlab.png",
   },
