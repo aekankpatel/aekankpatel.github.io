@@ -498,6 +498,7 @@ export default function App() {
                 <div className="expRoleBig">{x.role}</div>
                 {x.time ? <div className="expTimeCenter">{x.time}</div> : null}
                 {x.location ? <div className="expLocationCenter">{x.location}</div> : null}
+                {x.workType ? <div className="expWorkType">{x.workType}</div> : null}
                 {x.stats?.length ? <div className="expStatRow">{x.stats.map((stat, i) => <span className="expStatPill" key={i}>{stat}</span>)}</div> : null}
               </div>
               {x.bullets?.length ? <ul className="expBullets">{x.bullets.map((b, idx) => <li key={idx}>{b}</li>)}</ul> : null}

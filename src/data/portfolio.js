@@ -152,7 +152,8 @@ export const EXPERIENCE = [
     company: "Stevens Institute of Technology",
     role: "Graduate Teaching Assistant",
     time: "Sep 2025 \u2013 May 2026",
-    location: "Hoboken, NJ",
+    location: "Hoboken, New Jersey, United States",
+    workType: "Hybrid",
     logo: stevensLogo,
     stats: [
       "3 Courses Supported",
@@ -173,6 +174,7 @@ export const EXPERIENCE = [
     role: "Research & Development Intern",
     time: "Jan 2024 \u2013 May 2024",
     location: "Vadodara, Gujarat, India",
+    workType: "On-site",
     logo: matrixLogo,
     stats: [
       "91.39% Test Accuracy",
@@ -194,6 +196,7 @@ export const EXPERIENCE = [
     role: "Data Science Intern",
     time: "May 2023 – Dec 2023",
     location: "Vadodara, Gujarat, India",
+    workType: "Hybrid",
     logo: nimitLogo,
     stats: [
       "80,000+ Records Analyzed",
@@ -213,6 +216,7 @@ export const EXPERIENCE = [
     role: "Industrial Trainee",
     time: "Dec 2022 – Jan 2023",
     location: "Vadodara, Gujarat, India",
+    workType: "On-site",
     logo: vinroxLogo,
     stats: [
       "SMT & PCB Assembly",
