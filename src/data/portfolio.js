@@ -221,7 +221,7 @@ I ran an evaluation on ten financial queries and got an 80% pass rate with 0.57 
     image: fraudgenImg,
     short: "Classifies transactions into four risk tiers using XGBoost, then explains why using LLaMA. Full stack with a Flask backend and React dashboard.",
     tech: "Python \u00B7 XGBoost \u00B7 Flask \u00B7 React \u00B7 SQLite \u00B7 Recharts \u00B7 LLaMA",
-    github: "https://github.com/aekankpatel/FraudGen",
+    github: "https://github.com/aekankpatel/Fraud_Gen",
     live: "https://fraud-gen.vercel.app",
     impact: "Multi-tier fraud classifier on 6.36M transactions with LLaMA explanations",
     long: `The idea was simple: do not just flag fraud, explain why it is suspicious. Most fraud systems give you a score. I wanted mine to say "this transaction is flagged because the amount is four times the user's average and it came from a new IP in a different country."
@@ -279,7 +279,7 @@ The part I care about most is the audit trail. Every decision is logged: what wa
     image: noshowImg,
     short: "Why do patients miss appointments? I analyzed 110K medical records, built a Random Forest model (AUC 0.966), and created dashboards in both HTML and Tableau.",
     tech: "Python \u00B7 SQL \u00B7 SQLite \u00B7 Random Forest \u00B7 Chart.js \u00B7 Tableau \u00B7 Pandas",
-    github: "https://github.com/aekankpatel/noshow-dashboard",
+    github: "https://github.com/aekankpatel/patient_no-show_risk_dashboard",
     tableau: "https://public.tableau.com/app/profile/aekank.patel/viz/noshow_dashboard/PatientNo-ShowRiskDashboard",
     impact: "AUC of 0.966 on predicting patient no-shows across 110,527 appointments",
     long: `One in five patients does not show up for their medical appointments. I wanted to figure out why, and whether it is predictable.
@@ -379,7 +379,6 @@ The honest takeaway is that RL in finance is hard. Model complexity does not gua
     image: ecommerceImg,
     short: "Built a full analytics pipeline on 541K retail transactions. SQL for cleaning and segmentation, Tableau for dashboards. Found that 43% of customers drive 88% of revenue.",
     tech: "SQL \u00B7 SQLite \u00B7 Tableau \u00B7 Excel \u00B7 Data Cleaning \u00B7 RFM Segmentation",
-    github: "https://github.com/aekankpatel/ecommerce-dashboard",
     tableau: "https://public.tableau.com/app/profile/aekank.patel/viz/E-commerceSalesDashboard_17744839619360/Dashboard1",
     impact: "RFM segmentation across 4,338 customers revealing that Champions drive 88% of \u00A38.9M revenue",
     long: `This started as a SQL practice project but turned into something more interesting once I started digging into the customer data.
