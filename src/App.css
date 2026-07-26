@@ -867,10 +867,10 @@ html[data-theme="light"] .heroPhotoBorder:hover {
   mask-image: linear-gradient(90deg, transparent 0%, black 4%, black 96%, transparent 100%);
   -webkit-mask-image: linear-gradient(90deg, transparent 0%, black 4%, black 96%, transparent 100%);
 }
-.courseTrack { display: inline-flex; gap: 6px; white-space: nowrap; width: max-content; will-change: transform; animation: courseScroll 50s linear infinite; }
+.courseTrack { display: inline-flex; white-space: nowrap; width: max-content; will-change: transform; animation: courseScroll 50s linear infinite; }
 .courseChip {
   font-family: var(--font-mono); font-size: 11px; color: var(--text-tertiary);
-  padding: 3px 10px; border-radius: 999px; border: 1px solid var(--border-subtle);
+  padding: 3px 10px; margin-right: 6px; border-radius: 999px; border: 1px solid var(--border-subtle);
   background: var(--bg-card); transition: all var(--transition);
 }
 .eduCard:hover .courseChip {

@@ -106,9 +106,9 @@ export const EDUCATION = [
     gpa: "GPA: 3.967 / 4.0",
     logo: stevensLogo,
     details: [
-      "Completed an MS in Data Science (GPA: 3.967 / 4.0) along with a Graduate Certificate in Applied Statistics (GPA: 3.918 / 4.0). Focused on applied machine learning, statistics, finance, time series, and large-scale data systems.",
-      "TA for three graduate math courses: Foundational Math for Data Science (MA 574), Numerical Linear Algebra for Big Data (MA 544), and Intro to Probability Theory (MA 540). Responsible for grading and feedback for 89 students.",
-      "Most of my learning happens through projects. I have built things across ML, deep learning, time series, and financial analytics."
+      "Completed an MS in Data Science (GPA 3.967/4.0) and a Graduate Certificate in Applied Statistics (GPA 3.918/4.0).",
+      "Served as Graduate Teaching Assistant for three graduate-level mathematics courses (MA 574, MA 544, MA 540), providing grading and feedback for 89 students.",
+      "Applied coursework through hands-on projects spanning machine learning, deep learning, time series analysis, and financial analytics."
     ],
     courses: [
       "Foundational Mathematics for Data Science",
@@ -132,9 +132,9 @@ export const EDUCATION = [
     gpa: "GPA: 7.83 / 10",
     logo: mitLogo,
     details: [
-      "Served as Class Representative for my batch. Mostly meant answering a lot of questions and acting as the go-between for students and faculty.",
-      "Ran the Mechatronics Peer Programme, which was essentially tutoring juniors and organizing events.",
-      "Built a solid foundation in robotics, embedded systems, and sensors. Also took electives in financial technology, which is where data science started making sense to me."
+      "Served as Class Representative, acting as the primary liaison between students and faculty.",
+      "Led the Mechatronics Peer Programme, mentoring junior students and organizing academic events.",
+      "Built a strong foundation in robotics, embedded systems, and sensors, and completed electives in financial technology that introduced applied data science."
     ],
     courses: [
       "Data Structures and Algorithms",
@@ -169,12 +169,12 @@ export const EXPERIENCE = [
       "MA 574 \u00B7 MA 544 \u00B7 MA 540",
     ],
     bullets: [
-      "Supported 3 graduate-level mathematics courses as Teaching Assistant for 89 students: Foundational Math for Data Science (MA 574), Numerical Linear Algebra for Big Data (MA 544), and Introduction to Probability Theory (MA 540).",
-      "Graded assignments, quizzes, and exams across multiple sections, applying consistent and objective evaluation standards at scale.",
-      "Provided detailed written feedback on mathematical and programming assignments to improve student comprehension and performance.",
+      "Served as Graduate Teaching Assistant under Dr. Upendra Prasad for three graduate mathematics courses: Foundational Mathematics for Data Science (MA 574, Fall 2025 and Spring 2026), Numerical Linear Algebra for Big Data (MA 544, Spring 2026), and Introduction to Probability Theory (MA 540, Spring 2026).",
+      "Evaluated mathematical and programming assignments, quizzes, and exams across multiple course sections, ensuring fair, consistent, and rubric-aligned grading.",
+      "Supported 89 students by delivering clear, constructive, and actionable feedback to improve mathematical reasoning and coding accuracy.",
       "Maintained accurate grade records, monitored submission patterns, and escalated discrepancies to faculty for timely resolution.",
       "Managed grading, submission review, and feedback workflows using Canvas LMS.",
-      "Analyzed recurring conceptual errors in linear algebra and numerical methods and proactively addressed them through targeted feedback.",
+      "Analyzed recurring conceptual errors in linear algebra, numerical methods, and data science foundations, and proactively addressed them through targeted feedback.",
     ],
   },
   {
@@ -192,7 +192,7 @@ export const EXPERIENCE = [
     bullets: [
       "Developed a real-time fall detection system using deep learning and computer vision to identify falls in live video feeds for automated safety monitoring.",
       "Conducted a comprehensive literature review of state-of-the-art fall detection and human pose estimation research to guide architecture selection and establish evaluation baselines.",
-      "Evaluated multiple architectures (CNN, RNN, BodyPix, R-CNN) and implemented a hybrid CNN and MediaPipe pipeline for pose estimation, improving robustness across varied body orientations.",
+      "Evaluated multiple deep learning architectures, including Convolutional Neural Networks (CNN), RNN, BodyPix, and R-CNN, and implemented a hybrid CNN and MediaPipe pipeline for pose estimation, improving robustness across varied body orientations.",
       "Integrated YOLOv5 for multi-person detection, enabling simultaneous tracking of multiple individuals within a single frame.",
       "Annotated 100,000+ images to build a high-quality training dataset, significantly improving model generalization.",
       "Achieved 91.39% test accuracy and validated performance on real-world video feeds beyond static test sets.",
