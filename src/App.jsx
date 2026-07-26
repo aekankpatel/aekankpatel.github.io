@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { Fragment, useEffect, useRef, useState } from "react";
 import "./App.css";
 import {
   HERO,
@@ -356,30 +356,15 @@ export default function App() {
 
               {/* Quick-stats strip */}
               <div className="heroStats">
-                <div className="heroStat">
-                  <span className="heroStatNum"><CountUp value={18} run={fontsLoaded} /></span>
-                  <span className="heroStatLabel">Projects</span>
-                </div>
-                <div className="heroStatDivider" />
-                <div className="heroStat">
-                  <span className="heroStatNum"><CountUp value={3.967} decimals={3} run={fontsLoaded} /></span>
-                  <span className="heroStatLabel">GPA</span>
-                </div>
-                <div className="heroStatDivider" />
-                <div className="heroStat">
-                  <span className="heroStatNum"><CountUp value={5} suffix="+" run={fontsLoaded} /></span>
-                  <span className="heroStatLabel">Yrs Python</span>
-                </div>
-                <div className="heroStatDivider" />
-                <div className="heroStat">
-                  <span className="heroStatNum"><CountUp value={3} suffix="+" run={fontsLoaded} /></span>
-                  <span className="heroStatLabel">yrs SQL</span>
-                </div>
-                <div className="heroStatDivider" />
-                <div className="heroStat">
-                  <span className="heroStatNum"><CountUp value={8} run={fontsLoaded} /></span>
-                  <span className="heroStatLabel">Certifications</span>
-                </div>
+                {(HERO?.stats ?? []).map((s, i) => (
+                  <Fragment key={s.label}>
+                    {i > 0 ? <div className="heroStatDivider" /> : null}
+                    <div className="heroStat">
+                      <span className="heroStatNum"><CountUp value={s.value} decimals={s.decimals ?? 0} suffix={s.suffix ?? ""} run={fontsLoaded} /></span>
+                      <span className="heroStatLabel">{s.label}</span>
+                    </div>
+                  </Fragment>
+                ))}
               </div>
             </div>
 

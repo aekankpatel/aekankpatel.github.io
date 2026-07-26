@@ -30,6 +30,7 @@ import videoBackgroundRemovalImg from "../assets/projects/video_bg_remove.png";
 import eigenfacesImg from "../assets/projects/face.png";
 import insuranceClaimImg from "../assets/projects/insurance.png";
 import tradingRLImg from "../assets/projects/rl.png";
+import splitcheckImg from "../assets/projects/splitcheck.png";
 
 export const HERO = {
   headline: "",
@@ -37,6 +38,13 @@ export const HERO = {
   summary:
     "I started in mechatronics, building robots and working with sensors. But I kept getting more interested in the data coming off those systems than the systems themselves. The math behind it clicked for me in a way nothing else had. So I switched tracks. Now I spend my time building ML models, writing Python, and figuring out what messy datasets are actually trying to say.",
   resumePath: resumePdf,
+  stats: [
+    { value: 18, label: "Projects" },
+    { value: 3.967, decimals: 3, label: "GPA" },
+    { value: 5, suffix: "+", label: "Yrs Python" },
+    { value: 3, suffix: "+", label: "yrs SQL" },
+    { value: 8, label: "Certifications" },
+  ],
   socials: [
     { label: "LinkedIn", href: "https://www.linkedin.com/in/aekankpatel/" },
     { label: "GitHub", href: "https://github.com/aekankpatel" },
@@ -436,6 +444,28 @@ The SQL work covered most of what you would need in practice: aggregations, mult
 The findings were interesting. Champions (1,883 customers, 43% of the base) account for 88% of total revenue (\u00A37.84M out of \u00A38.9M). The At Risk segment has 1,085 customers worth \u00A3476K. Thursday is the peak revenue day, and 85% of sales happen between 9 AM and 3 PM, which suggests this is more of a B2B wholesale operation than a typical consumer store.
 
 I built Tableau dashboards for revenue trends, geographic breakdowns, product rankings, and the customer segment distribution. The UK dominates at 82% of revenue, with the Netherlands, Ireland, and Germany as the top international markets.`,
+  },
+
+  {
+    id: "splitcheck",
+    category: "analytics",
+    tag: "Analytics",
+    title: "Splitcheck: A/B Test Planning & Analysis Toolkit",
+    image: splitcheckImg,
+    short: "A zero-dependency toolkit for planning and analyzing A/B tests. It checks the traffic split first, then runs frequentist, Bayesian, and always-valid (mSPRT) tests so you can peek at results without inflating false positives.",
+    tech: "JavaScript · Python · Statistics · A/B Testing · Hypothesis Testing · Bayesian Inference · mSPRT · Monte Carlo",
+    github: "https://github.com/aekankpatel/splitcheck",
+    live: "",
+    impact: "Zero-dependency A/B testing engine with SRM checks, a two-proportion z-test, Bayesian expected-loss, and always-valid mSPRT inference, all written from scratch",
+    long: `Most A/B testing tutorials skip the two things that actually get people in trouble, so I built a small toolkit around exactly those. The first is checking the traffic split before you trust any metric. If your assignment is broken, none of the downstream numbers mean anything. The second is that peeking at results early quietly inflates your false positive rate, and most people do not realize it is happening.
+
+Every result view leads with a Sample Ratio Mismatch check, which is a chi-square test against the target split. If it fires, a banner tells you to stop trusting the metrics until you find the assignment bug. It is Kohavi's rule, and it catches a surprising number of broken experiments before they waste anyone's time.
+
+For the actual verdict you get four frames stacked together: the standard two-proportion z-test, a Bayesian Beta-Binomial with an expected-loss stopping rule, and an always-valid mSPRT p-value with a confidence sequence. The mSPRT part is the one I care about most. It uses a mixture likelihood ratio and Ville's inequality so you can peek as often as you like without breaking your error rate. The cost is a wider interval up front, around 60% wider on the sample data, which felt like an honest price to show.
+
+There is also a peeking simulator that makes the problem visceral. Run the naive "stop as soon as it looks significant" strategy and the false positive rate climbs from 5% to about 30% over 50 looks. Switch to the always-valid version and it stays flat no matter how often you check.
+
+Everything numeric is written from scratch: the Gamma and Beta samplers, the normal CDF, the chi-square tail. No dependencies and no build step, so the derivations in the README line up one to one with the code. It is deliberately narrow, two arms and one conversion metric with a normal approximation, but writing the mSPRT from the martingale up taught me more about why always-valid inference actually works than any blog post did.`,
   },
 
 
