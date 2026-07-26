@@ -39,10 +39,10 @@ export const HERO = {
     "I started in mechatronics, building robots and working with sensors. But I kept getting more interested in the data coming off those systems than the systems themselves. The math behind it clicked for me in a way nothing else had. So I switched tracks. Now I spend my time building ML models, writing Python, and figuring out what messy datasets are actually trying to say.",
   resumePath: resumePdf,
   stats: [
-    { value: 18, label: "Projects" },
+    { value: 19, label: "Projects" },
     { value: 3.967, decimals: 3, label: "GPA" },
     { value: 5, suffix: "+", label: "Yrs Python" },
-    { value: 3, suffix: "+", label: "yrs SQL" },
+    { value: 4, suffix: "+", label: "yrs SQL" },
     { value: 8, label: "Certifications" },
   ],
   socials: [
