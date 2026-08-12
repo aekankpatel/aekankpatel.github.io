@@ -17,7 +17,13 @@ import {
   FaBolt, FaArrowUp, FaMoon, FaSun, FaChartLine,
 } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
-import { SiTableau } from "react-icons/si";
+import {
+  SiTableau,
+  SiPython, SiR, SiC, SiGit, SiNumpy, SiPandas, SiScipy, SiScikitlearn,
+  SiTensorflow, SiKeras, SiPytorch, SiOpencv, SiPlotly, SiHuggingface, SiStreamlit,
+  SiFlask, SiFastapi, SiSqlite, SiPostgresql, SiMongodb, SiApachespark, SiApachehadoop,
+  SiDocker, SiVercel, SiLangchain, SiGooglecloud,
+} from "react-icons/si";
 
 /* ── Tech-stack category → icon ── */
 const SKILL_ICONS = {
@@ -30,6 +36,39 @@ const SKILL_ICONS = {
   "Data Engineering, Backend & Deployment": FaServer,
   "Mathematics": FaSquareRootAlt,
   "Interpersonal Skills": FaUsers,
+};
+
+/* ── Skill item → tech logo + brand colour (theme-safe variants). Near-black
+   marks (Flask, Vercel) use a theme var so they stay visible in both modes. ── */
+const TECH_LOGOS = {
+  "Python": { icon: SiPython, color: "#3776AB" },
+  "R": { icon: SiR, color: "#276DC3" },
+  "C": { icon: SiC, color: "#649AD2" },
+  "Git & Version Control": { icon: SiGit, color: "#F05032" },
+  "NumPy": { icon: SiNumpy, color: "#4DABCF" },
+  "Pandas": { icon: SiPandas, color: "#E70488" },
+  "SciPy": { icon: SiScipy, color: "#5A79D6" },
+  "Scikit-learn": { icon: SiScikitlearn, color: "#F7931E" },
+  "TensorFlow": { icon: SiTensorflow, color: "#FF6F00" },
+  "Keras": { icon: SiKeras, color: "#D00000" },
+  "PyTorch": { icon: SiPytorch, color: "#EE4C2C" },
+  "OpenCV": { icon: SiOpencv, color: "#5C3EE8" },
+  "Plotly": { icon: SiPlotly, color: "#636EFA" },
+  "HuggingFace": { icon: SiHuggingface, color: "#E8901E" },
+  "Streamlit": { icon: SiStreamlit, color: "#FF4B4B" },
+  "Flask": { icon: SiFlask, color: "var(--text-secondary)" },
+  "FastAPI": { icon: SiFastapi, color: "#009688" },
+  "SQLite": { icon: SiSqlite, color: "#0F80CC" },
+  "PostgreSQL": { icon: SiPostgresql, color: "#4169E1" },
+  "MongoDB": { icon: SiMongodb, color: "#47A248" },
+  "Apache Spark": { icon: SiApachespark, color: "#E25A1C" },
+  "PySpark": { icon: SiApachespark, color: "#E25A1C" },
+  "Hadoop": { icon: SiApachehadoop, color: "#2596BE" },
+  "Docker (Basic)": { icon: SiDocker, color: "#2496ED" },
+  "Vercel": { icon: SiVercel, color: "var(--text-secondary)" },
+  "LangChain": { icon: SiLangchain, color: "#2E8B7F" },
+  "Google Cloud Storage": { icon: SiGooglecloud, color: "#4285F4" },
+  "Dataproc": { icon: SiGooglecloud, color: "#4285F4" },
 };
 
 import Lottie from "lottie-react";
@@ -434,7 +473,7 @@ export default function App() {
         <section id="now" className="section revealFromTop" ref={nowRef}>
           <span className="sectionKicker">Current Focus</span>
           <h2>{NOW?.title ?? "Now"}</h2>
-          {NOW?.subtitle ? <p className="sectionSubtitle">{NOW.subtitle}<span className="nowTimestamp">Last updated June 2026</span></p> : null}
+          {NOW?.subtitle ? <p className="sectionSubtitle">{NOW.subtitle}<span className="nowTimestamp">Last updated August 2026</span></p> : null}
           <div className="nowGrid staggerChildren">
             {(NOW?.cards ?? []).map((c, i) => (
               <div className="nowCard" key={`${c.title}-${i}`}>
@@ -516,7 +555,16 @@ export default function App() {
                             <h3 className="skillCardTitle">{group.title}</h3>
                             <span className="skillCardCount">{(group.items ?? []).length}</span>
                           </div>
-                          <div className="skillChipWrap">{(group.items ?? []).map((item, i) => <span key={`${group.title}-${i}`} className="skillChip">{item}</span>)}</div>
+                          <div className="skillChipWrap">{(group.items ?? []).map((item, i) => {
+                            const logo = TECH_LOGOS[item];
+                            const Logo = logo?.icon;
+                            return (
+                              <span key={`${group.title}-${i}`} className={`skillChip${Logo ? " skillChipTool" : ""}`}>
+                                {Logo ? <Logo className="skillChipIcon" size={12} style={{ color: logo.color }} /> : null}
+                                {item}
+                              </span>
+                            );
+                          })}</div>
                         </div>
                       );
                     })}
