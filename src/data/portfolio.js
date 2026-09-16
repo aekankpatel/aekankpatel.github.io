@@ -39,10 +39,9 @@ export const HERO = {
     "I started in mechatronics, building robots and working with sensors. But I kept getting more interested in the data coming off those systems than the systems themselves. The math behind it clicked for me in a way nothing else had. So I switched tracks. Now I spend my time building ML models, writing Python, and figuring out what messy datasets are actually trying to say.",
   resumePath: resumePdf,
   stats: [
-    { value: 19, label: "Projects" },
-    { value: 3.967, decimals: 3, label: "GPA" },
-    { value: 5, suffix: "+", label: "Yrs Python" },
-    { value: 4, suffix: "+", label: "yrs SQL" },
+    { value: 19, suffix: "+", label: "Projects" },
+    { value: 3.97, decimals: 2, suffix: "/4.0", label: "GPA" },
+    { value: 5, suffix: "+", label: "Yrs Python & SQL" },
     { value: 8, label: "Certifications" },
   ],
   socials: [
@@ -98,6 +97,38 @@ export const NOW = {
   ],
 };
 
+export const FOCUS = {
+  kicker: "Focus Areas",
+  title: "What I Focus On",
+  subtitle: "",
+  cards: [
+    {
+      key: "ai",
+      title: "Applied AI & Agentic Systems",
+      body: "Building production RAG systems, multi-agent workflows, and LLM-powered tools that cover retrieval, orchestration, and structured, verifiable outputs.",
+      chips: ["RAG Pipelines", "Multi-Agent Systems", "LlamaIndex", "Groq / LLaMA 3.1", "LangChain", "FastAPI"],
+    },
+    {
+      key: "ml",
+      title: "Predictive ML & Explainability",
+      body: "Training predictive models on messy, imbalanced, real-world data, with a focus on interpretability, calibration, and computer vision.",
+      chips: ["XGBoost", "Random Forest", "PyTorch & TensorFlow", "Computer Vision / YOLOv5", "Scikit-learn"],
+    },
+    {
+      key: "data",
+      title: "Big Data & Cloud Pipelines",
+      body: "Engineering cloud-scale ETL and data pipelines on Spark and Google Cloud, plus Dockerized backend services for search and analytics at scale.",
+      chips: ["PySpark & Spark Clusters", "Google Cloud (Dataproc, GCS)", "SQL & Data Warehousing", "Docker"],
+    },
+    {
+      key: "focus",
+      title: "Data Analysis & Visualization",
+      body: "Turning raw, messy data into clear, decision-ready insight through statistical analysis, exploratory work, and interactive dashboards that tell a story stakeholders can act on.",
+      chips: ["Exploratory Data Analysis", "Statistical Testing", "Pandas & NumPy", "Tableau & Power BI", "Data Storytelling"],
+    },
+  ],
+};
+
 export const EDUCATION = [
   {
     school: "Stevens Institute of Technology",
@@ -106,9 +137,9 @@ export const EDUCATION = [
     gpa: "GPA: 3.967 / 4.0",
     logo: stevensLogo,
     details: [
-      "Completed an MS in Data Science (GPA 3.967/4.0) and a Graduate Certificate in Applied Statistics (GPA 3.918/4.0).",
-      "Served as Graduate Teaching Assistant for three graduate-level mathematics courses (MA 574, MA 544, MA 540), providing grading and feedback for 89 students.",
-      "Applied coursework through hands-on projects spanning machine learning, deep learning, time series analysis, and financial analytics."
+      "Earned an MS in Data Science (GPA 3.967/4.0) and a Graduate Certificate in Applied Statistics (GPA 3.918/4.0), by completing advanced coursework in machine learning, statistics, and big data.",
+      "Supported 89 students across three graduate mathematics courses (MA 574, MA 544, MA 540) with consistent, rubric-aligned grading, by serving as a Graduate Teaching Assistant providing grading and feedback.",
+      "Delivered hands-on projects spanning machine learning, deep learning, time series, and financial analytics, by applying coursework to real, end-to-end problems."
     ],
     courses: [
       "Foundational Mathematics for Data Science",
@@ -132,9 +163,9 @@ export const EDUCATION = [
     gpa: "GPA: 7.83 / 10",
     logo: mitLogo,
     details: [
-      "Served as Class Representative, acting as the primary liaison between students and faculty.",
-      "Led the Mechatronics Peer Programme, mentoring junior students and organizing academic events.",
-      "Built a strong foundation in robotics, embedded systems, and sensors, and completed electives in financial technology that introduced applied data science."
+      "Built a strong foundation in robotics, embedded systems, and sensors, by completing a B.Tech in Mechatronics Engineering (GPA 7.83/10) with electives in financial technology and applied data science.",
+      "Improved communication between students and faculty as the primary liaison, by serving as Class Representative and coordinating academic concerns and feedback.",
+      "Mentored junior students and organized academic events, by leading the Mechatronics Peer Programme."
     ],
     courses: [
       "Data Structures and Algorithms",
@@ -159,44 +190,31 @@ export const EXPERIENCE = [
   {
     company: "Stevens Institute of Technology",
     role: "Graduate Teaching Assistant",
-    time: "Sep 2025 \u2013 May 2026",
+    time: "Sep 2025 – May 2026",
     location: "Hoboken, New Jersey, United States",
     workType: "Hybrid",
     logo: stevensLogo,
-    stats: [
-      "3 Courses Supported",
-      "89 Students",
-      "MA 574 \u00B7 MA 544 \u00B7 MA 540",
-    ],
+    tags: ["Teaching & Mentoring", "Mathematics", "Linear Algebra", "Probability", "Grading & Feedback", "Canvas LMS"],
     bullets: [
-      "Served as Graduate Teaching Assistant under Dr. Upendra Prasad for three graduate mathematics courses: Foundational Mathematics for Data Science (MA 574, Fall 2025 and Spring 2026), Numerical Linear Algebra for Big Data (MA 544, Spring 2026), and Introduction to Probability Theory (MA 540, Spring 2026).",
-      "Evaluated mathematical and programming assignments, quizzes, and exams across multiple course sections, ensuring fair, consistent, and rubric-aligned grading.",
-      "Supported 89 students by delivering clear, constructive, and actionable feedback to improve mathematical reasoning and coding accuracy.",
-      "Maintained accurate grade records, monitored submission patterns, and escalated discrepancies to faculty for timely resolution.",
-      "Managed grading, submission review, and feedback workflows using Canvas LMS.",
-      "Analyzed recurring conceptual errors in linear algebra, numerical methods, and data science foundations, and proactively addressed them through targeted feedback.",
+      "Supported 89 students under Dr. Upendra Prasad across three graduate mathematics courses (MA 574, MA 544, MA 540) with fair, consistent, and rubric-aligned scoring, by grading assignments, quizzes, and exams and maintaining accurate grade records in Canvas LMS.",
+      "Improved students' mathematical reasoning and coding accuracy, by delivering clear, constructive, and actionable feedback on submissions across multiple course sections.",
+      "Reduced recurring conceptual errors in linear algebra and numerical methods, by analyzing common mistake patterns and proactively addressing them through targeted feedback.",
     ],
   },
   {
     company: "Matrix ComSec Pvt. Ltd.",
     role: "Research & Development Intern",
-    time: "Jan 2024 \u2013 May 2024",
+    time: "Jan 2024 – May 2024",
     location: "Vadodara, Gujarat, India",
     workType: "On-site",
     logo: matrixLogo,
-    stats: [
-      "91.39% Test Accuracy",
-      "100,000+ Images Annotated",
-      "YOLOv5 Multi-Person Detection",
-    ],
+    tags: ["Deep Learning", "Computer Vision", "YOLOv5", "CNN-MediaPipe", "PyTorch", "TensorFlow", "OpenCV", "Data Profiling", "Error Analysis"],
     bullets: [
-      "Developed a real-time fall detection system using deep learning and computer vision to identify falls in live video feeds for automated safety monitoring.",
-      "Conducted a comprehensive literature review of state-of-the-art fall detection and human pose estimation research to guide architecture selection and establish evaluation baselines.",
-      "Evaluated multiple deep learning architectures, including Convolutional Neural Networks (CNN), RNN, BodyPix, and R-CNN, and implemented a hybrid CNN and MediaPipe pipeline for pose estimation, improving robustness across varied body orientations.",
-      "Integrated YOLOv5 for multi-person detection, enabling simultaneous tracking of multiple individuals within a single frame.",
-      "Annotated 100,000+ images to build a high-quality training dataset, significantly improving model generalization.",
-      "Achieved 91.39% test accuracy and validated performance on real-world video feeds beyond static test sets.",
-      "Engineered and optimized the pipeline using TensorFlow, PyTorch, OpenCV, NumPy, and Matplotlib, tuning inference speed for real-time performance.",
+      "Prepared 100,000+ annotated images across pose and crowd-density segments for model training, correcting 12% class imbalance and filtering mislabeled or outlier frames, by building automated data profiling and quality-filtering pipelines.",
+      "Diagnosed an 8% model performance gap across pose, crowd-density, and camera-angle cohorts, by conducting systematic error analysis that directly informed architecture refinement before deployment.",
+      "Deployed a real-time fall detection system to live camera feeds, reaching 91.39% test accuracy across multi-person video streams, by optimizing the inference pipeline and integrating a hybrid CNN-MediaPipe and YOLOv5 architecture for production use.",
+      "Benchmarked 4 deep learning architectures (CNN, RNN, BodyPix, R-CNN) for fall detection, selecting a top-performing architecture with a 6% accuracy improvement over baseline approaches, through a literature review and comparative evaluation.",
+      "Reduced inference latency for real-time detection across multi-person video streams, by profiling and optimizing the pipeline built with TensorFlow, PyTorch, OpenCV, and NumPy for production deployment.",
     ],
   },
   {
@@ -206,17 +224,13 @@ export const EXPERIENCE = [
     location: "Vadodara, Gujarat, India",
     workType: "Hybrid",
     logo: nimitLogo,
-    stats: [
-      "80,000+ Records Analyzed",
-      "10+ Heterogeneous Datasets",
-      "SQL · Python · Scikit-learn",
-    ],
+    tags: ["Data Science", "SQL", "Python", "Pandas", "NumPy", "ETL Pipelines", "Scikit-learn", "Anomaly Detection", "Feature Engineering"],
     bullets: [
-      "Queried and analyzed 80,000+ surveillance event records, access-control logs, and IoT sensor data using SQL to support operational reporting and identify recurring system trends.",
-      "Developed Python-based ETL scripts to extract, clean, transform, and validate data from 10+ heterogeneous datasets, preparing standardized datasets for downstream analytics.",
-      "Performed exploratory data analysis using Python, Pandas, and NumPy to examine incident frequency, device health, and access activity across locations and time periods.",
-      "Assisted in developing and evaluating machine learning models for incident classification and anomaly detection using Scikit-learn, comparing performance using accuracy, precision, recall, and F1-score.",
-      "Created analytical dashboards and visual reports to monitor operational KPIs, including incident trends, device uptime, and system utilization, supporting engineering and product review meetings.",
+      "Structured 80,000+ surveillance, access-control, and IoT sensor records into model-ready feature sets for downstream classification and anomaly-detection models, by querying and consolidating the data with SQL.",
+      "Built a standardized feature pipeline across 10+ heterogeneous datasets, by developing Python-based ETL scripts to extract, clean, transform, and validate records ahead of downstream modeling.",
+      "Engineered features capturing device health and access-activity patterns across 5+ device types, multiple locations, and time periods, by analyzing distribution, correlation, and outlier patterns in Python, Pandas, and NumPy.",
+      "Achieved 94.83% accuracy in incident classification and anomaly detection, by training and evaluating multiple machine learning models in Scikit-learn and selecting the best-performing approach based on precision, recall, and F1-score.",
+      "Sped up operational review of incident trends and device uptime for engineering and product meetings, by building analytical dashboards and visual reports that surfaced key KPIs from the processed data.",
     ],
   },
   {
@@ -226,16 +240,10 @@ export const EXPERIENCE = [
     location: "Vadodara, Gujarat, India",
     workType: "On-site",
     logo: vinroxLogo,
-    stats: [
-      "SMT & PCB Assembly",
-      "AOI & Quality Control",
-      "Soldering · Troubleshooting",
-    ],
+    tags: ["SMT", "PCB Assembly", "AOI", "Soldering", "Quality Control", "Troubleshooting"],
     bullets: [
-      "Operated Surface Mount Technology (SMT) production lines across loading, solder-paste printing, pick-and-place, reflow soldering, and unloading stages.",
-      "Performed PCB assembly and quality control, including automated optical inspection (AOI) and hand soldering using soldering iron and hot air rework tools.",
-      "Contributed to defect detection and functional testing of PCB assemblies to ensure compliance with industry standards and client requirements.",
-      "Troubleshot and programmed SMT machines and maintained technical documentation, improving operational efficiency.",
+      "Produced PCB assemblies meeting industry and client quality standards, by operating SMT production lines across solder-paste printing, pick-and-place, reflow soldering, and automated optical inspection (AOI), and performing hand soldering and functional testing.",
+      "Improved line operational efficiency, by troubleshooting and programming SMT machines, supporting defect detection, and maintaining accurate technical documentation.",
     ],
   },
 ];
@@ -703,167 +711,143 @@ The main takeaway: high accuracy is not the same as a trustworthy model. Some mo
 ];
 
 
+// Proficiency levels (0-100) are estimates from my projects & experience.
+// Tweak any `level` freely — the bar fills to that value. Every `name` maps to
+// an icon in SKILL_META (App.jsx); add the name there if you introduce a new skill.
 export const SKILLS = [
   {
-    title: "Programming",
+    title: "Programming Languages",
     items: [
-      "Python",
-      "R",
-      "SQL",
-      "C",
-      "MATLAB",
-      "Object-Oriented Programming",
-      "Data Structures & Algorithms",
-      "Scripting & Automation",
-      "Git & Version Control"
-    ]
+      { name: "Python", level: 85 },
+      { name: "SQL", level: 80 },
+      { name: "R", level: 68 },
+      { name: "C++", level: 50 },
+      { name: "C", level: 50 },
+      { name: "JavaScript", level: 45 },
+      { name: "Bash/Shell", level: 52 },
+    ],
+  },
+  {
+    title: "Databases",
+    items: [
+      { name: "PostgreSQL", level: 70 },
+      { name: "MySQL", level: 65 },
+      { name: "SQLite", level: 72 },
+      { name: "MongoDB", level: 62 },
+      { name: "BigQuery", level: 58 },
+    ],
+  },
+  {
+    title: "Data Engineering & Cloud",
+    items: [
+      { name: "Apache Spark", level: 72 },
+      { name: "PySpark", level: 72 },
+      { name: "Hadoop", level: 62 },
+      { name: "Google Cloud", level: 65 },
+      { name: "Dataproc", level: 62 },
+      { name: "ETL Pipelines", level: 72 },
+      { name: "Docker", level: 56 },
+    ],
+  },
+  {
+    title: "Backend & APIs",
+    items: [
+      { name: "FastAPI", level: 72 },
+      { name: "Flask", level: 70 },
+      { name: "REST APIs", level: 70 },
+      { name: "Streamlit", level: 75 },
+      { name: "Vercel", level: 55 },
+    ],
   },
   {
     title: "Machine Learning",
     items: [
-      "Supervised Learning", 
-      "Classification",
-      "Regression",
-      "Unsupervised Learning",
-      "Cross Validation",
-      "Model Selection",
-      "Feature Engineering", "Risk Scoring",
-      "Hyperparameter Tuning",
-      "Ensemble Learning",
-      "Model Evaluation",
-      "Recommendation Systems",
-      "Matrix Factorization",
-      "Model Calibration"
-    ]
+      { name: "Scikit-learn", level: 80 },
+      { name: "XGBoost", level: 75 },
+      { name: "Supervised Learning", level: 82 },
+      { name: "Classification", level: 80 },
+      { name: "Regression", level: 80 },
+      { name: "Ensemble Learning", level: 75 },
+      { name: "Model Evaluation", level: 78 },
+    ],
   },
   {
     title: "Deep Learning & AI",
     items: [
-      "Neural Networks",
-      "CNN",
-      "RNN",
-      "LSTM",
-      "Transfer Learning",
-      "Computer Vision",
-      "Tabular Deep Learning",
-      "Model Optimization",
-      "Explainable AI",
-      "Reinforcement Learning",
-      "Human-in-the-Loop Systems"
-    ]
+      { name: "PyTorch", level: 70 },
+      { name: "TensorFlow", level: 66 },
+      { name: "Keras", level: 64 },
+      { name: "Neural Networks", level: 74 },
+      { name: "CNN", level: 72 },
+      { name: "Computer Vision", level: 68 },
+      { name: "OpenCV", level: 62 },
+    ],
   },
   {
     title: "NLP & LLMs",
     items: [
-      "Large Language Models",
-      "Retrieval-Augmented Generation (RAG)",
-      "Semantic Search",
-      "Prompt Engineering",
-      "Embeddings",
-      "Vector Search",
-      "Document Intelligence",
-      "LLM Evaluation",
-      "Multi-Agent AI Systems",
-      "Agentic AI Workflows"
-    ]
+      { name: "Large Language Models", level: 78 },
+      { name: "Retrieval-Augmented Generation", level: 80 },
+      { name: "Multi-Agent Systems", level: 72 },
+      { name: "Prompt Engineering", level: 78 },
+      { name: "LangChain", level: 70 },
+      { name: "LlamaIndex", level: 72 },
+      { name: "HuggingFace", level: 72 },
+    ],
   },
   {
     title: "Data Science & Analytics",
     items: [
-      "Exploratory Data Analysis",
-      "Data Cleaning",
-      "Statistical Analysis",
-      "Hypothesis Testing",
-      "Time Series Analysis",
-      "Econometrics",
-      "A/B Testing",
-      "Graph Analytics",
-      "Backtesting",
-      "Data Visualization",
-      "Business Analytics"
-    ]
+      { name: "Exploratory Data Analysis", level: 82 },
+      { name: "Statistical Analysis", level: 78 },
+      { name: "Hypothesis Testing", level: 75 },
+      { name: "Time Series Analysis", level: 70 },
+      { name: "A/B Testing", level: 70 },
+      { name: "Feature Engineering", level: 78 },
+      { name: "Data Visualization", level: 75 },
+    ],
   },
   {
     title: "Libraries & Frameworks",
     items: [
-      "NumPy",
-      "Pandas",
-      "SciPy",
-      "Scikit-learn",
-      "TensorFlow",
-      "Keras",
-      "PyTorch",
-      "XGBoost",
-      "OpenCV",
-      "Statsmodels",
-      "Matplotlib",
-      "Seaborn",
-      "Plotly",
-      "HuggingFace",
-      "LangChain",
-      "LlamaIndex",
-      "Streamlit",
-      "Stable-Baselines3",
-      "Gymnasium",
-      "MoviePy",
-      "ReportLab"
-    ]
+      { name: "NumPy", level: 82 },
+      { name: "Pandas", level: 82 },
+      { name: "SciPy", level: 72 },
+      { name: "Matplotlib", level: 75 },
+      { name: "Seaborn", level: 72 },
+      { name: "Plotly", level: 68 },
+      { name: "Statsmodels", level: 68 },
+    ],
   },
   {
-    title: "Data Engineering, Backend & Deployment",
+    title: "Data Viz & BI",
     items: [
-      "Flask",
-      "FastAPI",
-      "REST APIs",
-      "API Design",
-      "SQLite",
-      "PostgreSQL",
-      "MongoDB",
-      "Apache Spark",
-      "PySpark",
-      "Hadoop",
-      "YARN",
-      "Dataproc",
-      "MapReduce",
-      "Vercel",
-      "Docker (Basic)",
-      "Model Deployment",
-      "ETL Pipelines",
-      "Google Cloud Storage",
-      "Medallion Architecture",
-      "Cloud ETL"
-    ]
+      { name: "Tableau", level: 68 },
+      { name: "Power BI", level: 58 },
+      { name: "Excel", level: 70 },
+    ],
+  },
+  {
+    title: "Tools & IDEs",
+    items: [
+      { name: "Git", level: 72 },
+      { name: "GitHub", level: 75 },
+      { name: "VS Code", level: 78 },
+      { name: "Jupyter", level: 80 },
+      { name: "Google Colab", level: 75 },
+      { name: "PyCharm", level: 65 },
+    ],
   },
   {
     title: "Mathematics",
     items: [
-      "Probability",
-      "Statistics",
-      "Linear Algebra",
-      "Calculus",
-      "Multivariable Calculus",
-      "Differential Equations",
-      "Optimization",
-      "Numerical Methods",
-      "Discrete Mathematics",
-      "Bayesian Methods",
-      "Stochastic Processes",
-      "Time Series",
-      "Graph Theory"
-    ]
-  },
-  {
-    title: "Interpersonal Skills",
-    items: [
-      "Technical Communication",
-      "Teaching & Mentoring",
-      "Leadership",
-      "Analytical Thinking",
-      "Problem Solving",
-      "Team Collaboration",
-      "Adaptability",
-      "Continuous Learning"
-    ]
+      { name: "Probability", level: 78 },
+      { name: "Statistics", level: 78 },
+      { name: "Linear Algebra", level: 75 },
+      { name: "Calculus", level: 72 },
+      { name: "Optimization", level: 68 },
+      { name: "Bayesian Methods", level: 65 },
+    ],
   },
 ];
 

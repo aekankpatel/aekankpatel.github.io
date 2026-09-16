@@ -4,6 +4,7 @@ import {
   HERO,
   WHAT_I_DO,
   NOW,
+  FOCUS,
   EDUCATION,
   EXPERIENCE,
   PROJECTS,
@@ -15,6 +16,12 @@ import {
   FaGithub, FaLinkedin, FaMedium,
   FaCode, FaBrain, FaRobot, FaComments, FaChartBar, FaCubes, FaServer, FaSquareRootAlt, FaUsers,
   FaBolt, FaArrowUp, FaMoon, FaSun, FaChartLine,
+  FaGraduationCap, FaMapMarkerAlt, FaArrowRight, FaFileAlt, FaRegCopy,
+  FaDatabase, FaLayerGroup, FaBriefcase, FaShieldAlt,
+  FaProjectDiagram, FaNetworkWired, FaEye, FaFlask, FaSuperscript, FaInfinity,
+  FaWaveSquare, FaFileExcel, FaSitemap, FaMagic, FaBalanceScale, FaBullseye,
+  FaChalkboardTeacher, FaLightbulb, FaHandshake, FaSearch, FaMicrochip, FaTerminal,
+  FaChartArea, FaCloud,
 } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
 import {
@@ -23,19 +30,32 @@ import {
   SiTensorflow, SiKeras, SiPytorch, SiOpencv, SiPlotly, SiHuggingface, SiStreamlit,
   SiFlask, SiFastapi, SiSqlite, SiPostgresql, SiMongodb, SiApachespark, SiApachehadoop,
   SiDocker, SiVercel, SiLangchain, SiGooglecloud,
+  SiJavascript, SiCplusplus, SiGnubash, SiMysql, SiGooglebigquery, SiApacheairflow,
+  SiJupyter, SiGooglecolab, SiPycharm,
 } from "react-icons/si";
 
-/* ── Tech-stack category → icon ── */
+/* ── Tech-stack category → header icon ── */
 const SKILL_ICONS = {
-  "Programming": FaCode,
+  "Programming Languages": FaCode,
+  "Databases": FaDatabase,
+  "Data Engineering & Cloud": FaCloud,
+  "Backend & APIs": FaServer,
   "Machine Learning": FaBrain,
   "Deep Learning & AI": FaRobot,
   "NLP & LLMs": FaComments,
   "Data Science & Analytics": FaChartBar,
   "Libraries & Frameworks": FaCubes,
-  "Data Engineering, Backend & Deployment": FaServer,
+  "Data Viz & BI": FaChartArea,
+  "Tools & IDEs": FaTerminal,
   "Mathematics": FaSquareRootAlt,
-  "Interpersonal Skills": FaUsers,
+};
+
+/* ── "What I Focus On" card → icon + accent colour ── */
+const FOCUS_META = {
+  ai:    { Icon: FaRobot,     color: "#a78bfa", bg: "rgba(133,76,230,0.13)", border: "rgba(133,76,230,0.28)", glow: "rgba(133,76,230,0.12)" },
+  ml:    { Icon: FaBrain,     color: "#a78bfa", bg: "rgba(133,76,230,0.13)", border: "rgba(133,76,230,0.28)", glow: "rgba(133,76,230,0.12)" },
+  data:  { Icon: FaDatabase,  color: "#a78bfa", bg: "rgba(133,76,230,0.13)", border: "rgba(133,76,230,0.28)", glow: "rgba(133,76,230,0.12)" },
+  focus: { Icon: FaChartLine, color: "#a78bfa", bg: "rgba(133,76,230,0.13)", border: "rgba(133,76,230,0.28)", glow: "rgba(133,76,230,0.12)" },
 };
 
 /* ── Skill item → tech logo + brand colour (theme-safe variants). Near-black
@@ -71,14 +91,113 @@ const TECH_LOGOS = {
   "Dataproc": { icon: SiGooglecloud, color: "#4285F4" },
 };
 
+/* ── Skill → icon + colour for the Tech Stack proficiency boxes.
+   Brand tools use their real logo/colour; concepts use a themed Fa icon.
+   Anything not listed falls back to a generic accent icon. ── */
+const SKILL_META = {
+  // Programming
+  "Python": { Icon: SiPython, color: "#3776AB" },
+  "SQL": { Icon: FaDatabase, color: "#6d9dc5" },
+  "R": { Icon: SiR, color: "#276DC3" },
+  "C++": { Icon: SiCplusplus, color: "#00599C" },
+  "C": { Icon: SiC, color: "#A8B9CC" },
+  "JavaScript": { Icon: SiJavascript, color: "#F7DF1E" },
+  "Bash/Shell": { Icon: SiGnubash, color: "#4EAA25" },
+  // Databases
+  "PostgreSQL": { Icon: SiPostgresql, color: "#4169E1" },
+  "MySQL": { Icon: SiMysql, color: "#4479A1" },
+  "SQLite": { Icon: SiSqlite, color: "#0F80CC" },
+  "MongoDB": { Icon: SiMongodb, color: "#47A248" },
+  "BigQuery": { Icon: SiGooglebigquery, color: "#669DF6" },
+  // Data Engineering & Cloud
+  "Apache Spark": { Icon: SiApachespark, color: "#E25A1C" },
+  "PySpark": { Icon: SiApachespark, color: "#E25A1C" },
+  "Hadoop": { Icon: SiApachehadoop, color: "#66CCFF" },
+  "Google Cloud": { Icon: SiGooglecloud, color: "#4285F4" },
+  "Dataproc": { Icon: SiGooglecloud, color: "#4285F4" },
+  "Apache Airflow": { Icon: SiApacheairflow, color: "#017CEE" },
+  "ETL Pipelines": { Icon: FaProjectDiagram, color: "#8b7fe0" },
+  "Docker": { Icon: SiDocker, color: "#2496ED" },
+  // Backend & APIs
+  "FastAPI": { Icon: SiFastapi, color: "#009688" },
+  "Flask": { Icon: SiFlask, color: "#cbd0d6" },
+  "REST APIs": { Icon: FaServer, color: "#a78bfa" },
+  "Streamlit": { Icon: SiStreamlit, color: "#FF4B4B" },
+  "Vercel": { Icon: SiVercel, color: "#cbd0d6" },
+  // Machine Learning
+  "Scikit-learn": { Icon: SiScikitlearn, color: "#F7931E" },
+  "XGBoost": { Icon: FaProjectDiagram, color: "#2E86C1" },
+  "Supervised Learning": { Icon: FaBrain, color: "#a78bfa" },
+  "Classification": { Icon: FaSitemap, color: "#7bb3e0" },
+  "Regression": { Icon: FaChartLine, color: "#5aa9e6" },
+  "Ensemble Learning": { Icon: FaLayerGroup, color: "#8b7fe0" },
+  "Model Evaluation": { Icon: FaBalanceScale, color: "#4cc38a" },
+  // Deep Learning & AI
+  "PyTorch": { Icon: SiPytorch, color: "#EE4C2C" },
+  "TensorFlow": { Icon: SiTensorflow, color: "#FF6F00" },
+  "Keras": { Icon: SiKeras, color: "#D00000" },
+  "Neural Networks": { Icon: FaNetworkWired, color: "#5aa9e6" },
+  "CNN": { Icon: FaMicrochip, color: "#8b7fe0" },
+  "Computer Vision": { Icon: FaEye, color: "#5aa9e6" },
+  "OpenCV": { Icon: SiOpencv, color: "#5C3EE8" },
+  // NLP & LLMs
+  "LangChain": { Icon: SiLangchain, color: "#2E8B7F" },
+  "LlamaIndex": { Icon: FaRobot, color: "#a78bfa" },
+  "HuggingFace": { Icon: SiHuggingface, color: "#FFD21E" },
+  "Retrieval-Augmented Generation": { Icon: FaSearch, color: "#4cc38a" },
+  "Large Language Models": { Icon: FaComments, color: "#a78bfa" },
+  "Prompt Engineering": { Icon: FaTerminal, color: "#5aa9e6" },
+  "Multi-Agent Systems": { Icon: FaSitemap, color: "#8b7fe0" },
+  // Data Science & Analytics
+  "Exploratory Data Analysis": { Icon: FaChartBar, color: "#4cc38a" },
+  "Statistical Analysis": { Icon: FaChartLine, color: "#5aa9e6" },
+  "Hypothesis Testing": { Icon: FaBalanceScale, color: "#a78bfa" },
+  "Time Series Analysis": { Icon: FaChartArea, color: "#5aa9e6" },
+  "A/B Testing": { Icon: FaFlask, color: "#4cc38a" },
+  "Feature Engineering": { Icon: FaMagic, color: "#a78bfa" },
+  "Data Visualization": { Icon: FaChartBar, color: "#8b7fe0" },
+  // Libraries & Frameworks
+  "NumPy": { Icon: SiNumpy, color: "#4DABCF" },
+  "Pandas": { Icon: SiPandas, color: "#E70488" },
+  "SciPy": { Icon: SiScipy, color: "#8CAAE6" },
+  "Matplotlib": { Icon: FaChartArea, color: "#5aa9e6" },
+  "Seaborn": { Icon: FaChartBar, color: "#4cc38a" },
+  "Plotly": { Icon: SiPlotly, color: "#636EFA" },
+  "Statsmodels": { Icon: FaWaveSquare, color: "#8b7fe0" },
+  // Data Viz & BI
+  "Tableau": { Icon: SiTableau, color: "#E97627" },
+  "Power BI": { Icon: FaChartBar, color: "#F2C811" },
+  "Excel": { Icon: FaFileExcel, color: "#217346" },
+  // Tools & IDEs
+  "Git": { Icon: SiGit, color: "#F05032" },
+  "GitHub": { Icon: FaGithub, color: "#cbd0d6" },
+  "VS Code": { Icon: FaCode, color: "#3B9EFF" },
+  "Jupyter": { Icon: SiJupyter, color: "#F37626" },
+  "Google Colab": { Icon: SiGooglecolab, color: "#F9AB00" },
+  "PyCharm": { Icon: SiPycharm, color: "#21D789" },
+  // Mathematics
+  "Probability": { Icon: FaInfinity, color: "#a78bfa" },
+  "Statistics": { Icon: FaChartBar, color: "#5aa9e6" },
+  "Linear Algebra": { Icon: FaSuperscript, color: "#8b7fe0" },
+  "Calculus": { Icon: FaInfinity, color: "#5aa9e6" },
+  "Optimization": { Icon: FaBullseye, color: "#4cc38a" },
+  "Bayesian Methods": { Icon: FaBalanceScale, color: "#a78bfa" },
+  // Soft Skills
+  "Technical Communication": { Icon: FaComments, color: "#5aa9e6" },
+  "Teaching & Mentoring": { Icon: FaChalkboardTeacher, color: "#a78bfa" },
+  "Leadership": { Icon: FaUsers, color: "#8b7fe0" },
+  "Problem Solving": { Icon: FaLightbulb, color: "#F2C811" },
+  "Team Collaboration": { Icon: FaHandshake, color: "#4cc38a" },
+};
+
 import Lottie from "lottie-react";
 
 import whatIDoAnim from "./assets/animations/data.json";
-import contactAnim from "./assets/animations/contact.json";
-import ScrollToTop from "./components/ScrollToTop";
+import contactAnim from "./assets/animations/email-verify.json";
+import ChatBot from "./components/ChatBot";
 
 // ── Your photo (shown in hero) ──
-import myPhoto from "./assets/photos/aekank-1.jpg";
+import myPhoto from "./assets/photos/aekank-2.jpg";
 
 /* ── Reveal hook ── */
 function useReveal({ threshold = 0.15, rootMargin = "0px 0px -6% 0px" } = {}) {
@@ -105,7 +224,7 @@ function useCursorSpotlight() {
     const spotlight = document.createElement("div");
     Object.assign(spotlight.style, {
       position: "fixed", width: "500px", height: "500px", borderRadius: "50%",
-      background: "radial-gradient(circle, rgba(212,149,106,0.035) 0%, transparent 70%)",
+      background: "radial-gradient(circle, rgba(133,76,230,0.035) 0%, transparent 70%)",
       pointerEvents: "none", zIndex: "0", transform: "translate(-50%, -50%)",
       transition: "opacity 400ms ease", opacity: "0",
     });
@@ -131,7 +250,26 @@ function useCursorSpotlight() {
   }, []);
 }
 
-function SectionDivider() { return <div className="sectionLine" />; }
+function SectionDivider({ variant = "a" }) {
+  const paths = {
+    a: "M0,30 C 200,8 380,8 600,24 C 820,40 1000,44 1200,20",
+    b: "M0,18 C 200,40 380,42 600,24 C 820,6 1000,2 1200,26",
+  };
+  return (
+    <div className={`sectionWave sectionWave--${variant}`} aria-hidden="true">
+      <svg viewBox="0 0 1200 48" preserveAspectRatio="none">
+        <defs>
+          <linearGradient id={`wg-${variant}`} x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0" stopColor="var(--accent)" stopOpacity="0" />
+            <stop offset="0.5" stopColor="var(--accent)" stopOpacity="0.6" />
+            <stop offset="1" stopColor="var(--accent)" stopOpacity="0" />
+          </linearGradient>
+        </defs>
+        <path d={paths[variant]} fill="none" stroke={`url(#wg-${variant})`} strokeWidth="2.5" strokeLinecap="round" />
+      </svg>
+    </div>
+  );
+}
 
 /* ──────────────────────────────────────────────
    Contact Form — sends email via EmailJS
@@ -239,7 +377,7 @@ function ContactForm() {
         role="button"
         tabIndex={-1}
       >
-        {status === "sending" ? "Sending..." : status === "sent" ? "✓ Message Sent!" : status === "error" ? "Failed — Try Again" : "Send Message"}
+        {status === "sending" ? "Sending..." : status === "sent" ? "✓ Message Sent!" : status === "error" ? "Failed — Try Again" : "Send Message →"}
       </div>
 
       {status === "sent" && (
@@ -344,6 +482,16 @@ export default function App() {
     if (label === "Tableau") return SiTableau; return null;
   };
 
+  // Contact — copy-email + clean URL labels
+  const [emailCopied, setEmailCopied] = useState(false);
+  const contactEmail = (heroSocials.find((s) => s?.label === "Email")?.href || "mailto:aekankpatel@gmail.com").replace("mailto:", "");
+  const copyEmail = () => {
+    navigator.clipboard?.writeText(contactEmail)
+      .then(() => { setEmailCopied(true); setTimeout(() => setEmailCopied(false), 2000); })
+      .catch(() => {});
+  };
+  const cleanUrl = (href) => (href || "").replace(/^https?:\/\/(www\.)?/, "").replace(/\/$/, "");
+
   return (
     <>
       <div className={`loaderScreen ${fontsLoaded ? "loaderHidden" : ""}`}>
@@ -365,8 +513,7 @@ export default function App() {
           <div className="brand"><a href="https://github.com/aekankpatel/aekankpatel.github.io" target="_blank" rel="noreferrer" className="brandLink">Aekank Patel</a></div>
           <div className="navRight">
             <nav className={`links ${menuOpen ? "menuOpen" : ""}`}>
-              <a href="#what" onClick={() => setMenuOpen(false)}>What I Do</a>
-              <a href="#now" onClick={() => setMenuOpen(false)}>Now</a>
+              <a href="#what" onClick={() => setMenuOpen(false)}>Focus</a>
               <a href="#education" onClick={() => setMenuOpen(false)}>Education</a>
               <a href="#experience" onClick={() => setMenuOpen(false)}>Experience</a>
               <a href="#tech-stack" onClick={() => setMenuOpen(false)}>Tech Stack</a>
@@ -390,8 +537,17 @@ export default function App() {
             <div className="heroLeft">
               <div className="availableBadge"><span className="availableDot" />Open to Opportunities</div>
               <p className="heroGreeting">Hi, I'm Aekank <span className="waveEmoji">👋</span></p>
-              <p className="heroTagline">I turn <RotatingWord words={["messy data", "raw numbers", "noisy signals", "chaos", "spreadsheets"]} /> into systems <br />that actually <span className="orangeUnderline">make sense</span>.</p>
+              <p className="heroTagline">I turn <RotatingWord words={["messy data", "raw numbers", "noisy signals", "chaos", "spreadsheets"]} /> into systems <br />that solve <span className="orangeUnderline"></span>real world problems.</p>
               <p className="subtitle">{HERO?.summary ?? ""}</p>
+
+              {/* Primary actions */}
+              <div className="heroCtas">
+                <a className="btn heroCtaPrimary" href="#projects">Explore Projects <FaArrowRight size={12} /></a>
+                {HERO?.resumePath ? (
+                  <a className="btn heroCta" href={HERO.resumePath} target="_blank" rel="noreferrer"><FaFileAlt size={13} /> Download Resume</a>
+                ) : null}
+                <a className="btn heroCtaGhost" href="#contact">Get in Touch</a>
+              </div>
 
               {/* Quick-stats strip */}
               <div className="heroStats">
@@ -407,87 +563,49 @@ export default function App() {
               </div>
             </div>
 
-            {/* Right — photo card with emojis connected by dashed arc */}
+            {/* Right — photo card with overlaid badges + socials below */}
             <div className="heroRight">
-              <div className="heroCardWrap" ref={heroCardRef} onMouseMove={handleCardTilt} onMouseLeave={resetCardTilt}>
-                {/* Dashed arc connecting the two emojis, sweeping around the photo */}
-                <svg className="heroArc" viewBox="0 0 300 480" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                  <path d="M22 360 C8 290, 6 200, 15 140 C30 60, 90 10, 170 0 C230 -8, 270 15, 275 45" stroke="var(--accent)" strokeWidth="3.5" strokeDasharray="16 12" strokeLinecap="round" fill="none" opacity="0.55" />
-                </svg>
+              <div className="heroPhotoCard" ref={heroCardRef} onMouseMove={handleCardTilt} onMouseLeave={resetCardTilt}>
+                <img className="heroPhoto" src={myPhoto} alt="Aekank Patel" />
+              </div>
 
-                {/* Icon badge 1 — bottom-left of photo */}
-                <div className="heroEmoji heroEmoji1"><FaChartBar size={18} /></div>
-
-                <div className="heroPhotoBorder">
-                  <img className="heroPhoto" src={myPhoto} alt="Aekank Patel" />
-                </div>
-
-                {/* Icon badge 2 — top-right of photo */}
-                <div className="heroEmoji heroEmoji2"><FaChartLine size={18} /></div>
-
-                <p className="heroPhotoName">Aekank Patel</p>
-
-                <div className="heroCardLinks">
-                  {heroSocials.map((s) => {
-                    const Icon = iconFor(s?.label); if (!Icon) return null;
-                    const href = s?.href ?? "#"; const isMail = href.startsWith("mailto:");
-                    return <a key={s.label} className="heroCardIcon" href={href} target={isMail ? undefined : "_blank"} rel={isMail ? undefined : "noreferrer"} aria-label={s.label} title={s.label}><Icon size={18} /></a>;
-                  })}
-                </div>
-
-                {HERO?.resumePath ? (
-                  <a className="btn primary heroResumeBtn" href={HERO.resumePath} target="_blank" rel="noreferrer">↓ Download Resume</a>
-                ) : null}
+              <div className="heroCardLinks">
+                {heroSocials.map((s) => {
+                  const Icon = iconFor(s?.label); if (!Icon) return null;
+                  const href = s?.href ?? "#"; const isMail = href.startsWith("mailto:");
+                  return <a key={s.label} className="heroCardIcon" href={href} target={isMail ? undefined : "_blank"} rel={isMail ? undefined : "noreferrer"} aria-label={s.label} title={s.label}><Icon size={18} /></a>;
+                })}
               </div>
             </div>
           </div>
         </main>
 
-        {/* ═══════════ WHAT I DO — data.json Lottie on left ═══════════ */}
-        <SectionDivider />
-        <section id="what" className="section whatIDo revealSection" ref={whatRef}>
-          <div className="whatGrid">
-            <div className="whatLeft revealLeft">
-              <div className="whatVisual">
-                <Lottie animationData={whatIDoAnim} loop autoplay className="whatGif" />
-              </div>
-            </div>
-            <div className="whatRight revealRight">
-              <span className="sectionKicker">About</span>
-              <h2 className="whatTitle">{WHAT_I_DO?.title ?? ""}</h2>
-              <p className="whatIntro">{WHAT_I_DO?.intro ?? ""}</p>
-              <div className="whatBullets">
-                {(WHAT_I_DO?.bullets ?? []).map((b, i) => (
-                  <p key={i} className="whatBullet">
-                    <span className="whatBulletIcon"><FaBolt size={12} /></span>
-                    {b.replace(/^⚡\s*/, "")}
-                  </p>
-                ))}
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* ═══════════ NOW ═══════════ */}
-        <SectionDivider />
-        <section id="now" className="section revealFromTop" ref={nowRef}>
-          <span className="sectionKicker">Current Focus</span>
-          <h2>{NOW?.title ?? "Now"}</h2>
-          {NOW?.subtitle ? <p className="sectionSubtitle">{NOW.subtitle}<span className="nowTimestamp">Last updated August 2026</span></p> : null}
-          <div className="nowGrid staggerChildren">
-            {(NOW?.cards ?? []).map((c, i) => (
-              <div className="nowCard" key={`${c.title}-${i}`}>
-                <h3>{c.title}</h3><p>{c.body}</p>
-                {c.tag ? <span className="nowTag">{c.tag}</span> : null}
-              </div>
-            ))}
+        {/* ═══════════ WHAT I FOCUS ON — capability grid ═══════════ */}
+        <SectionDivider variant="a" />
+        <section id="what" className="section revealFromTop" ref={whatRef}>
+          <span className="sectionKicker"><FaLayerGroup size={12} style={{ verticalAlign: "-1px", marginRight: "8px" }} />{FOCUS?.kicker}</span>
+          <h2>{FOCUS?.title}</h2>
+          {FOCUS?.subtitle ? <p className="sectionSubtitle">{FOCUS.subtitle}</p> : null}
+          <div className="focusGrid staggerChildren">
+            {(FOCUS?.cards ?? []).map((c) => {
+              const meta = FOCUS_META[c.key] ?? {};
+              const Icon = meta.Icon;
+              return (
+                <div className="focusCard" key={c.key} style={{ "--fc-glow": meta.glow }}>
+                  {Icon ? <div className="focusIcon" style={{ color: meta.color, background: meta.bg, borderColor: meta.border }}><Icon size={20} /></div> : null}
+                  <h3 className="focusCardTitle">{c.title}</h3>
+                  <p className="focusCardBody">{c.body}</p>
+                  <div className="focusChips">{(c.chips ?? []).map((ch, i) => <span className="focusChip" key={i}>{ch}</span>)}</div>
+                </div>
+              );
+            })}
           </div>
         </section>
 
         {/* ═══════════ EDUCATION ═══════════ */}
-        <SectionDivider />
+        <SectionDivider variant="b" />
         <section id="education" className="section revealFromLeft" ref={eduRef}>
-          <span className="sectionKicker">Academic Background</span><h2>Education</h2>
+          <span className="sectionKicker"><FaGraduationCap size={12} style={{ verticalAlign: "-1px", marginRight: "8px" }} />Academic Background</span><h2>Education</h2>
           {(EDUCATION ?? []).map((e) => {
             const detailsArray = Array.isArray(e.details) ? e.details : e.details ? [e.details] : [];
             const courses = Array.isArray(e.courses) ? e.courses : [];
@@ -511,74 +629,77 @@ export default function App() {
         </section>
 
         {/* ═══════════ EXPERIENCE ═══════════ */}
-        <SectionDivider />
+        <SectionDivider variant="a" />
         <section id="experience" className="section revealFromLeft" ref={expRef}>
-          <span className="sectionKicker">Work History</span><h2>Experience</h2>
-          {(EXPERIENCE ?? []).map((x) => (
-            <div className="expCard expNew" key={`${x.company}-${x.role}`}>
-              <div className="expCenter">
-                <div className="expCompanyName">{x.company}</div>
-                {x.logo ? <div className="expLogoWrap"><img className="expLogo" src={x.logo} alt={`${x.company} logo`} /></div> : null}
-                <div className="expRoleBig">{x.role}</div>
-                {x.time ? <div className="expTimeCenter">{x.time}</div> : null}
-                {x.location ? <div className="expLocationCenter">{x.location}</div> : null}
-                {x.workType ? <div className="expWorkType">{x.workType}</div> : null}
-                {x.stats?.length ? <div className="expStatRow">{x.stats.map((stat, i) => <span className="expStatPill" key={i}>{stat}</span>)}</div> : null}
+          <span className="sectionKicker"><FaBriefcase size={12} style={{ verticalAlign: "-1px", marginRight: "8px" }} />Work History</span><h2>Experience</h2>
+          <div className="expTimeline">
+            {(EXPERIENCE ?? []).map((x) => (
+              <div className="expItem" key={`${x.company}-${x.role}`}>
+                <div className="expRail"><span className="expNode" /></div>
+                <div className="expCard expNew">
+                  <div className="expHead">
+                    {x.logo ? <div className="expLogoWrap"><img className="expLogo" src={x.logo} alt={`${x.company} logo`} /></div> : null}
+                    <div className="expHeadText">
+                      <div className="expRoleBig">{x.role}</div>
+                      <div className="expCompanyName">{x.company}</div>
+                      <div className="expMetaRow">
+                        {x.time ? <span className="expTimeCenter">{x.time}</span> : null}
+                        {x.location ? <span className="expLocationCenter">{x.location}</span> : null}
+                        {x.workType ? <span className="expWorkType">{x.workType}</span> : null}
+                      </div>
+                    </div>
+                  </div>
+                  {x.bullets?.length ? <ul className="expBullets">{x.bullets.map((b, idx) => <li key={idx}>{b}</li>)}</ul> : null}
+                  {x.tags?.length ? <div className="expTags">{x.tags.map((t) => <span className="expTag" key={t}>{t}</span>)}</div> : null}
+                </div>
               </div>
-              {x.bullets?.length ? <ul className="expBullets">{x.bullets.map((b, idx) => <li key={idx}>{b}</li>)}</ul> : null}
-            </div>
-          ))}
+            ))}
+          </div>
         </section>
 
         {/* ═══════════ TECH STACK ═══════════ */}
-        <SectionDivider />
+        <SectionDivider variant="b" />
         <section id="tech-stack" className="section revealFromTop" ref={skillsRef}>
-          <span className="sectionKicker">Tools & Technologies</span><h2>Tech Stack</h2>
+          <span className="sectionKicker"><FaServer size={12} style={{ verticalAlign: "-1px", marginRight: "8px" }} />Tools & Technologies</span><h2>Tech Stack</h2>
           <div className="skillsGrid staggerChildren">
-            {(() => {
-              const skills = SKILLS ?? [];
-              const cols = 3;
-              const perCol = Math.ceil(skills.length / cols);
-              return Array.from({ length: cols }, (_, col) => {
-                const start = col * perCol;
-                const colGroups = skills.slice(start, start + perCol);
-                if (!colGroups.length) return null;
-                return (
-                  <div className="skillsCol" key={`skillcol-${col}`}>
-                    {colGroups.map((group, gi) => {
-                      const idx = start + gi;
-                      const Icon = SKILL_ICONS[group.title];
+            {(SKILLS ?? []).map((group) => {
+              const Icon = SKILL_ICONS[group.title];
+              return (
+                <div key={group.title} className="skillCard">
+                  <div className="skillCardHead">
+                    <span className="skillCardIcon">{Icon ? <Icon size={15} /> : null}</span>
+                    <h3 className="skillCardTitle">{group.title}</h3>
+                    <span className="skillCardCount">{(group.items ?? []).length}</span>
+                  </div>
+                  <div className="skillList">
+                    {(group.items ?? []).map((item, i) => {
+                      const meta = SKILL_META[item.name] ?? {};
+                      const SkillIcon = meta.Icon ?? FaCubes;
                       return (
-                        <div key={group.title} className="skillCard">
-                          <div className="skillCardHead">
-                            <span className="skillCardIcon">{Icon ? <Icon size={15} /> : <span className="skillCardIndex">{String(idx + 1).padStart(2, "0")}</span>}</span>
-                            <h3 className="skillCardTitle">{group.title}</h3>
-                            <span className="skillCardCount">{(group.items ?? []).length}</span>
+                        <div key={`${group.title}-${i}`} className="skillItem">
+                          <div className="skillItemTop">
+                            <span className="skillItemIcon">
+                              <SkillIcon size={16} style={{ color: meta.color ?? "var(--accent)" }} />
+                            </span>
+                            <span className="skillItemName">{item.name}</span>
                           </div>
-                          <div className="skillChipWrap">{(group.items ?? []).map((item, i) => {
-                            const logo = TECH_LOGOS[item];
-                            const Logo = logo?.icon;
-                            return (
-                              <span key={`${group.title}-${i}`} className={`skillChip${Logo ? " skillChipTool" : ""}`}>
-                                {Logo ? <Logo className="skillChipIcon" size={12} style={{ color: logo.color }} /> : null}
-                                {item}
-                              </span>
-                            );
-                          })}</div>
+                          <div className="skillBar">
+                            <div className="skillBarFill" style={{ width: `${item.level}%` }} />
+                          </div>
                         </div>
                       );
                     })}
                   </div>
-                );
-              });
-            })()}
+                </div>
+              );
+            })}
           </div>
         </section>
 
         {/* ═══════════ PROJECTS ═══════════ */}
-        <SectionDivider />
+        <SectionDivider variant="a" />
         <section id="projects" className="section revealFromTop" ref={projectsRef}>
-          <span className="sectionKicker">Things I've Built</span><h2>Projects</h2>
+          <span className="sectionKicker"><FaCode size={12} style={{ verticalAlign: "-1px", marginRight: "8px" }} />Things I've Built</span><h2>Projects</h2>
 
           {/* Filter bar */}
           <div className="projectFilters">
@@ -598,42 +719,63 @@ export default function App() {
           <div className="projectsUnified staggerChildren">
             {PROJECTS.filter(p => activeFilter === "All" || p.tag === activeFilter).map((p) => (
               <div key={p.id} className="projectCardNew" data-tag={p.tag?.replace(/[&\s]/g, '-').toLowerCase()}>
-                {/* Visual header with gradient + category badge */}
-                <div className="projectVisual">
+                {/* Image tile — click opens details; description/tags/links reveal on hover */}
+                <div
+                  className="projectTile"
+                  role="button"
+                  tabIndex={0}
+                  onClick={() => setActiveProject(p)}
+                  onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); setActiveProject(p); } }}
+                >
                   {p.image ? (
                     <img className="projectImage" src={p.image} alt={p.title} />
                   ) : (
-                    <>
+                    <div className="projectVisual">
                       <div className="projectVisualGlow" />
                       <div className="projectVisualGrid" />
-                    </>
+                    </div>
                   )}
-                  <span className="projectTag">{p.tag}</span>
-                </div>
 
-                {/* Card content */}
-                <div className="projectCardBody">
-                  <h3 className="projectCardTitle">{p.title}</h3>
-                  <p className="projectCardShort">{p.short}</p>
-                  <div className="projectChipWrap">{p.tech.split(" · ").map((t) => <span key={t} className="projectChip">{t}</span>)}</div>
-                  <div className="projectActions">
-                    <button className="projectActionBtn projectActionPrimary" onClick={() => setActiveProject(p)} type="button">View Details →</button>
-                    {p.github ? <a className="projectActionBtn" href={p.github} target="_blank" rel="noreferrer" onClick={(e) => e.stopPropagation()}>GitHub</a> : null}
-                    {p.live ? <a className="projectActionBtn" href={p.live} target="_blank" rel="noreferrer" onClick={(e) => e.stopPropagation()}>Live Demo</a> : null}
-                    {p.medium ? <a className="projectActionBtn" href={p.medium} target="_blank" rel="noreferrer" onClick={(e) => e.stopPropagation()}>Medium</a> : null}
-                    {p.report ? <a className="projectActionBtn" href={p.report} target="_blank" rel="noreferrer" onClick={(e) => e.stopPropagation()}>Report</a> : null}
-                    {p.tableau ? <a className="projectActionBtn" href={p.tableau} target="_blank" rel="noreferrer" onClick={(e) => e.stopPropagation()}>Tableau</a> : null}
+                  {/* Hover overlay */}
+                  <div className="projectOverlay">
+                    <span className="projectCat">{p.tag}</span>
+                    <h4 className="projectOverlayTitle">{p.title}</h4>
+                    <p className="projectOverlayShort">{p.short}</p>
+                    <div className="projectChipWrap">
+                      {(() => {
+                        const techs = p.tech.split(" · ");
+                        const shown = techs.slice(0, 4);
+                        const extra = techs.length - shown.length;
+                        return (
+                          <>
+                            {shown.map((t) => <span key={t} className="projectChip">{t}</span>)}
+                            {extra > 0 ? <span className="projectChip projectChipMore">+{extra}</span> : null}
+                          </>
+                        );
+                      })()}
+                    </div>
+                    <div className="projectActions">
+                      {p.github ? <a className="projectActionBtn" href={p.github} target="_blank" rel="noreferrer" onClick={(e) => e.stopPropagation()}>GitHub</a> : null}
+                      {p.live ? <a className="projectActionBtn" href={p.live} target="_blank" rel="noreferrer" onClick={(e) => e.stopPropagation()}>Live Demo</a> : null}
+                      {p.medium ? <a className="projectActionBtn" href={p.medium} target="_blank" rel="noreferrer" onClick={(e) => e.stopPropagation()}>Medium</a> : null}
+                      {p.report ? <a className="projectActionBtn" href={p.report} target="_blank" rel="noreferrer" onClick={(e) => e.stopPropagation()}>Report</a> : null}
+                      {p.tableau ? <a className="projectActionBtn" href={p.tableau} target="_blank" rel="noreferrer" onClick={(e) => e.stopPropagation()}>Tableau</a> : null}
+                      <button className="projectActionBtn projectActionPrimary" onClick={(e) => { e.stopPropagation(); setActiveProject(p); }} type="button">View Details →</button>
+                    </div>
                   </div>
                 </div>
+
+                {/* Title caption below the tile */}
+                <h3 className="projectCaption">{p.title}</h3>
               </div>
             ))}
           </div>
         </section>
 
         {/* ═══════════ CERTIFICATIONS ═══════════ */}
-        <SectionDivider />
+        <SectionDivider variant="b" />
         <section id="certifications" className="section revealFromTop" ref={certRef}>
-          <span className="sectionKicker">Credentials</span><h2>Certifications</h2>
+          <span className="sectionKicker"><FaShieldAlt size={12} style={{ verticalAlign: "-1px", marginRight: "8px" }} />Credentials</span><h2>Certifications</h2>
           <div className="certGridBig staggerChildren">
             {(CERTIFICATIONS ?? []).map((c) => (
               <div key={c.id} className="certCardBig">
@@ -647,27 +789,53 @@ export default function App() {
         </section>
 
         {/* ═══════════ CONTACT ═══════════ */}
-        <SectionDivider />
+        <SectionDivider variant="a" />
         <section id="contact" className="section revealFromTop" ref={contactRef}>
-          <span className="sectionKicker">Get in Touch</span><h2>Contact Me</h2>
-          <p className="contactLine">I'm looking for Data Science, Machine Learning, AI Engineering, and Data Engineering roles, both internships and full-time. If you're hiring or just want to talk about a project, drop me a message below or reach out on any of these.</p>
+          <span className="sectionKicker"><MdEmail size={13} style={{ verticalAlign: "-2px", marginRight: "8px" }} />Get in Touch</span><h2>Contact Me</h2>
+          <div className="contactHeader">
+            <div className="contactHeaderText">
+              <p className="contactLine">I'm looking for Data Science, Machine Learning, AI Engineering, and Data Engineering roles, both internships and full-time. If you're hiring or just want to talk about a project, drop me a message below or reach out on any of these.</p>
+            </div>
+            <div className="contactAnimWrap"><Lottie animationData={contactAnim} loop autoplay className="contactAnim" /></div>
+          </div>
 
           <div className="contactGrid">
-            {/* Left — Form + social icons at the bottom */}
-            <div className="contactFormWrap">
-              <ContactForm />
-              <div className="contactIcons contactIconsBottom">
-                {heroSocials.map((s) => {
+            {/* Left — "Let's connect" info card */}
+            <div className="contactInfoCard">
+              <h3 className="contactInfoTitle">Let's connect.</h3>
+              <p className="contactInfoText">The fastest way to reach me is email — copy it or open your mail app below. You can also connect with me on LinkedIn.</p>
+
+              <div className="contactEmailBox">
+                <span className="contactEmailAddr">{contactEmail}</span>
+                <div className="contactEmailActions">
+                  <button className="contactCopyBtn" onClick={copyEmail} type="button" aria-label="Copy email">
+                    <FaRegCopy size={13} /> {emailCopied ? "Copied" : "Copy"}
+                  </button>
+                  <a className="contactCopyBtn contactMailBtn" href={`mailto:${contactEmail}`} aria-label="Email me directly">
+                    <MdEmail size={15} /> Email
+                  </a>
+                </div>
+              </div>
+
+              <div className="contactDetailBox">
+                {heroSocials.filter((s) => s?.label === "LinkedIn").map((s) => {
                   const Icon = iconFor(s?.label); if (!Icon) return null;
-                  const href = s?.href ?? "#"; const isMail = href.startsWith("mailto:");
-                  return <a key={`contact-${s.label}`} className="contactIconBtn" href={href} target={isMail ? undefined : "_blank"} rel={isMail ? undefined : "noreferrer"} aria-label={s.label} title={s.label}><Icon size={17} /><span className="contactIconText">{s.label}</span></a>;
+                  return (
+                    <a key={`clink-${s.label}`} className="contactLink" href={s.href} target="_blank" rel="noreferrer" aria-label={s.label}>
+                      <Icon className="contactLinkIcon" size={16} /><span className="contactLinkText">{s.label}</span>
+                    </a>
+                  );
                 })}
+                <div className="contactMetaRow">
+                  <FaMapMarkerAlt className="contactMetaIcon" size={15} />
+                  <span>Based in Jersey City, NJ · Open to NYC Metro, Relocation &amp; Remote</span>
+                </div>
               </div>
             </div>
 
-            {/* Right — just the Lottie */}
-            <div className="contactSideWrap">
-              <div className="contactAnimWrap"><Lottie animationData={contactAnim} loop autoplay className="contactAnim" /></div>
+            {/* Right — form card */}
+            <div className="contactFormCard">
+              <ContactForm />
             </div>
           </div>
         </section>
@@ -704,7 +872,7 @@ export default function App() {
             </div>
           </div>
         )}
-        <ScrollToTop />
+        <ChatBot />
       </div>
     </>
   );

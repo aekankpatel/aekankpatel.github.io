@@ -1,0 +1,12 @@
+name = "aekank-chat"
+main = "src/index.js"
+compatibility_date = "2024-11-01"
+
+# Optional: per-IP rate limiting. Create the namespace, then uncomment and
+# paste the id that `wrangler kv namespace create RATE_LIMIT` prints:
+#
+#   npx wrangler kv namespace create RATE_LIMIT
+#
+# [[kv_namespaces]]
+# binding = "RATE_LIMIT"
+# id = "PASTE_KV_NAMESPACE_ID_HERE"
