@@ -453,6 +453,37 @@ export default function App() {
   const skillsRef = useReveal(); const projectsRef = useReveal();
   const certRef = useReveal(); const contactRef = useReveal();
 
+  // Path-based section links (/contact instead of /#contact)
+  useEffect(() => {
+    const idFromPath = (p) => decodeURIComponent((p || "").replace(/^\/+|\/+$/g, ""));
+    const scrollToId = (id, smooth = true) => {
+      if (!id) { window.scrollTo({ top: 0, behavior: smooth ? "smooth" : "auto" }); return true; }
+      const el = document.getElementById(id);
+      if (!el || el.tagName !== "SECTION") return false;
+      el.scrollIntoView({ behavior: smooth ? "smooth" : "auto", block: "start" });
+      return true;
+    };
+    const onClick = (e) => {
+      if (e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+      const a = e.target.closest?.("a[href^='/']");
+      if (!a || a.target === "_blank") return;
+      const id = idFromPath(a.getAttribute("href"));
+      if (!id || !document.getElementById(id)) return;
+      e.preventDefault();
+      if (window.location.pathname !== `/${id}`) window.history.pushState(null, "", `/${id}`);
+      scrollToId(id);
+    };
+    const onPop = () => scrollToId(idFromPath(window.location.pathname));
+    // Legacy /#section URLs → /section
+    const legacy = window.location.hash.slice(1);
+    if (legacy && document.getElementById(legacy)) window.history.replaceState(null, "", `/${legacy}`);
+    const initial = idFromPath(window.location.pathname);
+    if (initial) setTimeout(() => scrollToId(initial, false), 300);
+    document.addEventListener("click", onClick);
+    window.addEventListener("popstate", onPop);
+    return () => { document.removeEventListener("click", onClick); window.removeEventListener("popstate", onPop); };
+  }, []);
+
   useEffect(() => {
     if (document.fonts && document.fonts.ready) {
       document.fonts.ready.then(() => setTimeout(() => setFontsLoaded(true), 150));
@@ -513,13 +544,13 @@ export default function App() {
           <div className="brand"><a href="https://github.com/aekankpatel/aekankpatel.github.io" target="_blank" rel="noreferrer" className="brandLink">Aekank Patel</a></div>
           <div className="navRight">
             <nav className={`links ${menuOpen ? "menuOpen" : ""}`}>
-              <a href="#what" onClick={() => setMenuOpen(false)}>Focus</a>
-              <a href="#education" onClick={() => setMenuOpen(false)}>Education</a>
-              <a href="#experience" onClick={() => setMenuOpen(false)}>Experience</a>
-              <a href="#tech-stack" onClick={() => setMenuOpen(false)}>Tech Stack</a>
-              <a href="#projects" onClick={() => setMenuOpen(false)}>Projects</a>
-              <a href="#certifications" onClick={() => setMenuOpen(false)}>Certs</a>
-              <a href="#contact" onClick={() => setMenuOpen(false)}>Contact</a>
+              <a href="/what" onClick={() => setMenuOpen(false)}>Focus</a>
+              <a href="/education" onClick={() => setMenuOpen(false)}>Education</a>
+              <a href="/experience" onClick={() => setMenuOpen(false)}>Experience</a>
+              <a href="/tech-stack" onClick={() => setMenuOpen(false)}>Tech Stack</a>
+              <a href="/projects" onClick={() => setMenuOpen(false)}>Projects</a>
+              <a href="/certifications" onClick={() => setMenuOpen(false)}>Certs</a>
+              <a href="/contact" onClick={() => setMenuOpen(false)}>Contact</a>
             </nav>
             <button className={`themeSwitch ${theme === "dark" ? "isDark" : "isLight"}`} onClick={toggleTheme} type="button" role="switch" aria-checked={theme === "dark"} aria-label="Toggle theme">
               <span className="switchThumb"><span className="switchIcon">{theme === "dark" ? <FaMoon size={10} /> : <FaSun size={11} />}</span></span>
@@ -542,11 +573,11 @@ export default function App() {
 
               {/* Primary actions */}
               <div className="heroCtas">
-                <a className="btn heroCtaPrimary" href="#projects">Explore Projects <FaArrowRight size={12} /></a>
+                <a className="btn heroCtaPrimary" href="/projects">Explore Projects <FaArrowRight size={12} /></a>
                 {HERO?.resumePath ? (
                   <a className="btn heroCta" href={HERO.resumePath} target="_blank" rel="noreferrer"><FaFileAlt size={13} /> Download Resume</a>
                 ) : null}
-                <a className="btn heroCtaGhost" href="#contact">Get in Touch</a>
+                <a className="btn heroCtaGhost" href="/contact">Get in Touch</a>
               </div>
 
               {/* Quick-stats strip */}
