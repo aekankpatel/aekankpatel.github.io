@@ -31,6 +31,8 @@ import eigenfacesImg from "../assets/projects/face.png";
 import insuranceClaimImg from "../assets/projects/insurance.png";
 import tradingRLImg from "../assets/projects/rl.png";
 import splitcheckImg from "../assets/projects/splitcheck.png";
+import mathenzaImg from "../assets/projects/mathenza.png";
+import queryraImg from "../assets/projects/queryra.png";
 
 export const HERO = {
   headline: "",
@@ -251,6 +253,30 @@ export const EXPERIENCE = [
 export const PROJECTS = [
   // \u2500\u2500 Machine Learning & AI \uD83E\uDD16\u2500\u2500
 
+  {
+    id: "mathenza",
+    category: "ai",
+    tag: "AI Engineering",
+    title: "Mathenza: A Math Solver That Shows Its Working, Then Checks It",
+    image: mathenzaImg,
+    short: "Type a math question in plain text or LaTeX. Mathenza works out what is being asked, solves it exactly with SymPy, and confirms the answer a second, independent way before showing it.",
+    tech: "Python \u00B7 FastAPI \u00B7 LangGraph \u00B7 SymPy \u00B7 NumPy \u00B7 SciPy \u00B7 Groq \u00B7 React \u00B7 TypeScript \u00B7 KaTeX \u00B7 Plotly",
+    github: "https://github.com/aekankpatel/Mathenza",
+    live: "https://mathenza.vercel.app",
+    impact: "261/264 correct on a 308-question benchmark with zero wrong answers, every result independently verified",
+    long: `Language models are bad at arithmetic, but they are good at reading. So I built a math solver where the model is only allowed to read the question. It never does the math.
+
+You type something like "derivative of x^3 sin(x) at x = 1" or "A is 3x3 with eigenvalues 1, -2, 3: find det(A^3 - 2A)". A planner turns it into one whitelisted tool call with its arguments. Groq (gpt-oss-120b) can propose the plan, but offline rule-based planners always run too and take over when Groq is unavailable, out of budget, or wrong. The model is never trusted with a number.
+
+Before anything is computed, an intent check compares the plan with the original question: every number, bound, condition and part of a multi-part question. Plans that misread the question get repaired, replaced, or turned into a clarification request. Plans where the model did arithmetic itself are rejected.
+
+The computation runs in a sandboxed worker process with no network, no secrets, and time and memory limits. Then a different method verifies the result: solutions are substituted back, derivatives are checked with finite differences, integrals are differentiated back, matrices are recomputed in NumPy. If the check disagrees, the answer is marked as failed instead of shown as correct. Every answer gets a trust mark: Fully verified, Verified with assumptions, Approximate, or Needs clarification.
+
+It covers algebra, calculus, integrals, sums and sequences, linear algebra, probability and statistics, and percentages, with step-by-step working, interactive graphs, and follow-up questions like "now integrate it".
+
+I evaluated it on a hand-checked 308-question benchmark, including held-out paraphrases and unseen word problems written before any tuning. It answered 261/264 correctly offline and 262/264 with Groq, with zero wrong answers. The few it could not answer got a clarification request, never a guess. I also deliberately corrupted 34 correct solutions and 36 correct plans; the verifier and intent check caught all of them. There are 475 backend tests behind it.`,
+  },
+
     {
     id: "finrag",
     category: "ai",
@@ -293,6 +319,28 @@ For the explanations, I connected LLaMA via Groq to generate plain-English summa
 The frontend is a React and Tailwind dashboard with Recharts showing fraud trends, severity breakdowns, and a map view. Flask handles the API layer, and SQLite stores transactions.
 
 What I would change: the rule layer and ML layer sometimes disagree on edge cases. I would probably add a conflict resolution mechanism if I rebuilt this.`,
+  },
+
+  {
+    id: "queryra",
+    category: "ai",
+    tag: "AI Engineering",
+    title: "Queryra: An AI Data Analyst That Checks Its Own Numbers",
+    image: queryraImg,
+    short: "Upload a spreadsheet and ask why something happened. A LangGraph agent plans an investigation, runs SQL and statistical tests over MCP tools, verifies every number it reports, and hands you a PDF report.",
+    tech: "Python \u00B7 FastAPI \u00B7 LangGraph \u00B7 MCP \u00B7 DuckDB \u00B7 SciPy \u00B7 React \u00B7 TypeScript \u00B7 Cloudflare Workers AI \u00B7 Vercel",
+    github: "https://github.com/aekankpatel/queryra",
+    live: "https://queryra.vercel.app",
+    impact: "Autonomous data analysis agent with 100% SQL validity and a 0% hallucination rate on its benchmark",
+    long: `The problem with asking an LLM about your data is that it will happily state numbers it never checked. Queryra is a data analysis agent where most of the code exists to check the agent's work.
+
+You upload a CSV, Excel, Parquet or JSON file (or pick a sample) and ask something like "why did revenue decline last quarter, and which customer segments contributed most?". The agent profiles the columns, works out which dates and metrics the question refers to, and turns it into hypotheses and an ordered plan.
+
+It is built as a LangGraph agent that discovers its tools at runtime over the Model Context Protocol. Three MCP servers expose read-only SQL on DuckDB, statistical tests, anomaly detection, trend analysis and change attribution, and chart and PDF generation. Nothing in the loop is hard-coded to a specific tool. After each phase, a reflection step decides whether the evidence actually answers the question. If not, it lists the gaps and re-plans.
+
+Before anything is shown, every number in every finding is matched against the tool output it came from. Unsupported claims trigger a rewrite. The answer is also checked against the question itself (period, metric, grouping), so a correct calculation on the wrong quarter still fails. Every step, LLM call and SQL query streams live into an execution timeline, and the final answer comes with Plotly charts and a PDF report.
+
+It runs for $0: gpt-oss-120b on Cloudflare Workers AI, Vercel for hosting, and Cloudflare D1 for storage, with per-visitor rate limits on the public demo. On a live benchmark of six analysis cases it passed 4/6 officially, with 100% SQL validity and a 0% hallucination rate. I documented the two failures honestly: one was a display bug I fixed, the other found the right answer but formatted the month differently from the strict scorer.`,
   },
 
   {

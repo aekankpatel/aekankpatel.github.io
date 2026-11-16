@@ -39,9 +39,11 @@ EXPERIENCE
 - Data Science Intern, Nimit Electronics (May–Dec 2023): structured 80,000+ surveillance/IoT records with SQL, built Python ETL across 10+ datasets, hit 94.83% accuracy on incident classification / anomaly detection with Scikit-learn.
 - Industrial Trainee, Vinrox Technologies (Dec 2022 – Jan 2023): SMT production lines, PCB assembly and quality control.
 
-PROJECTS (19 total)
+PROJECTS (21 total)
+- Mathenza (his favourite / strongest project) — a math solver that shows its working, then checks it: a Groq LLM only reads the question, SymPy/NumPy/SciPy compute exact answers in a sandbox, and an independent check verifies every result; 261/264 correct on a 308-question benchmark with zero wrong answers (FastAPI, LangGraph, React, TypeScript).
 - FinRAG — RAG system to ask questions about SEC filings and earnings calls in plain English (LlamaIndex, HuggingFace, Groq/LLaMA, Streamlit).
 - FRAUDGEN — classifies transactions into four risk tiers with XGBoost, explains why using LLaMA; Flask backend + React dashboard.
+- Queryra — an AI data analyst for spreadsheets: a LangGraph agent discovers tools over MCP, runs SQL on DuckDB and statistical tests, re-plans when evidence is incomplete, verifies every number against tool outputs, and produces a PDF report (Cloudflare Workers AI, Vercel).
 - NLIP Sentinel — a trust firewall for AG2 multi-agent AI workflows: validates messages, blocks unsafe tool calls, gates risky actions, produces an auditable trust score.
 - Patient No-Show Risk Dashboard — Random Forest (AUC 0.966) on 110K medical records, with dashboards in HTML and Tableau.
 - E-Commerce Product Search & Recommendation on Google Cloud — cloud-scale pipeline over 9.8M product-query records using Spark, Dataproc, TF-IDF, LSH, FP-Growth.
